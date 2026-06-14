@@ -1,4 +1,4 @@
-# VegaUI
+# VUI
 
 A collection of ready-to-use UI components built with plain HTML, CSS, and JavaScript.
 

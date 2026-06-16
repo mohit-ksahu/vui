@@ -8,7 +8,7 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 
 ## Setup
 
-### 1) Add VegaUI files to your project
+### 1) Add VUI files to your project
 
 Copy the `components/` folder into your project.
 
@@ -19,7 +19,7 @@ You mainly need:
 
 `index.css` imports all component styles, and `index.js` loads component behavior modules.
 
-### 2) Include VegaUI in your HTML
+### 2) Include VUI in your HTML
 
 ```html
 <link rel="stylesheet" href="./components/index.css">
@@ -38,7 +38,7 @@ Example:
 
 ### 4) Run with a local server (recommended)
 
-Because VegaUI uses ES modules, run your project through a local server instead of opening HTML directly with `file://`.
+Because VUI uses ES modules, run your project through a local server instead of opening HTML directly with `file://`.
 
 ```bash
 python -m http.server 5500
@@ -52,7 +52,7 @@ Then open:
 
 ## Setup with Bundlers (optional)
 
-If you use Vite/Webpack/Parcel, import VegaUI in your entry file:
+If you use Vite/Webpack/Parcel, import VUI in your entry file:
 
 ```js
 import "./components/index.css";

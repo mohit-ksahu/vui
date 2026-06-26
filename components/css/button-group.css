@@ -10,6 +10,11 @@
       border-radius: var(--radius-full);
     }
 
+    .dark & {
+      --border: color-mix(in oklch, var(--foreground) 10%, var(--background));
+      --input: color-mix(in oklch, var(--foreground) 15%, var(--background));
+    }
+
     & > .btn,
     & > .input,
     & > .select,
@@ -17,6 +22,11 @@
       position: relative;
       border-radius: 0;
       flex: 1 1 auto;
+
+      &:hover,
+      &:active {
+        z-index: 10;
+      }
 
       &:focus-visible {
         z-index: 20;

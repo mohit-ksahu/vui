@@ -2,67 +2,75 @@
 
 A collection of ready-to-use UI components built with plain HTML, CSS, and JavaScript.
 
-**[Browse components](https://mohit-ksahu.github.io/vui/pages/)**
+**[Browse components](https://mohit-ksahu.github.io/vui/)**
 
----
+## Features
+
+- **No external dependencies** — entirely self-contained
+- **Framework-agnostic** — works with React, Vue, or plain HTML
+- **Design-token driven** — easy customization via CSS variables
 
 ## Setup
 
-### 1) Add VUI files to your project
+Include VUI in your project by copying the source files directly or by referencing compiled, minified bundles.
 
-Copy the `components/` folder into your project.
+### Using Source Files Directly
 
-You mainly need:
+1. **Copy the `components/` folder** into your project.
+   - `components/index.css` imports all component styles.
+   - `components/index.js` exports/loads component behavior modules.
 
-- `components/index.css`
-- `components/index.js`
+2. **Include VUI in your HTML**:
+   ```html
+   <link rel="stylesheet" href="path/to/components/index.css">
+   <script type="module" src="path/to/components/index.js"></script>
+   ```
 
-`index.css` imports all component styles, and `index.js` loads component behavior modules.
+3. **Run with a local server (recommended)**:
+   Because VUI uses ES modules, run your project through a local server instead of opening HTML directly via `file://`:
+   ```bash
+   python -m http.server
+   ```
+   Then open `http://localhost:8000`.
 
-### 2) Include VUI in your HTML
+### Using Minified Bundles (Recommended for Production)
 
-```html
-<link rel="stylesheet" href="./components/index.css">
-<script type="module" src="./components/index.js"></script>
-```
+For production, you can bundle and minify the source files using **esbuild** to optimize network requests and file sizes.
 
-### 3) Use component markup
+1. **Generate the minified bundles**:
+   ```bash
+   npx esbuild components/index.js --bundle --minify --format=esm --outfile=index.min.js
+   npx esbuild components/index.css --bundle --minify --outfile=index.min.css
+   ```
 
-Use any component markup from the docs pages inside `pages/docs/`.
-
-Example:
-
-```html
-<button class="btn">Button</button>
-```
-
-### 4) Run with a local server (recommended)
-
-Because VUI uses ES modules, run your project through a local server instead of opening HTML directly with `file://`.
-
-```bash
-python -m http.server 5500
-```
-
-Then open:
-
-`http://localhost:5500`
-
----
+2. **Include the minified files in your HTML**:
+   ```html
+   <link rel="stylesheet" href="path/to/index.min.css">
+   <script type="module" src="path/to/index.min.js"></script>
+   ```
 
 ## Setup with Bundlers (optional)
 
-If you use Vite/Webpack/Parcel, import VUI in your entry file:
+If you use a bundler (Vite, Webpack, Parcel, etc.), you can import VUI directly in your entry file:
 
 ```js
 import "./components/index.css";
 import "./components/index.js";
 ```
 
----
+## Usage
+
+Use any component markup from the documentation (`index.html`). Interaction behavior (like tabs switching) is automatically handled once `index.js` or `index.min.js` is imported.
+
+### Button Example
+
+```html
+<button class="btn">Default</button>
+<button class="btn btn-secondary">Secondary</button>
+```
 
 ## Features
 
-- ✅ **No external dependencies** — entirely self-contained
-- ✅ **Framework-agnostic** — works with React, Vue, or plain HTML
-- ✅ **Design-token driven** — easy customization via CSS variables
+- **No external dependencies** — entirely self-contained
+- **Framework-agnostic** — works with React, Vue, or plain HTML
+- **Design-token driven** — easy customization via CSS variables

@@ -13,10 +13,6 @@
     outline: none;
     transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    @media (prefers-color-scheme: dark) {
-      background-color: color-mix(in oklch, var(--input) 20%, transparent);
-    }
-
     &:focus-visible {
       border-color: var(--ring);
       outline: none;
@@ -26,7 +22,9 @@
       border-color: var(--destructive);
     }
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
+      background-color: color-mix(in oklch, var(--input) 20%, transparent);
+
       &[aria-invalid] {
         border-color: color-mix(in oklch, var(--destructive) 50%, transparent);
       }

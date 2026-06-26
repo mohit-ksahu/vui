@@ -16,51 +16,27 @@
     }
 
     &::-webkit-progress-value {
-      background: var(--accent);
+      background: var(--primary);
       border-radius: 0;
       transition: width 100ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &::-moz-progress-bar {
-      background: var(--accent);
+      background: var(--primary);
       border-radius: 0;
       transition: width 100ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    &.progress-success {
-      &::-webkit-progress-value { background: oklch(0.627 0.17 145); }
-      &::-moz-progress-bar { background: oklch(0.627 0.17 145); }
-    }
-    &.progress-warning {
-      &::-webkit-progress-value { background: oklch(0.75 0.15 80); }
-      &::-moz-progress-bar { background: oklch(0.75 0.15 80); }
-    }
-    &.progress-destructive {
-      &::-webkit-progress-value { background: var(--destructive); }
-      &::-moz-progress-bar { background: var(--destructive); }
-    }
-    &.progress-primary {
-      &::-webkit-progress-value { background: var(--primary); }
-      &::-moz-progress-bar { background: var(--primary); }
     }
 
     &:indeterminate {
       background-color: var(--secondary);
       background-image: linear-gradient(90deg,
               transparent 0%,
-              var(--accent) 0%,
-              var(--accent) 100%,
+              var(--primary) 0%,
+              var(--primary) 100%,
               transparent 100%);
       background-size: 25% 100%;
       background-repeat: no-repeat;
       animation: progress-indeterminate 1s infinite linear;
-
-      &.progress-primary {
-        background-image: linear-gradient(90deg, transparent 0%, var(--primary) 0%, var(--primary) 100%, transparent 100%);
-      }
-      &.progress-success {
-        background-image: linear-gradient(90deg, transparent 0%, oklch(0.627 0.17 145) 0%, oklch(0.627 0.17 145) 100%, transparent 100%);
-      }
 
       &::-webkit-progress-bar {
         background: transparent;
@@ -108,11 +84,11 @@
     }
 
     &::-webkit-meter-optimum-value {
-      background: var(--success, oklch(0.627 0.17 145));
+      background: var(--success);
     }
 
     &::-webkit-meter-suboptimum-value {
-      background: var(--warning, oklch(0.75 0.15 80));
+      background: var(--warning);
     }
 
     &::-webkit-meter-even-less-good-value {
@@ -120,12 +96,12 @@
     }
 
     &::-moz-meter-bar {
-      background: var(--success, oklch(0.627 0.17 145));
+      background: var(--success);
       border-radius: 0;
     }
 
     &:-moz-meter-sub-optimum::-moz-meter-bar {
-      background: var(--warning, oklch(0.75 0.15 80));
+      background: var(--warning);
     }
 
     &:-moz-meter-sub-sub-optimum::-moz-meter-bar {

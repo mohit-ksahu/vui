@@ -16,6 +16,8 @@ new MutationObserver(sidebar).observe(document.body, { childList: true, subtree:
 const isMobile = () => window.innerWidth <= 768;
 
 const handleTriggerClick = (provider) => {
+  const sidebarEl = provider.querySelector('.sidebar');
+  if (sidebarEl && sidebarEl.getAttribute('data-collapsible') === 'none' && !isMobile()) return;
   provider.dataset.state = provider.dataset.state === 'open' ? 'closed' : 'open';
 };
 

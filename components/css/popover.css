@@ -6,6 +6,7 @@
     border-radius: var(--radius);
     background: var(--popover);
     color: var(--popover-foreground);
+    box-shadow: 0 4px 6px -1px oklch(0 0 0 / 0.1), 0 2px 4px -2px oklch(0 0 0 / 0.1);
     inset: unset;
     position: absolute;
     position-visibility: always;

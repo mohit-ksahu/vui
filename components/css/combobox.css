@@ -20,19 +20,19 @@
     outline: none;
     transition: background-color 100ms, border-color 100ms, color 100ms;
   }
-  
+
   .combobox-trigger:is(:hover, :active):not(:disabled) {
     background-color: var(--muted);
   }
-  
+
   .dark .combobox-trigger {
     background-color: color-mix(in oklch, var(--input) 20%, transparent);
   }
-  
+
   .dark .combobox-trigger:is(:hover, :active):not(:disabled) {
     background-color: color-mix(in oklch, var(--input) 40%, transparent);
   }
-  
+
   .combobox-trigger[aria-invalid] { border-color: var(--destructive); }
   .combobox-trigger:disabled {
     opacity: 0.5;

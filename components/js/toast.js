@@ -51,7 +51,7 @@ function _remove(el, container) {
 
 function toast(content, options = {}) {
   const el = document.createElement('output');
-  
+
   if (typeof content === 'string') {
     el.innerHTML = content;
   } else if (content instanceof Node) {
@@ -101,7 +101,15 @@ document.addEventListener('click', e => {
   const dismissBtn = e.target.closest('[data-dismiss]');
   if (dismissBtn) {
     const toastEl = dismissBtn.closest('.toast');
-    if (toastEl) toastDismiss(toastEl);
+    if (toastEl) {
+      toastDismiss(toastEl);
+      return;
+    }
+  }
+
+  const toastEl = e.target.closest('.toast');
+  if (toastEl && !e.target.closest('button, a, input, select, textarea')) {
+    toastDismiss(toastEl);
   }
 });
 

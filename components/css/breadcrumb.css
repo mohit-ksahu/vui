@@ -1,8 +1,7 @@
 @layer components {
-  
+
   .breadcrumb {}
 
-  
   .breadcrumb-list {
     display: flex;
     flex-wrap: wrap;
@@ -16,14 +15,12 @@
     word-break: break-word;
   }
 
-  
   .breadcrumb-item {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;        
   }
 
-  
   .breadcrumb-link {
     color: inherit;
     text-decoration: none;
@@ -35,14 +32,12 @@
     &:active { color: var(--foreground); }
   }
 
-  
   .breadcrumb-page {
     font-weight: 400;
     color: var(--foreground);
     cursor: default;
   }
 
-  
   .breadcrumb-separator {
     display: flex;
     align-items: center;
@@ -73,12 +68,10 @@
     }
   }
 
-  
   .breadcrumb-list .breadcrumb-item .breadcrumb-ellipsis {
     color: inherit;
   }
 
-  
   .breadcrumb-item .dropdown {
     color: var(--muted-foreground);
   }

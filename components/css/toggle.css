@@ -45,8 +45,6 @@
       pointer-events: none;
     }
 
-
-
     &.toggle-outline {
       border-color: var(--input);
       background: transparent;

@@ -1,5 +1,4 @@
 
-
 @layer components {
   .sidebar-provider {
     --sidebar-width: 16rem;
@@ -32,7 +31,6 @@
         visibility 100ms ease;
     }
 
-    
     @media (max-width: 768px) {
       &[data-state="open"]::after {
         opacity: 1;
@@ -40,7 +38,6 @@
       }
     }
 
-    
     .sidebar-collapsed-only {
       display: none;
     }
@@ -49,7 +46,6 @@
       .sidebar-collapsed-only { display: inline-flex; }
     }
 
-    
     @media (min-width: 769px) {
       &:has(> .sidebar[data-variant="inset"]) {
         background-color: var(--sidebar);
@@ -96,7 +92,7 @@
           opacity: 0;
           border: none;
           pointer-events: none;
-          
+
           &::before { display: none; }
         }
       }
@@ -112,14 +108,14 @@
     background-color: var(--sidebar);
     color: var(--sidebar-foreground);
     transition:
-      width 100ms cubic-bezier(0.4, 0, 0.2, 1),
-      transform 100ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 100ms ease;
+      width 80ms ease-in-out,
+      transform 80ms ease-in-out,
+      opacity 80ms ease-in-out;
+    will-change: width, transform, opacity;
     z-index: 50;
     position: relative;
     --ring: var(--sidebar-ring);
 
-    
     &[data-placement="left"],
     &:not([data-placement]) {
       border-right: 1px solid var(--sidebar-border);
@@ -128,12 +124,11 @@
       border-left: 1px solid var(--sidebar-border);
     }
 
-    
     &[data-variant="floating"] {
       padding: calc(var(--spacing) * 2);
       background-color: transparent;
       border: none;
-      
+
       &::before {
         content: "";
         position: absolute;
@@ -145,7 +140,6 @@
       }
     }
 
-    
     @media (min-width: 769px) {
       &[data-variant="inset"] {
         padding: calc(var(--spacing) * 2);
@@ -154,13 +148,12 @@
       }
     }
 
-    
     & > .sidebar-header {
       flex-shrink: 0;
       height: 3rem;
       display: flex;
       align-items: center;
-      padding: 0 calc(var(--spacing) * 3);
+      padding: 0 calc(var(--spacing) * 2);
       box-sizing: border-box;
       overflow: hidden;
       justify-content: flex-start;
@@ -172,7 +165,7 @@
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      gap: calc(var(--spacing) * 2);
+      gap: calc(var(--spacing) * 1.5);
       overflow: hidden;
     }
 
@@ -223,7 +216,6 @@
         font-weight: 400;
         white-space: nowrap;
 
-
         &:is(:hover, :focus-visible) {
           background-color: var(--sidebar-accent);
           color: var(--sidebar-accent-foreground);
@@ -264,7 +256,7 @@
         font-size: 0.75rem;
         font-weight: 600;
         color: var(--sidebar-foreground);
-        opacity: 0.7;
+        opacity: 0.62;
         white-space: nowrap;
         position: relative;
       }
@@ -299,7 +291,6 @@
       }
     }
 
-    
     @media (max-width: 768px) {
       position: absolute;
       left: 0;
@@ -319,7 +310,6 @@
         transform: translateX(100%);
       }
 
-      
       .sidebar-provider[data-state="open"] > & {
         transform: translateX(0);
         opacity: 1;
@@ -329,7 +319,6 @@
         }
       }
     }
-
 
   }
 
@@ -342,15 +331,18 @@
     overflow: hidden;
     position: relative;
     isolation: isolate;
+    transition:
+      margin 80ms ease-in-out,
+      margin-left 80ms ease-in-out,
+      margin-right 80ms ease-in-out;
+    will-change: margin-left, margin-right;
 
-    
     @media (max-width: 768px) {
       margin: 0;
       border-radius: 0;
       border: none;
     }
 
-    
     @media (min-width: 769px) {
       .sidebar-provider:has(> .sidebar[data-variant="inset"]) > & {
         margin: calc(var(--spacing) * 2);
@@ -362,7 +354,7 @@
         margin-left: calc(var(--spacing) * 2);
         margin-right: 0;
       }
-      
+
       .sidebar-provider[data-state="closed"]:has(> .sidebar[data-variant="inset"]:not([data-collapsible="icon"])) > & {
         margin-left: calc(var(--spacing) * 2);
       }
@@ -377,13 +369,14 @@
       display: flex;
       align-items: center;
       gap: calc(var(--spacing) * 4);
-      padding: 0 calc(var(--spacing) * 3);
+      padding: 0 calc(var(--spacing) * 2);
       background-color: color-mix(in oklch, var(--background) 80%, transparent);
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
       border-bottom: 1px solid var(--sidebar-border);
       border-top-left-radius: inherit;
       border-top-right-radius: inherit;
+      transition: padding-left 80ms ease-in-out;
     }
 
     > main {

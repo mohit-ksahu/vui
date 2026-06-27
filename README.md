@@ -68,9 +68,3 @@ Use any component markup from the documentation (`index.html`). Interaction beha
 <button class="btn">Default</button>
 <button class="btn btn-secondary">Secondary</button>
 ```
-
-## Features
-
-- **No external dependencies** — entirely self-contained
-- **Framework-agnostic** — works with React, Vue, or plain HTML
-- **Design-token driven** — easy customization via CSS variables

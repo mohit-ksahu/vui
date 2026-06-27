@@ -10,6 +10,18 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 - **Framework-agnostic** — works with React, Vue, or plain HTML
 - **Design-token driven** — easy customization via CSS variables
 
+| Metric                 |                   VUI                  |
+| ---------------------- | :------------------------------------: |
+| CSS (gzipped)          |                **10 KB**               |
+| JavaScript (gzipped)   |                **3 KB**                |
+| Total Download         |                **13 KB**               |
+| Components             |                 **35**                 |
+| Components / KB        |                **2.69**                |
+| CSS Variables          |                    ✅                   |
+| Dark Mode              |                    ✅                   |
+| External JS Dependency |                **None**                |
+| Browser Support        | Chrome, Edge, Firefox, Safari (latest) |
+
 ## Setup
 
 Include VUI in your project by copying the source files directly or by referencing compiled, minified bundles.

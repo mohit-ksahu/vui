@@ -10,7 +10,6 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 - **Framework-agnostic** — works with React, Vue, or plain HTML
 - **Design-token driven** — easy customization via CSS variables
 
--
 
 | Metric                 |                   VUI                  |
 | ---------------------- | :------------------------------------: |
@@ -23,6 +22,7 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 | Dark Mode              |                    ✅                   |
 | External JS Dependency |                **None**                |
 | Browser Support        | Chrome, Edge, Firefox, Safari (latest) |
+
 
 ## Setup
 

@@ -10,6 +10,8 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 - **Framework-agnostic** — works with React, Vue, or plain HTML
 - **Design-token driven** — easy customization via CSS variables
 
+---
+
 | Metric                 |                   VUI                  |
 | ---------------------- | :------------------------------------: |
 | CSS (gzipped)          |                **10 KB**               |

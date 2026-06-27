@@ -14,9 +14,9 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 
 |                        |                   VUI                  |
 | ---------------------- | :------------------------------------: |
-| CSS (gzipped)          |                **10 KB**               |
-| JavaScript (gzipped)   |                **3 KB**                |
-| Total Download         |                **13 KB**               |
+| CSS (gzipped)          |                **~10 KB**               |
+| JavaScript (gzipped)   |                **~2 KB**                |
+| Total Download         |                **~12 KB**               |
 | Components             |                 **35**                 |
 | Components / KB        |                **2.69**                |
 | CSS Variables          |                    ✅                   |

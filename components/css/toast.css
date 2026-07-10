@@ -49,6 +49,5 @@
     width: fit-content;
     max-width: calc(100vw - calc(var(--spacing) * 8));
     font-size: 0.875rem;
-
   }
 }

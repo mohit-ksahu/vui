@@ -5,7 +5,7 @@
     width: 1rem;
     height: 1rem;
     border: 1px solid var(--input);
-    border-radius: calc(var(--radius) * 0.25);
+    border-radius: var(--radius-sm);
     background-color: transparent;
     cursor: pointer;
     display: inline-flex;

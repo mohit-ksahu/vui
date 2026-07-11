@@ -9,7 +9,7 @@
     min-width: 2rem;
     padding: 0 calc(var(--spacing) * 2);
     border: 1px solid transparent;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     background: transparent;
     color: var(--muted-foreground);
     font: inherit;
@@ -62,7 +62,7 @@
       min-width: 1.75rem;
       padding: 0 calc(var(--spacing) * 1.5);
       font-size: 0.8rem;
-      border-radius: min(var(--radius), 12px);
+      border-radius: min(var(--radius-lg), 12px);
     }
 
     &.toggle-lg {

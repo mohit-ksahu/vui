@@ -4,7 +4,7 @@
     flex-direction: column;
     gap: 1rem;
     overflow: hidden;
-    border-radius: calc(var(--radius) + 4px);
+    border-radius: var(--radius-xl);
     background-color: var(--card);
     color: var(--card-foreground);
     font-size: 0.875rem;
@@ -55,7 +55,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      border-radius: 0 0 calc(var(--radius) + 4px) calc(var(--radius) + 4px);
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
       border-top: 1px solid var(--border);
       background-color: color-mix(in oklch, var(--muted) 50%, transparent);
       padding: 1rem;

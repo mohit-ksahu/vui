@@ -32,12 +32,14 @@
     --sidebar-border: oklch(0.910 0.003 286.350);
     --sidebar-ring: oklch(0.522 0.177 255.830);
 
-    --radius-xs: max(0px, calc(var(--radius) - 4px));
-    --radius-sm: max(0px, calc(var(--radius) - 2px));
-    --radius: 0.5rem;
-    --radius-lg: calc(var(--radius) + 2px);
-    --radius-xl: calc(var(--radius) + 4px);
-    --radius-full: 9999px;
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius: 0.4rem;
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
 
     --spacing: 0.25rem;
     --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;

@@ -13,7 +13,7 @@
     display: inline-flex;
     padding: 0.25rem;
     background: var(--muted);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     gap: 0;
     align-items: center;
     justify-content: center;
@@ -36,7 +36,7 @@
     flex: 1;
     padding: 0 calc(var(--spacing) * 3);
     border: 1px solid transparent;
-    border-radius: calc(var(--radius) - 2px);
+    border-radius: var(--radius-sm);
     background: transparent;
     font: inherit;
     font-size: 0.875rem;

@@ -4,10 +4,10 @@
     width: fit-content;
     align-items: stretch;
     isolation: isolate;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
 
     &.radius-full {
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-4xl);
     }
 
     .dark & {

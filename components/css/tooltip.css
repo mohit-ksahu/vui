@@ -108,7 +108,7 @@
     padding: var(--spacing) calc(var(--spacing) * 2);
     font-size: 0.75rem;
     white-space: nowrap;
-    border-radius: calc(var(--radius) * 0.5);
+    border-radius: var(--radius-sm);
 
     width: max-content;
     max-width: 24rem;

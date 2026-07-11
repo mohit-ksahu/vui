@@ -37,7 +37,7 @@
     z-index: 200;
     width: 16rem;             
     padding: 0.625rem;        
-    border-radius: calc(var(--radius) + 2px);  
+    border-radius: var(--radius-lg);
     background-color: var(--popover);
     color: var(--popover-foreground);
     font-size: 0.875rem;      

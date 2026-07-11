@@ -134,7 +134,7 @@
         position: absolute;
         inset: calc(var(--spacing) * 2);
         background-color: var(--sidebar);
-        border-radius: var(--radius);
+        border-radius: var(--radius-lg);
         border: 1px solid var(--sidebar-border);
         z-index: -1;
       }
@@ -201,7 +201,7 @@
         padding: 0 calc(var(--spacing) * 2);
         color: var(--sidebar-foreground);
         text-decoration: none;
-        border-radius: var(--radius);
+        border-radius: var(--radius-lg);
         position: relative;
         transition:
           background-color 100ms ease,
@@ -347,7 +347,7 @@
       .sidebar-provider:has(> .sidebar[data-variant="inset"]) > & {
         margin: calc(var(--spacing) * 2);
         margin-left: 0;
-        border-radius: var(--radius);
+        border-radius: var(--radius-lg);
         border: 1px solid var(--sidebar-border);
       }
       .sidebar-provider:has(> .sidebar[data-variant="inset"][data-placement="right"]) > & {

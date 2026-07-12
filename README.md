@@ -14,8 +14,6 @@ A collection of ready-to-use UI components built with plain HTML, CSS, and JavaS
 
 |                        |                   VUI                  |
 | ---------------------- | :------------------------------------: |
-| CSS (gzipped)          |                **~10 KB**               |
-| JavaScript (gzipped)   |                **~2 KB**                |
 | Components             |                 **35**                 |
 | Components / KB        |                **~2.7**                |
 | Dark Mode              |                    ✅                   |

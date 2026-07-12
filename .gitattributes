@@ -1,2 +1,2 @@
 *.html linguist-documentation
-**/*.min.* linguist-generated
+*.min.* linguist-generated

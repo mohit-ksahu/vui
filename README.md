@@ -80,10 +80,4 @@ import "./components/index.js";
 ## Usage
 
 Use any component markup from the documentation (`index.html`). Interaction behavior (like tabs switching) is automatically handled once `index.js` or `index.min.js` is imported.
-
-### Button Example
-
-```html
-<button class="btn">Default</button>
-<button class="btn btn-secondary">Secondary</button>
-```
+[Browse Components](https://mohit-ksahu.github.io/vui/)

@@ -1,4 +1,16 @@
-<p align="center"> <h1 align="center">☄️ VUI</h1> <p align="center"> A collection of ready-to-use UI components built with plain HTML, CSS, and JavaScript. </p> <p align="center"> <a href="https://mohit-ksahu.github.io/vui/"><strong>Browse Components →</strong></a> </p> </p>
+<h1 align="center">VUI</h1>
+
+<p align="center">
+  A collection of ready-to-use UI components built with plain HTML, CSS, and JavaScript.
+</p>
+
+<p align="center">
+  <a href="https://mohit-ksahu.github.io/vui/">
+    <strong>Browse Components</strong>
+  </a>
+</p>
+
+---
 
 ## Features
 

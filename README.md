@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://mohit-ksahu.github.io/vui/" target="_blank" rel="noopener noreferrer">
+  <a href="https://mohit-ksahu.github.io/vui/">
     <strong>Browse Components</strong>
   </a>
 </p>

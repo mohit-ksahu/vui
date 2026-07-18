@@ -43,25 +43,7 @@
     width: auto;
   }
 
-  .js-positioned {
-    position: fixed;
-    box-sizing: border-box;
-    max-height: 100vh;
-    margin: 0 !important;
-    position-anchor: auto !important;
-    position-area: none !important;
-    position-try-fallbacks: none !important;
-    position-visibility: always;
-    overscroll-behavior: contain;
-    opacity: 0;
-
-    &.is-positioned {
-      opacity: 1;
-    }
-  }
-
   .dropdown.submenu[popover][data-placement] {
-    transition: none !important;
     min-width: var(--dropdown-width);
     width: var(--dropdown-width);
   }
@@ -129,26 +111,14 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--destructive) 10%, transparent);
+          background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
           color: var(--destructive);
         }
       }
       &:active,
       &:focus-visible {
-        background-color: color-mix(in oklch, var(--destructive) 10%, transparent);
+        background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
         color: var(--destructive);
-      }
-
-      .dark & {
-        @media (hover: hover) {
-          &:hover {
-            background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
-          }
-        }
-        &:active,
-        &:focus-visible {
-          background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
-        }
       }
 
       & svg, & i {

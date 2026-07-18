@@ -17,23 +17,12 @@
     flex-direction: column;
     gap: calc(var(--spacing) * 2.5);
     overflow: auto;
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.95);
-    transition: display 100ms allow-discrete,
-        overlay 100ms allow-discrete,
-        opacity 100ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity, transform;
 
     &::backdrop {
       display: none;
     }
 
     &:popover-open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1);
       display: flex;
     }
   }
@@ -49,30 +38,23 @@
     margin: 0;
   }
 
-  [popover][data-placement="bottom-start"]   { top: anchor(bottom); left: anchor(left);      margin-top: var(--spacing); position-try-fallbacks: flip-block, flip-inline; transform-origin: top left; }
+  [popover][data-placement="bottom-start"]   { top: anchor(bottom); left: anchor(left);      margin-top: var(--spacing); position-try-fallbacks: flip-block, flip-inline; }
   [popover][data-placement="bottom"],
-  [popover][data-placement="bottom-center"]  { top: anchor(bottom); left: anchor(center);    translate: -50% 0; margin-top: var(--spacing); position-try-fallbacks: flip-block, flip-inline; transform-origin: top center; }
-  [popover][data-placement="bottom-end"]     { top: anchor(bottom); right: anchor(right);    margin-top: var(--spacing); position-try-fallbacks: flip-block, flip-inline; transform-origin: top right; }
+  [popover][data-placement="bottom-center"]  { top: anchor(bottom); left: anchor(center);    translate: -50% 0; margin-top: var(--spacing); position-try-fallbacks: flip-block, flip-inline; }
+  [popover][data-placement="bottom-end"]     { top: anchor(bottom); right: anchor(right);    margin-top: var(--spacing); position-try-fallbacks: flip-block, flip-inline; }
 
-  [popover][data-placement="top-start"]      { bottom: anchor(top); left: anchor(left);      margin-bottom: var(--spacing); position-try-fallbacks: flip-block, flip-inline; transform-origin: bottom left; }
+  [popover][data-placement="top-start"]      { bottom: anchor(top); left: anchor(left);      margin-bottom: var(--spacing); position-try-fallbacks: flip-block, flip-inline; }
   [popover][data-placement="top"],
-  [popover][data-placement="top-center"]     { bottom: anchor(top); left: anchor(center);    translate: -50% 0; margin-bottom: var(--spacing); position-try-fallbacks: flip-block, flip-inline; transform-origin: bottom center; }
-  [popover][data-placement="top-end"]        { bottom: anchor(top); right: anchor(right);    margin-bottom: var(--spacing); position-try-fallbacks: flip-block, flip-inline; transform-origin: bottom right; }
+  [popover][data-placement="top-center"]     { bottom: anchor(top); left: anchor(center);    translate: -50% 0; margin-bottom: var(--spacing); position-try-fallbacks: flip-block, flip-inline; }
+  [popover][data-placement="top-end"]        { bottom: anchor(top); right: anchor(right);    margin-bottom: var(--spacing); position-try-fallbacks: flip-block, flip-inline; }
 
-  [popover][data-placement="left-start"]     { right: anchor(left); top: anchor(top);        margin-right: var(--spacing); position-try-fallbacks: flip-inline, flip-block; transform-origin: top right; }
+  [popover][data-placement="left-start"]     { right: anchor(left); top: anchor(top);        margin-right: var(--spacing); position-try-fallbacks: flip-inline, flip-block; }
   [popover][data-placement="left"],
-  [popover][data-placement="left-center"]    { right: anchor(left); top: anchor(center);     translate: 0 -50%; margin-right: var(--spacing); position-try-fallbacks: flip-inline, flip-block; transform-origin: right center; }
-  [popover][data-placement="left-end"]       { right: anchor(left); bottom: anchor(bottom);  margin-right: var(--spacing); position-try-fallbacks: flip-inline, flip-block; transform-origin: bottom right; }
+  [popover][data-placement="left-center"]    { right: anchor(left); top: anchor(center);     translate: 0 -50%; margin-right: var(--spacing); position-try-fallbacks: flip-inline, flip-block; }
+  [popover][data-placement="left-end"]       { right: anchor(left); bottom: anchor(bottom);  margin-right: var(--spacing); position-try-fallbacks: flip-inline, flip-block; }
 
-  [popover][data-placement="right-start"]    { left: anchor(right); top: anchor(top);        margin-left: var(--spacing); position-try-fallbacks: flip-inline, flip-block; transform-origin: top left; }
+  [popover][data-placement="right-start"]    { left: anchor(right); top: anchor(top);        margin-left: var(--spacing); position-try-fallbacks: flip-inline, flip-block; }
   [popover][data-placement="right"],
-  [popover][data-placement="right-center"]   { left: anchor(right); top: anchor(center);     translate: 0 -50%; margin-left: var(--spacing); position-try-fallbacks: flip-inline, flip-block; transform-origin: left center; }
-  [popover][data-placement="right-end"]      { left: anchor(right); bottom: anchor(bottom);  margin-left: var(--spacing); position-try-fallbacks: flip-inline, flip-block; transform-origin: bottom left; }
-
-  .js-positioned[popover]:popover-open {
-    opacity: 0;
-    &.is-positioned {
-      opacity: 1;
-    }
-  }
+  [popover][data-placement="right-center"]   { left: anchor(right); top: anchor(center);     translate: 0 -50%; margin-left: var(--spacing); position-try-fallbacks: flip-inline, flip-block; }
+  [popover][data-placement="right-end"]      { left: anchor(right); bottom: anchor(bottom);  margin-left: var(--spacing); position-try-fallbacks: flip-inline, flip-block; }
 }

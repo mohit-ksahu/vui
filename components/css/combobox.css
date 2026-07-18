@@ -41,6 +41,7 @@
   .combobox-search {
     display: flex;
     align-items: center;
+    height: 2rem;
     padding: 0 calc(var(--spacing) * 1.5);
     border-bottom: 1px solid var(--border);
   }
@@ -55,7 +56,7 @@
 
   .combobox-input {
     flex: 1;
-    height: 2.25rem;
+    height: 100%;
     background: transparent;
     border: none;
     outline: none;

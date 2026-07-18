@@ -25,35 +25,16 @@
     background-color: var(--muted);
   }
 
-  .dark .combobox-trigger {
-    background-color: color-mix(in oklch, var(--input) 20%, transparent);
-  }
-
-  .dark .combobox-trigger:is(:hover, :active):not(:disabled) {
-    background-color: color-mix(in oklch, var(--input) 40%, transparent);
-  }
-
   .combobox-trigger[aria-invalid] { border-color: var(--destructive); }
   .combobox-trigger:disabled {
     opacity: 0.5;
     pointer-events: none;
   }
 
-  .input-group.combobox-input-trigger:has(.input:focus-visible),
-  .input-group.combobox-input-trigger:has(.input:focus),
-  .combobox-trigger:focus-visible,
-  .combobox-trigger:focus {
-    border-color: var(--input) !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-
   .popover.combobox-popover[popover] {
     padding: 0;
     gap: 0;
     width: var(--combobox-width, max(200px, anchor-size(width)));
-    display: flex;
-    flex-direction: column;
     overflow: visible;
   }
 

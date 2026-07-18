@@ -26,7 +26,7 @@
 | Components / KB        |                **~2.7**                |
 | Dark Mode              |                    ✅                   |
 | External JS Dependency |                **None**                |
-| Browser Support        | Chrome, Edge, Firefox, Safari (latest) |
+| Browser Support        |                 Latest                 |
 
 
 ## Setup

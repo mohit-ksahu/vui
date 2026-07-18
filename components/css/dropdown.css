@@ -51,22 +51,22 @@
   .dropdown.submenu[data-placement="right"],
   .dropdown.submenu[data-placement="right-start"],
   .dropdown.submenu[data-placement="right-end"],
-  .dropdown.submenu[data-placement="right-center"] { margin-left: -2px; }
+  .dropdown.submenu[data-placement="right-center"] { margin-left: 0px; }
 
   .dropdown.submenu[data-placement="left"],
   .dropdown.submenu[data-placement="left-start"],
   .dropdown.submenu[data-placement="left-end"],
-  .dropdown.submenu[data-placement="left-center"] { margin-right: -2px; }
+  .dropdown.submenu[data-placement="left-center"] { margin-right: 0px; }
 
   .dropdown.submenu[data-placement="top"],
   .dropdown.submenu[data-placement="top-start"],
   .dropdown.submenu[data-placement="top-end"],
-  .dropdown.submenu[data-placement="top-center"] { margin-bottom: -2px; }
+  .dropdown.submenu[data-placement="top-center"] { margin-bottom: 0px; }
 
   .dropdown.submenu[data-placement="bottom"],
   .dropdown.submenu[data-placement="bottom-start"],
   .dropdown.submenu[data-placement="bottom-end"],
-  .dropdown.submenu[data-placement="bottom-center"] { margin-top: -2px; }
+  .dropdown.submenu[data-placement="bottom-center"] { margin-top: 0px; }
 
   .menu-item {
     display: flex;

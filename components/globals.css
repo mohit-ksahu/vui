@@ -19,8 +19,8 @@
     --accent: oklch(0.522 0.177 255.830);
     --accent-foreground: oklch(1.000 0.000 0.000);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.910 0.003 286.350);
-    --input: oklch(0.910 0.003 286.350);
+    --border: oklch(0.890 0.003 286.350);
+    --input: oklch(0.890 0.003 286.350);
     --ring: oklch(0.522 0.177 255.830);
 
     --sidebar: oklch(0.971 0.003 286.350);
@@ -29,7 +29,7 @@
     --sidebar-primary-foreground: oklch(0.971 0.003 286.350);
     --sidebar-accent: oklch(0.940 0.003 286.350);
     --sidebar-accent-foreground: oklch(0.200 0.004 286.099);
-    --sidebar-border: oklch(0.910 0.003 286.350);
+    --sidebar-border: oklch(0.890 0.003 286.350);
     --sidebar-ring: oklch(0.522 0.177 255.830);
 
     --radius-xs: calc(var(--radius) * 0.4);
@@ -65,8 +65,8 @@
     --accent: oklch(0.522 0.177 255.830);
     --accent-foreground: oklch(1.000 0.000 0.000);
     --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(0.298 0.004 286.099 / 0.5);
-    --input: oklch(0.298 0.004 286.099 / 0.5);
+    --border: oklch(0.235 0.004 286.099);
+    --input: oklch(0.235 0.004 286.099);
     --ring: oklch(0.522 0.177 255.830);
 
     --sidebar: oklch(0.175 0.004 286.099);
@@ -75,7 +75,7 @@
     --sidebar-primary-foreground: oklch(1.000 0.000 0.000);
     --sidebar-accent: oklch(0.230 0.004 286.099);
     --sidebar-accent-foreground: oklch(0.971 0.003 286.350);
-    --sidebar-border: oklch(0.298 0.004 286.099 / 0.5);
+    --sidebar-border: oklch(0.235 0.004 286.099);
     --sidebar-ring: oklch(0.522 0.177 255.830);
   }
 }
@@ -109,7 +109,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -118,9 +117,21 @@
       transition-duration: 0.01ms;
       scroll-behavior: auto;
     }
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
   }
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.15s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

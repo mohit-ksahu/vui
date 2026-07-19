@@ -1,8 +1,11 @@
 export const setTheme = theme => {
   const isDark = theme === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : theme === 'dark';
-  document.documentElement.classList.toggle('dark', isDark);
-  localStorage.setItem('theme', theme);
-  document.dispatchEvent(new CustomEvent('theme:change', { detail: { theme, isDark } }));
+  const update = () => {
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', theme);
+    document.dispatchEvent(new CustomEvent('theme:change', { detail: { theme, isDark } }));
+  };
+  document.startViewTransition ? document.startViewTransition(update) : update();
 };
 
 export const switchTheme = () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');

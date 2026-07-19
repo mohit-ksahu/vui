@@ -107,11 +107,7 @@
     flex-direction: column;
     background-color: var(--sidebar);
     color: var(--sidebar-foreground);
-    transition:
-      width 80ms ease-in-out,
-      transform 80ms ease-in-out,
-      opacity 80ms ease-in-out;
-    will-change: width, transform, opacity;
+    will-change: transform, opacity;
     z-index: 50;
     position: relative;
     --ring: var(--sidebar-ring);
@@ -331,10 +327,6 @@
     overflow: hidden;
     position: relative;
     isolation: isolate;
-    transition:
-      margin 80ms ease-in-out,
-      margin-left 80ms ease-in-out,
-      margin-right 80ms ease-in-out;
     will-change: margin-left, margin-right;
 
     @media (max-width: 768px) {
@@ -376,7 +368,6 @@
       border-bottom: 1px solid var(--sidebar-border);
       border-top-left-radius: inherit;
       border-top-right-radius: inherit;
-      transition: padding-left 80ms ease-in-out;
     }
 
     > main {

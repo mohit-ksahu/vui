@@ -4,7 +4,7 @@
     width: 1rem;
     height: 1rem;
     border: 1px solid var(--input);
-    border-radius: var(--radius-5xl);
+    border-radius: var(--radius-10xl);
     margin: 0;
     cursor: pointer;
     background: transparent;
@@ -41,7 +41,7 @@
         left: 50%;
         width: 0.625rem;
         height: 0.625rem;
-        border-radius: var(--radius-5xl);
+        border-radius: var(--radius-10xl);
         background-color: var(--accent);
         transform: translate(-50%, -50%);
       }

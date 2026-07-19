@@ -9,7 +9,7 @@
     width: 2.75rem;
     height: 1.5rem;
     border: 2px solid transparent;
-    border-radius: var(--radius-5xl);
+    border-radius: var(--radius-10xl);
     background-color: var(--input);
     cursor: pointer;
     outline: none;
@@ -24,7 +24,7 @@
       width: 1.25rem;
       height: 1.25rem;
       background-color: var(--foreground);
-      border-radius: var(--radius-5xl);
+      border-radius: var(--radius-10xl);
       transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1),
                   background-color 100ms cubic-bezier(0.4, 0, 0.2, 1);
     }

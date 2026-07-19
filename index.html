@@ -2307,34 +2307,41 @@ document.addEventListener('theme:change', (e) => {
 
                             <!-- Placements -->
                             <h3>Placements</h3>
-                            <preview style="flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <label for="dd-placement-select" class="label"
-                                        style="margin-bottom: 0;">Placement:</label>
-                                    <select id="dd-placement-select" class="select select-sm" style="width: 150px;"
-                                        onchange="
-            const menu = document.getElementById('dd-placed');
-            menu.setAttribute('data-placement', this.value);
-        ">
-                                        <option value="bottom-start" selected>bottom-start</option>
-                                        <option value="bottom">bottom</option>
-                                        <option value="bottom-end">bottom-end</option>
-                                        <option value="top-start">top-start</option>
-                                        <option value="top">top</option>
-                                        <option value="top-end">top-end</option>
-                                        <option value="left-start">left-start</option>
-                                        <option value="left">left</option>
-                                        <option value="left-end">left-end</option>
-                                        <option value="right-start">right-start</option>
-                                        <option value="right">right</option>
-                                        <option value="right-end">right-end</option>
-                                    </select>
-                                </div>
+                            <preview style="gap: 1rem; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                                <button aria-haspopup="menu" popovertarget="dd-placed-bottom" class="btn btn-outline"
+                                    style="anchor-name: --dd-placed-bottom;">Bottom</button>
+                                <menu id="dd-placed-bottom" popover class="dropdown" data-placement="bottom" role="menu"
+                                    style="position-anchor: --dd-placed-bottom; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                    <div class="menu-separator"></div>
+                                    <button class="menu-item" role="menuitem">Help & Support</button>
+                                </menu>
 
-                                <button aria-haspopup="menu" popovertarget="dd-placed" class="btn btn-secondary"
-                                    style="anchor-name: --dd-placed;">Trigger Dropdown</button>
-                                <menu id="dd-placed" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor: --dd-placed; width: auto;">
+                                <button aria-haspopup="menu" popovertarget="dd-placed-top" class="btn btn-outline"
+                                    style="anchor-name: --dd-placed-top;">Top</button>
+                                <menu id="dd-placed-top" popover class="dropdown" data-placement="top" role="menu"
+                                    style="position-anchor: --dd-placed-top; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                    <div class="menu-separator"></div>
+                                    <button class="menu-item" role="menuitem">Help & Support</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-placed-left" class="btn btn-outline"
+                                    style="anchor-name: --dd-placed-left;">Left</button>
+                                <menu id="dd-placed-left" popover class="dropdown" data-placement="left" role="menu"
+                                    style="position-anchor: --dd-placed-left; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                    <div class="menu-separator"></div>
+                                    <button class="menu-item" role="menuitem">Help & Support</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-placed-right" class="btn btn-outline"
+                                    style="anchor-name: --dd-placed-right;">Right</button>
+                                <menu id="dd-placed-right" popover class="dropdown" data-placement="right" role="menu"
+                                    style="position-anchor: --dd-placed-right; width: auto;">
                                     <button class="menu-item" role="menuitem">Profile</button>
                                     <button class="menu-item" role="menuitem">Settings</button>
                                     <div class="menu-separator"></div>
@@ -2959,37 +2966,41 @@ Alex</textarea>
                             <h3>Placements</h3>
                             <p class="section-meta">Use the <code>data-placement</code> attribute to dictate explicit
                                 edge and placement pinning.</p>
-                            <preview style="flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <label for="p-placement-select" class="label"
-                                        style="margin-bottom: 0;">Placement:</label>
-                                    <select id="p-placement-select" class="select select-sm" style="width: 150px;"
-                                        onchange="
-            const popover = document.getElementById('p-placed');
-            popover.setAttribute('data-placement', this.value);
-        ">
-                                        <option value="bottom-start" selected>bottom-start</option>
-                                        <option value="bottom">bottom</option>
-                                        <option value="bottom-end">bottom-end</option>
-                                        <option value="top-start">top-start</option>
-                                        <option value="top">top</option>
-                                        <option value="top-end">top-end</option>
-                                        <option value="left-start">left-start</option>
-                                        <option value="left">left</option>
-                                        <option value="left-end">left-end</option>
-                                        <option value="right-start">right-start</option>
-                                        <option value="right">right</option>
-                                        <option value="right-end">right-end</option>
-                                    </select>
+                            <preview style="gap: 1rem; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                                <button popovertarget="p-placed-bottom" class="btn btn-outline"
+                                    style="anchor-name: --p-placed-bottom;">Bottom</button>
+                                <div id="p-placed-bottom" popover class="popover" data-placement="bottom"
+                                    style="position-anchor: --p-placed-bottom; width: auto;">
+                                    <div class="popover-title">Bottom Placement</div>
+                                    <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--muted-foreground);">
+                                        This popover opens below the trigger.</p>
                                 </div>
 
-                                <button popovertarget="p-placed" class="btn btn-secondary"
-                                    style="anchor-name: --p-placed;">Trigger Popover</button>
-                                <div id="p-placed" popover class="popover" data-placement="bottom-start"
-                                    style="position-anchor: --p-placed; width: auto;">
-                                    <div class="popover-title">Dynamic Placement</div>
+                                <button popovertarget="p-placed-top" class="btn btn-outline"
+                                    style="anchor-name: --p-placed-top;">Top</button>
+                                <div id="p-placed-top" popover class="popover" data-placement="top"
+                                    style="position-anchor: --p-placed-top; width: auto;">
+                                    <div class="popover-title">Top Placement</div>
                                     <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--muted-foreground);">
-                                        This popover aligns interactively.</p>
+                                        This popover opens above the trigger.</p>
+                                </div>
+
+                                <button popovertarget="p-placed-left" class="btn btn-outline"
+                                    style="anchor-name: --p-placed-left;">Left</button>
+                                <div id="p-placed-left" popover class="popover" data-placement="left"
+                                    style="position-anchor: --p-placed-left; width: auto;">
+                                    <div class="popover-title">Left Placement</div>
+                                    <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--muted-foreground);">
+                                        This popover opens to the left of the trigger.</p>
+                                </div>
+
+                                <button popovertarget="p-placed-right" class="btn btn-outline"
+                                    style="anchor-name: --p-placed-right;">Right</button>
+                                <div id="p-placed-right" popover class="popover" data-placement="right"
+                                    style="position-anchor: --p-placed-right; width: auto;">
+                                    <div class="popover-title">Right Placement</div>
+                                    <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--muted-foreground);">
+                                        This popover opens to the right of the trigger.</p>
                                 </div>
                             </preview>
                         </section>
@@ -5062,27 +5073,36 @@ toastClear();
                             </preview>
 
                             <h3>Placements</h3>
-                            <preview style="flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <label for="tt-placement-select" class="label"
-                                        style="margin-bottom: 0;">Placement:</label>
-                                    <select id="tt-placement-select" class="select select-sm" style="width: 150px;"
-                                        onchange="
-            const content = document.getElementById('tt-placed-content');
-            content.setAttribute('data-placement', this.value);
-        ">
-                                        <option value="top" selected>top</option>
-                                        <option value="bottom">bottom</option>
-                                        <option value="left">left</option>
-                                        <option value="right">right</option>
-                                    </select>
-                                </div>
+                            <preview style="gap: 1rem; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                                <span class="tooltip-trigger" style="anchor-name: --tt-placed-bottom;">
+                                    <button class="btn btn-outline btn-sm">Bottom</button>
+                                    <span class="tooltip-content" data-placement="bottom"
+                                        style="position-anchor: --tt-placed-bottom;">
+                                        Opens below the trigger.
+                                    </span>
+                                </span>
 
-                                <span class="tooltip-trigger" style="anchor-name: --tt-placed;">
-                                    <button class="btn btn-outline">Hover for Tooltip</button>
-                                    <span id="tt-placed-content" class="tooltip-content" data-placement="top"
-                                        style="position-anchor: --tt-placed;">
-                                        Interactive Alignment Tooltip
+                                <span class="tooltip-trigger" style="anchor-name: --tt-placed-top;">
+                                    <button class="btn btn-outline btn-sm">Top</button>
+                                    <span class="tooltip-content" data-placement="top"
+                                        style="position-anchor: --tt-placed-top;">
+                                        Opens above the trigger.
+                                    </span>
+                                </span>
+
+                                <span class="tooltip-trigger" style="anchor-name: --tt-placed-left;">
+                                    <button class="btn btn-outline btn-sm">Left</button>
+                                    <span class="tooltip-content" data-placement="left"
+                                        style="position-anchor: --tt-placed-left;">
+                                        Opens to the left of the trigger.
+                                    </span>
+                                </span>
+
+                                <span class="tooltip-trigger" style="anchor-name: --tt-placed-right;">
+                                    <button class="btn btn-outline btn-sm">Right</button>
+                                    <span class="tooltip-content" data-placement="right"
+                                        style="position-anchor: --tt-placed-right;">
+                                        Opens to the right of the trigger.
                                     </span>
                                 </span>
                             </preview>

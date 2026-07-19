@@ -138,7 +138,7 @@
         }
 
         &:active {
-          background-color: color-mix(in oklch, var(--muted) 80%, transparent);
+          background-color: color-mix(in oklch, var(--muted) 90%, transparent);
         }
       }
     }

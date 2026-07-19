@@ -32,6 +32,7 @@
     --sidebar-border: oklch(0.910 0.003 286.350);
     --sidebar-ring: oklch(0.522 0.177 255.830);
 
+    --radius-xs: calc(var(--radius) * 0.4);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius: 0.25rem;
@@ -40,6 +41,7 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --radius-5xl: calc(var(--radius) * 3.0);
 
     --spacing: 0.25rem;
     --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;

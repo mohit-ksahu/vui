@@ -89,9 +89,9 @@
   .input-group .input,
   .input-group .textarea {
     flex: 1;
-    border: none !important;
-    border-radius: 0 !important;
-    background-color: transparent !important;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
     height: 100%;
     min-width: 0;
     padding-inline: 0.625rem;

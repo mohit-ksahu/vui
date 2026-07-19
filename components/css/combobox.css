@@ -25,6 +25,14 @@
     background-color: var(--muted);
   }
 
+  .dark .combobox-trigger {
+    background-color: color-mix(in oklch, var(--input) 18%, transparent);
+
+    &:is(:hover, :active):not(:disabled) {
+      background-color: color-mix(in oklch, var(--input) 40%, transparent);
+    }
+  }
+
   .combobox-trigger[aria-invalid] { border-color: var(--destructive); }
   .combobox-trigger:disabled {
     opacity: 0.5;

@@ -23,7 +23,6 @@
 |                        |                   VUI                  |
 | ---------------------- | :------------------------------------: |
 | Components             |                 **35**                 |
-| Components / KB        |                **~2.7**                |
 | Dark Mode              |                    ✅                   |
 | External JS Dependency |                **None**                |
 | Browser Support        |                 Latest                 |
@@ -54,7 +53,7 @@ Include VUI in your project by copying the source files directly or by referenci
 
 ### Using Minified Bundles (Recommended for Production)
 
-For production, you can bundle and minify the source files using **esbuild** to optimize network requests and file sizes.
+You can bundle and minify the source files using **esbuild** to optimize network requests and file sizes.
 
 1. **Generate the minified bundles**:
    ```bash
@@ -67,15 +66,6 @@ For production, you can bundle and minify the source files using **esbuild** to 
    <link rel="stylesheet" href="path/to/index.min.css">
    <script type="module" src="path/to/index.min.js"></script>
    ```
-
-## Setup with Bundlers (optional)
-
-If you use a bundler (Vite, Webpack, Parcel, etc.), you can import VUI directly in your entry file:
-
-```js
-import "./components/index.css";
-import "./components/index.js";
-```
 
 ## Usage
 

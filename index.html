@@ -615,6 +615,7 @@ npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code
     --sidebar-border: oklch(0.910 0.003 286.350);
     --sidebar-ring: oklch(0.522 0.177 255.830);
 
+    --radius-xs: calc(var(--radius) * 0.4);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius: 0.25rem;
@@ -622,7 +623,7 @@ npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code
     --radius-xl: calc(var(--radius) * 1.4);
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
+    --radius-10xl: calc(var(--radius) * 10);
 
     --spacing: 0.25rem;
     --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -4088,7 +4089,7 @@ Alex</textarea>
                             <preview>
                                 <div style="display: flex; align-items: center; gap: 1rem;">
                                     <div class="skeleton"
-                                        style="width:3rem;height:3rem;border-radius:var(--radius-4xl);flex-shrink:0;"></div>
+                                        style="width:3rem;height:3rem;border-radius:var(--radius-10xl);flex-shrink:0;"></div>
                                     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                         <div class="skeleton" style="height: 1rem;"></div>
                                         <div class="skeleton" style="height: 1rem;"></div>
@@ -5139,7 +5140,7 @@ toastClear();
                     <div class="code-pane"><pre><code class="language-html">${raw.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre></div>
                     ${isSmall ? '' : `
                     <div class="code-expand-overlay">
-                        <button class="btn btn-outline btn-sm" style="border-radius: var(--radius-4xl); pointer-events: auto;" onclick="this.closest('.code-pane-wrapper').classList.remove('collapsed')">View Code</button>
+                        <button class="btn btn-outline btn-sm" style="border-radius: var(--radius-10xl); pointer-events: auto;" onclick="this.closest('.code-pane-wrapper').classList.remove('collapsed')">View Code</button>
                     </div>
                     `}
                 </div>

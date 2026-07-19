@@ -23,7 +23,7 @@
             scroll-behavior: auto !important;
         }
 
-        .pages-header-actions {
+        .header-actions {
             margin-left: auto;
             display: flex;
             align-items: center;
@@ -34,7 +34,7 @@
             margin-right: 0.5rem;
         }
 
-        .pages-content-wrapper {
+        .content-wrapper {
             display: flex;
             flex: 1;
             min-height: 0;
@@ -42,31 +42,31 @@
             overflow-y: auto;
         }
 
-        .pages-main-content {
+        .main-content {
             flex: 1;
             min-width: 0;
         }
 
-        .pages-content {
+        .content {
             padding: 0 2.5rem;
         }
 
-        .pages-section {
+        .section {
             padding: 1.75rem 0;
         }
         
-        .pages-section> :first-child {
+        .section> :first-child {
             margin-top: 0 !important;
         }
 
-        :is(.pages-content, .pages-section)>h1 {
+        :is(.content, .section)>h1 {
             font-size: 2.25rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
         }
 
-        :is(.pages-content, .pages-section)>h2 {
+        :is(.content, .section)>h2 {
             font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.015em;
@@ -75,30 +75,30 @@
             padding-bottom: 0.5rem;
         }
 
-        :is(.pages-content, .pages-section)>h3 {
+        :is(.content, .section)>h3 {
             font-size: 1.2rem;
             font-weight: 600;
             margin: 2rem 0 1rem;
         }
 
-        :is(.pages-content, .pages-section)>p {
+        :is(.content, .section)>p {
             margin-bottom: 1.25rem;
             color: var(--muted-foreground);
             line-height: 1.7;
         }
 
-        :is(.pages-content, .pages-section)>ul {
+        :is(.content, .section)>ul {
             margin-bottom: 1.5rem;
             padding-left: 1.5rem;
             color: var(--muted-foreground);
             line-height: 1.7;
         }
 
-        :is(.pages-content, .pages-section)>ul li {
+        :is(.content, .section)>ul li {
             margin-bottom: 0.35rem;
         }
 
-        :is(.pages-content, .pages-section)> :is(p, ul) code {
+        :is(.content, .section)> :is(p, ul) code {
             font-family: var(--font-mono);
             font-size: 0.85em;
             background: var(--muted);
@@ -108,7 +108,7 @@
             color: var(--foreground);
         }
 
-        :is(.pages-content, .pages-section)>.section-meta {
+        :is(.content, .section)>.section-meta {
             font-size: 1.125rem;
             margin-bottom: 2rem;
         }
@@ -290,21 +290,21 @@
         }
 
         @media (max-width: 1100px) {
-            .pages-content {
+            .content {
                 padding: 0 2rem;
             }
 
-            .pages-section {
+            .section {
                 padding: 1.5rem 0;
             }
         }
 
         @media (max-width: 768px) {
-            .pages-content {
+            .content {
                 padding: 0 1rem;
             }
 
-            .pages-section {
+            .section {
                 padding: 1.25rem 0;
             }
 
@@ -312,15 +312,15 @@
                 padding: 1.5rem 1rem;
             }
 
-            :is(.pages-content, .pages-section)>h1 {
+            :is(.content, .section)>h1 {
                 font-size: 1.85rem;
             }
 
-            :is(.pages-content, .pages-section)>h2 {
+            :is(.content, .section)>h2 {
                 font-size: 1.4rem;
             }
 
-            :is(.pages-content, .pages-section)>h3 {
+            :is(.content, .section)>h3 {
                 font-size: 1.15rem;
             }
 
@@ -394,7 +394,7 @@
 <body>
 
     <div class="sidebar-provider" data-state="open">
-        <aside class="sidebar pages-sidebar-aside" id="pages-sidebar" data-placement="left" role="navigation">
+        <aside class="sidebar sidebar-aside" id="sidebar" data-placement="left" role="navigation">
             <div class="sidebar-header">
                 <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                     <span
@@ -407,7 +407,7 @@
                     <div class="sidebar-group-label sidebar-expanded-only" style="margin-top: 0.75rem;">Getting Started
                     </div>
                     <ul class="sidebar-menu">
-                        <li><a class="sidebar-menu-button" href="#pages"><span
+                        <li><a class="sidebar-menu-button" href="#introduction"><span
                                     class="sidebar-expanded-only">Introduction</span></a></li>
                         <li><a class="sidebar-menu-button" href="#installation"><span
                                     class="sidebar-expanded-only">Installation</span></a></li>
@@ -515,13 +515,13 @@
                             style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--foreground);">//</span>
                     </div>
                     <button class="sidebar-trigger btn btn-ghost btn-icon-sm" aria-label="Toggle Sidebar"
-                        aria-controls="pages-sidebar">
+                        aria-controls="sidebar">
                         <i data-lucide="arrow-left-to-line" class="sidebar-expanded-only"
                             style="stroke-width: 1.5;"></i>
                         <i data-lucide="panel-left" class="sidebar-collapsed-only" style="stroke-width: 1.5;"></i>
                     </button>
                 </div>
-                <div class="pages-header-actions">
+                <div class="header-actions">
                     <a href="https://github.com/mohit-ksahu/vui" target="_blank" rel="noopener noreferrer"
                         class="btn btn-ghost btn-icon-sm" aria-label="GitHub Repository">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -540,10 +540,10 @@
                 </div>
             </header>
 
-            <div class="pages-content-wrapper">
-                <div class="pages-main-content">
-                    <main class="pages-content">
-                        <section id="pages" class="pages-section">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <main class="content">
+                        <section id="introduction" class="section">
                             <h1>Introduction</h1>
                             <p class="section-meta">A collection of ready-to-use UI components built with plain HTML,
                                 CSS, and JavaScript.</p>
@@ -557,7 +557,7 @@
                             </ul>
                         </section>
 
-                        <section id="installation" class="pages-section">
+                        <section id="installation" class="section">
                             <h2>Installation</h2>
                             <p class="section-meta">Include the library in your project by copying the components or referencing
                                 compiled bundles.</p>
@@ -576,7 +576,7 @@ npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code
 &lt;script type="module" src="path/to/index.min.js"&gt;&lt;/script&gt;</code></pre>
                         </section>
 
-                        <section id="theming" class="pages-section">
+                        <section id="theming" class="section">
                             <h2>Theming</h2>
                             <p class="section-meta">Customize the look and feel using design tokens and theme helpers.
                             </p>
@@ -681,7 +681,7 @@ document.addEventListener('theme:change', (e) => {
 });</code></pre>
                         </section>
 
-                        <section id="accordion" class="pages-section">
+                        <section id="accordion" class="section">
                             <h2>Accordion</h2>
                             <p class="section-meta">A vertically stacked set of interactive headings that each reveal a
                                 section of content.</p>
@@ -850,7 +850,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="avatar" class="pages-section">
+                        <section id="avatar" class="section">
                             <h2>Avatar</h2>
                             <p class="section-meta">A component for representing the user with a fallback.</p>
 
@@ -964,7 +964,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="badge" class="pages-section">
+                        <section id="badge" class="section">
                             <h2>Badge</h2>
                             <p class="section-meta">Displays a badge or a component that looks like a badge.</p>
 
@@ -1036,7 +1036,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="breadcrumb" class="pages-section">
+                        <section id="breadcrumb" class="section">
                             <h2>Breadcrumb</h2>
                             <p class="section-meta">Displays the path to the current resource using a hierarchy of
                                 links.</p>
@@ -1193,7 +1193,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="button" class="pages-section">
+                        <section id="button" class="section">
                             <h2>Button</h2>
                             <p class="section-meta">Displays a button or a component that looks like a button.</p>
 
@@ -1245,7 +1245,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="button-group" class="pages-section">
+                        <section id="button-group" class="section">
                             <h2>Button Group</h2>
                             <p class="section-meta">Groups related buttons with shared border radius.</p>
 
@@ -1357,7 +1357,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="card" class="pages-section">
+                        <section id="card" class="section">
                             <h2>Card</h2>
                             <p class="section-meta">Displays a card with header, content, and footer.</p>
 
@@ -1414,7 +1414,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="checkbox" class="pages-section">
+                        <section id="checkbox" class="section">
                             <h2>Checkbox</h2>
                             <p class="section-meta">A control that allows the user to toggle between checked and not
                                 checked.</p>
@@ -1543,7 +1543,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="combobox" class="pages-section">
+                        <section id="combobox" class="section">
                             <h2>Combobox</h2>
                             <p class="section-meta">Autocomplete input and command palette with a list of suggestions.
                             </p>
@@ -1810,7 +1810,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="dialog" class="pages-section">
+                        <section id="dialog" class="section">
                             <h2>Dialog</h2>
                             <p class="section-meta">A window overlaid on either the primary window or another dialog
                                 window, rendering the content underneath inert.</p>
@@ -1947,7 +1947,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="dropdown" class="pages-section">
+                        <section id="dropdown" class="section">
                             <h2>Dropdown Menu</h2>
                             <p class="section-meta">Displays a menu to the user — such as a set of actions or functions
                                 — triggered by a button.</p>
@@ -2351,7 +2351,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="hover-card" class="pages-section">
+                        <section id="hover-card" class="section">
                             <h2>Hover Card</h2>
                             <p class="section-meta">For sighted users to preview content available behind a link.</p>
 
@@ -2476,7 +2476,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="input" class="pages-section">
+                        <section id="input" class="section">
                             <h2>Input</h2>
                             <p class="section-meta">Displays a form input field or a component that looks like an input
                                 field.</p>
@@ -2605,7 +2605,7 @@ document.addEventListener('theme:change', (e) => {
                             </preview>
                         </section>
 
-                        <section id="input-group" class="pages-section">
+                        <section id="input-group" class="section">
                             <h2>Input Group</h2>
                             <p class="section-meta">A group of related inputs and addons, useful for combining labels,
                                 icons, and actions.</p>
@@ -2838,7 +2838,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="kbd" class="pages-section">
+                        <section id="kbd" class="section">
                             <h2>Kbd</h2>
                             <p class="section-meta">Keyboard key indicator.</p>
 
@@ -2895,7 +2895,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="label" class="pages-section">
+                        <section id="label" class="section">
                             <h2>Label</h2>
                             <p class="section-meta">Renders an accessible label associated with controls.</p>
 
@@ -2907,7 +2907,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="pagination" class="pages-section">
+                        <section id="pagination" class="section">
                             <h2>Pagination</h2>
                             <p class="section-meta">Page navigation controls.</p>
 
@@ -2945,7 +2945,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="popover" class="pages-section">
+                        <section id="popover" class="section">
                             <h2>Popover</h2>
                             <p class="section-meta">Floating panel anchored to a trigger using native Popover and CSS
                                 Anchor Positioning APIs.</p>
@@ -3035,7 +3035,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="progress" class="pages-section">
+                        <section id="progress" class="section">
                             <h2>Progress</h2>
                             <p class="section-meta">Displays an indicator showing the completion progress of a task,
                                 with support for various functional color states.</p>
@@ -3123,7 +3123,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="radio-group" class="pages-section">
+                        <section id="radio-group" class="section">
                             <h2>Radio Group</h2>
                             <p class="section-meta">A set of checkable buttons—known as radio buttons—where no more than
                                 one of the buttons can be checked at a time.</p>
@@ -3250,7 +3250,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="select" class="pages-section">
+                        <section id="select" class="section">
                             <h2>Select</h2>
                             <p class="section-meta">Displays a list of options for the user to pick from—triggered by a
                                 button.</p>
@@ -3370,7 +3370,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="separator" class="pages-section">
+                        <section id="separator" class="section">
                             <h2>Separator</h2>
                             <p class="section-meta">Visually or semantically separates content.</p>
 
@@ -3393,7 +3393,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="sheet" class="pages-section">
+                        <section id="sheet" class="section">
                             <h2>Sheet</h2>
                             <p class="section-meta">Slide-in panel from any edge. Extends dialog styles.</p>
 
@@ -3533,7 +3533,7 @@ Alex</textarea>
 &lt;/dialog&gt;</code></pre>
                         </section>
 
-                        <section id="sidebar" class="pages-section">
+                        <section id="sidebar" class="section">
                             <h2>Sidebar</h2>
                             <p class="section-meta">Responsive, collapsible application sidebar with rail mode, nested
                                 navigation, and visibility control.</p>
@@ -4108,7 +4108,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="skeleton" class="pages-section">
+                        <section id="skeleton" class="section">
                             <h2>Skeleton</h2>
                             <p class="section-meta">Use to show a placeholder while content is loading.</p>
 
@@ -4225,7 +4225,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="slider" class="pages-section">
+                        <section id="slider" class="section">
                             <h2>Slider</h2>
                             <p class="section-meta">An input where the user selects a value from within a given range.
                             </p>
@@ -4256,7 +4256,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="spinner" class="pages-section">
+                        <section id="spinner" class="section">
                             <h2>Spinner</h2>
                             <p class="section-meta">A circular loading indicator used to show that an operation is in
                                 progress.</p>
@@ -4332,7 +4332,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="switch" class="pages-section">
+                        <section id="switch" class="section">
                             <h2>Switch</h2>
                             <p class="section-meta">A control that allows the user to toggle between checked and not
                                 checked.</p>
@@ -4454,7 +4454,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="table" class="pages-section">
+                        <section id="table" class="section">
                             <h2>Table</h2>
                             <p class="section-meta">Styled table with header, body, and responsive support.</p>
 
@@ -4511,7 +4511,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="tabs" class="pages-section">
+                        <section id="tabs" class="section">
                             <h2>Tabs</h2>
                             <p class="section-meta">A set of layered sections of content—known as tab panels—that are
                                 displayed one at a time.</p>
@@ -4690,7 +4690,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="textarea" class="pages-section">
+                        <section id="textarea" class="section">
                             <h2>Textarea</h2>
                             <p class="section-meta">Displays a form textarea or a component that looks like a textarea.
                             </p>
@@ -4728,7 +4728,7 @@ Alex</textarea>
                             </preview>
                         </section>
 
-                        <section id="toast" class="pages-section">
+                        <section id="toast" class="section">
                             <h2>Toast</h2>
                             <p class="section-meta">A non-blocking notification component. Uses the <code>card</code>
                                 component for content and <code>data-dismiss</code> to cancel.</p>
@@ -4821,7 +4821,7 @@ toastClear();
 </code></pre>
                         </section>
 
-                        <section id="toggle" class="pages-section">
+                        <section id="toggle" class="section">
                             <h2>Toggle</h2>
                             <p class="section-meta">A two-state button that can be either on or off.</p>
 
@@ -4901,7 +4901,7 @@ toastClear();
                             </preview>
                         </section>
 
-                        <section id="toggle-group" class="pages-section">
+                        <section id="toggle-group" class="section">
                             <h2>Toggle Group</h2>
                             <p class="section-meta">A set of two-state buttons that can be toggled on or off.</p>
 
@@ -5087,7 +5087,7 @@ toastClear();
                             </preview>
                         </section>
 
-                        <section id="tooltip" class="pages-section">
+                        <section id="tooltip" class="section">
                             <h2>Tooltip</h2>
                             <p class="section-meta">CSS-driven tooltip via Anchor Positioning, activated on hover or
                                 focus.</p>
@@ -5176,10 +5176,10 @@ toastClear();
             </div>`;
         };
 
-        Array.from(document.querySelectorAll('.pages-section preview')).forEach(el => { el.outerHTML = codeBlock(el.innerHTML, dedent(el.innerHTML), el.className); });
+        Array.from(document.querySelectorAll('.section preview')).forEach(el => { el.outerHTML = codeBlock(el.innerHTML, dedent(el.innerHTML), el.className); });
 
         // standalone <pre> → copy-wrapped code block
-        document.querySelectorAll('.pages-section pre:not(.component-block pre)').forEach(pre => {
+        document.querySelectorAll('.section pre:not(.component-block pre)').forEach(pre => {
             const label = pre.getAttribute('data-label') || 'Code';
             const wrapper = document.createElement('div');
             wrapper.className = 'component-block';
@@ -5188,8 +5188,8 @@ toastClear();
             pre.replaceWith(wrapper);
         });
 
-        const wrapper = document.querySelector('.pages-content-wrapper');
-        const sections = Array.from(document.querySelectorAll('.pages-section'));
+        const wrapper = document.querySelector('.content-wrapper');
+        const sections = Array.from(document.querySelectorAll('.section'));
         const links = Array.from(document.querySelectorAll('.sidebar-menu-button'));
 
         const updateActive = () => {

@@ -2700,6 +2700,35 @@ document.addEventListener('theme:change', (e) => {
                                 </div>
                             </preview>
 
+                            <!-- Select Addon -->
+                            <h3>Select Addon</h3>
+                            <preview style="max-width: 24rem;">
+                                <div class="input-group">
+                                    <select class="select" style="width: 5.5rem;">
+                                        <button>
+                                            <selectedcontent></selectedcontent>
+                                            <i data-lucide="chevron-down" class="select-indicator"></i>
+                                        </button>
+                                        <option value="usd" selected>USD</option>
+                                        <option value="eur">EUR</option>
+                                        <option value="gbp">GBP</option>
+                                    </select>
+                                    <input type="number" class="input" placeholder="0.00">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="input" placeholder="Search database...">
+                                    <select class="select">
+                                        <button>
+                                            <selectedcontent></selectedcontent>
+                                            <i data-lucide="chevron-down" class="select-indicator"></i>
+                                        </button>
+                                        <option value="all" selected>All</option>
+                                        <option value="docs">Docs</option>
+                                        <option value="files">Files</option>
+                                    </select>
+                                </div>
+                            </preview>
+
                             <!-- Spinner -->
                             <h3>Spinner Addon</h3>
                             <preview style="max-width: 24rem;">

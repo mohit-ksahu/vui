@@ -100,7 +100,7 @@
 
       .dark & {
         border-color: var(--input);
-        background-color: color-mix(in oklch, var(--input) 25%, transparent);
+        background-color: color-mix(in oklch, var(--input) 22%, transparent);
 
         @media (hover: hover) {
           &:hover {

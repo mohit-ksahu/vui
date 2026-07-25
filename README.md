@@ -1,7 +1,7 @@
 <h1 align="center">VUI</h1>
 
 <p align="center">
-  A collection of ready-to-use UI components built with plain HTML, CSS, and JavaScript.
+  A collection of UI components built with plain HTML, CSS, and JavaScript.
 </p>
 
 <p align="center">

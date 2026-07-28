@@ -4,26 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>//</title>
+    <meta
+      name="description"
+      content="A collection of 35 ready-to-use UI components built with plain HTML, CSS, and JavaScript."
+    />
     <link rel="stylesheet" href="index.min.css" />
     <link
       id="prism-theme-light"
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css"
+      media="print"
+      onload="this.media='all'"
     />
     <link
       id="prism-theme-dark"
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-dark.css"
+      media="print"
+      onload="this.media='all'"
     />
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.475.0/dist/umd/lucide.min.js" defer></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
       defer
     ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
     <script>
       {
@@ -58,6 +69,23 @@
       html,
       body {
         scroll-behavior: auto !important;
+      }
+
+      .skip-link {
+        position: fixed;
+        top: -100px;
+        left: 1rem;
+        z-index: 1000;
+        padding: 0.5rem 1rem;
+        background: var(--background);
+        color: var(--foreground);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        top: 1rem;
       }
 
       .header-actions {
@@ -388,12 +416,18 @@
   </head>
 
   <body>
+    <a
+      href="#content"
+      class="skip-link"
+      onclick="event.preventDefault(); document.querySelector('.content-wrapper')?.focus();"
+      >Skip to content</a
+    >
     <div class="sidebar-provider" data-state="open" data-variant="inset">
       <aside
         class="sidebar sidebar-aside"
         id="main-sidebar"
         data-placement="left"
-        role="navigation"
+        aria-label="Sidebar Navigation"
       >
         <div class="sidebar-header">
           <div
@@ -416,7 +450,7 @@
             >
           </div>
         </div>
-        <nav class="sidebar-content">
+        <nav class="sidebar-content" aria-label="Main Navigation">
           <ul class="sidebar-menu">
             <li>
               <details class="sidebar-group" open>
@@ -747,9 +781,9 @@
           </div>
         </header>
 
-        <div class="content-wrapper">
+        <div class="content-wrapper" tabindex="-1">
           <div class="main-content">
-            <main class="content">
+            <main id="content" class="content">
               <div id="home-content">
                 <section id="introduction" class="section">
                   <h1>Introduction</h1>
@@ -952,8 +986,8 @@ document.addEventListener('theme:change', (e) => {
       </div>
     </div>
 
+    <script type="module" src="index.min.js"></script>
     <script type="module">
-      import "./index.min.js";
 
       const dedent = (t) => {
         const l = t.split("\n").filter((s) => s.trim());
@@ -1035,15 +1069,17 @@ document.addEventListener('theme:change', (e) => {
       const homeContent = document.getElementById("home-content");
       const scrollContainer = document.querySelector(".content-wrapper");
 
-      const sidebarLinks = Array.from(
-        document.querySelectorAll('#main-sidebar a[href^="#"]'),
-      );
-      const linkMap = new Map(
-        sidebarLinks.map((link) => [link.hash.slice(1), link]),
-      );
+      const sidebarLinks = Array.from(document.querySelectorAll('#main-sidebar a[href^="#"]'));
+      sidebarLinks.forEach(({ hash }) => {
+        const id = hash.slice(1);
+        if (id && !document.getElementById(id))
+          document.body.insertAdjacentHTML("beforeend", `<div id="${id}" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)"></div>`);
+      });
+
+      const linkMap = new Map(sidebarLinks.map((a) => [a.hash.slice(1), a]));
       let activeLink = null;
 
-      const updateActiveSidebarLink = (id) => {
+      const setActive = (id) => {
         const link = linkMap.get(id);
         if (link && link !== activeLink) {
           activeLink?.classList.remove("active");
@@ -1051,27 +1087,24 @@ document.addEventListener('theme:change', (e) => {
         }
       };
 
-      const loadPage = async (pageId) => {
-        if (!pageId) return;
-        updateActiveSidebarLink(pageId);
-
-        const isStatic = staticPages.includes(pageId);
+      const loadPage = async (hash) => {
+        const id = hash.replace(/^#/, "");
+        if (!id || id === "content") return;
+        setActive(id);
+        const isStatic = staticPages.includes(id);
         homeContent.style.display = isStatic ? "block" : "none";
         mainContent.style.display = isStatic ? "none" : "block";
-
         if (isStatic) {
-          document.getElementById(pageId)?.scrollIntoView({ behavior: "instant", block: "start" });
+          document.getElementById(id)?.scrollIntoView({ behavior: "instant", block: "start" });
         } else {
-          if (scrollContainer) scrollContainer.scrollTop = 0;
-          if (!pageCache.has(pageId)) pageCache.set(pageId, await (await fetch(`pages/${pageId}.html`)).text());
-          mainContent.innerHTML = pageCache.get(pageId);
+          scrollContainer.scrollTop = 0;
+          if (!pageCache.has(id)) pageCache.set(id, await (await fetch(`pages/${id}.html`)).text());
+          mainContent.innerHTML = pageCache.get(id);
           hydrateComponent(mainContent);
         }
       };
 
-      window.addEventListener("hashchange", () =>
-        loadPage(location.hash.slice(1)),
-      );
+      window.addEventListener("hashchange", () => loadPage(location.hash));
 
       window.addEventListener("load", () => {
         window.lucide?.createIcons({ root: document.body });
@@ -1080,28 +1113,21 @@ document.addEventListener('theme:change', (e) => {
         const intersecting = new Set();
         const scrollObserver = new IntersectionObserver(
           (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) intersecting.add(entry.target.id);
-              else intersecting.delete(entry.target.id);
-            });
-
+            entries.forEach((e) => intersecting[e.isIntersecting ? "add" : "delete"](e.target.id));
             if (intersecting.size > 0 && homeContent.style.display !== "none") {
-              const visibleIds = staticPages.filter((id) =>
-                intersecting.has(id),
-              );
-              updateActiveSidebarLink(visibleIds[visibleIds.length - 1]);
+              const visible = staticPages.filter((id) => intersecting.has(id));
+              setActive(visible[visible.length - 1]);
             }
           },
           { root: scrollContainer, rootMargin: "-10% 0px -60% 0px" },
         );
 
         staticPages.forEach((id) => {
-          const section = document.getElementById(id);
-          if (section) scrollObserver.observe(section);
+          const el = document.getElementById(id);
+          if (el) scrollObserver.observe(el);
         });
 
-        const hash = location.hash.slice(1);
-        if (hash) loadPage(hash);
+        if (location.hash) loadPage(location.hash);
 
         sidebarLinks
           .map((a) => a.hash.slice(1))

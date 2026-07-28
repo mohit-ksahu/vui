@@ -33,12 +33,6 @@
       border-color: var(--destructive);
     }
 
-    .dark & {
-      &:disabled {
-        background-color: color-mix(in oklch, var(--input) 50%, transparent);
-      }
-    }
-
     &.textarea-resize-none {
       resize: none;
     }

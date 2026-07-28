@@ -33,11 +33,7 @@
 
     &[aria-invalid] {
       border-color: var(--destructive);
-      box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.2);
-    }
-
-    .dark &[aria-invalid] {
-      box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.4);
+      box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.25);
     }
 
     &.badge-default {
@@ -59,23 +55,15 @@
     }
 
     &.badge-destructive {
-      background-color: oklch(from var(--destructive) l c h / 0.1);
+      background-color: oklch(from var(--destructive) l c h / 0.15);
       color: var(--destructive);
 
-      .dark & {
-        background-color: oklch(from var(--destructive) l c h / 0.2);
-      }
-
       &:is(a):hover {
-        background-color: oklch(from var(--destructive) l c h / 0.2);
+        background-color: oklch(from var(--destructive) l c h / 0.25);
       }
 
       &:focus-visible {
-        box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.2);
-
-        .dark & {
-          box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.4);
-        }
+        box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.25);
       }
     }
 

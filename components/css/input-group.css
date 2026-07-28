@@ -29,18 +29,6 @@
     &:has([aria-invalid="true"]) {
       border-color: var(--destructive);
     }
-
-    .dark & {
-      background-color: color-mix(in oklch, var(--input) 18%, transparent);
-
-      &:has(:disabled) {
-        background-color: color-mix(in oklch, var(--input) 80%, transparent);
-      }
-
-      &:has([aria-invalid="true"]) {
-        border-color: color-mix(in oklch, var(--destructive) 50%, transparent);
-      }
-    }
   }
 
   .input-group-addon {

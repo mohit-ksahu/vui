@@ -24,12 +24,8 @@
     }
 
     .tooltip-content & {
-      background-color: oklch(from var(--background) l c h / 0.2);
+      background-color: oklch(from var(--background) l c h / 0.15);
       color: var(--background);
-    }
-
-    .dark .tooltip-content & {
-      background-color: oklch(from var(--background) l c h / 0.1);
     }
   }
 

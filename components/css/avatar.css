@@ -16,12 +16,7 @@
       inset: 0;
       border-radius: var(--radius-10xl);
       border: 1px solid var(--border);
-      mix-blend-mode: darken;
       pointer-events: none;
-    }
-
-    .dark &::after {
-      mix-blend-mode: lighten;
     }
   }
 

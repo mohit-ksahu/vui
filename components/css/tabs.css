@@ -80,11 +80,6 @@
       background: var(--card);
       color: var(--foreground);
       border-color: var(--border);
-
-      .dark & {
-        background: var(--background);
-        border-color: var(--border);
-      }
     }
 
     & svg,

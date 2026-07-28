@@ -1059,7 +1059,10 @@ document.addEventListener('theme:change', (e) => {
         mainContent.style.display = isStatic ? "none" : "block";
 
         if (isStatic) {
-          document.getElementById(pageId)?.scrollIntoView({ block: "start" });
+          const section = document.getElementById(pageId);
+          if (section && scrollContainer) {
+            scrollContainer.scrollTop = section.offsetTop;
+          }
         } else {
           mainContent.innerHTML = await (
             await fetch(`pages/${pageId}.html`)

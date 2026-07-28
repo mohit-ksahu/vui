@@ -4445,31 +4445,25 @@ Alex</textarea>
                                     }
 
                                     .custom-line-tabs .tabs-trigger {
-                                        background: transparent !important;
+                                        background: transparent;
                                         border-radius: 0;
                                         padding-inline: 0;
                                         padding-block: 0.5rem;
                                     }
 
                                     .custom-line-tabs .tabs-trigger[aria-selected="true"] {
-                                        background: transparent !important;
-                                        box-shadow: none !important;
-                                        border-color: transparent !important;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        border-color: transparent;
                                     }
 
-                                    .custom-line-tabs .tabs-trigger::after {
-                                        content: '';
-                                        position: absolute;
-                                        background: var(--foreground);
-                                        opacity: 0;
-                                        transition: opacity 150ms ease;
-                                        inset-inline: 0;
-                                        bottom: -1px;
-                                        height: 2px;
-                                    }
-
-                                    .custom-line-tabs .tabs-trigger[aria-selected="true"]::after {
-                                        opacity: 1;
+                                    .custom-line-tabs .tabs-indicator {
+                                        background: transparent;
+                                        border: none;
+                                        border-radius: 0;
+                                        box-shadow: none;
+                                        border-bottom: 2px solid var(--foreground);
+                                        z-index: 10;
                                     }
                                 </style>
                                 <div class="tabs custom-line-tabs" id="tabs-line">

@@ -10,6 +10,7 @@
   }
 
   .tabs-list {
+    position: relative;
     display: inline-flex;
     padding: 0.25rem;
     background: var(--muted);
@@ -19,6 +20,7 @@
     justify-content: center;
     color: var(--muted-foreground);
     width: fit-content;
+    isolation: isolate;
 
     .tabs:not(:has(> .tabs-list[aria-orientation="vertical"])) & {
       height: 2.25rem;
@@ -27,6 +29,20 @@
     &[aria-orientation="vertical"] {
       flex-direction: column;
       height: fit-content;
+    }
+
+    .tabs-indicator {
+      position: absolute;
+      z-index: -1;
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: left var(--duration-normal) var(--ease-default),
+                  top var(--duration-normal) var(--ease-default),
+                  width var(--duration-normal) var(--ease-default),
+                  height var(--duration-normal) var(--ease-default);
+      pointer-events: none;
     }
   }
 
@@ -49,7 +65,7 @@
     justify-content: center;
     gap: calc(var(--spacing) * 1.5);
     outline: none;
-    transition: background-color 100ms cubic-bezier(0.4, 0, 0.2, 1), color 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--duration-fast) var(--ease-default), color var(--duration-fast) var(--ease-default);
 
     @media (hover: hover) {
       &:not([disabled]):hover {
@@ -80,6 +96,12 @@
       background: var(--card);
       color: var(--foreground);
       border-color: var(--border);
+    }
+
+    .tabs-list:has(.tabs-indicator) &[aria-selected="true"] {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
     }
 
     & svg,

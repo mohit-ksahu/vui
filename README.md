@@ -28,9 +28,7 @@
 | Dark Mode              |                    ✅                   |
 | External JS Dependency |                **None**                |
 | Bundle Size (CSS)      |              ~59 KB minified           |
-| Browser Support        |         Chrome 123+, Edge 123+, Safari 17.4+, Firefox 125+        |
-
-> Components using CSS Anchor Positioning (`popover`, `dropdown`, `tooltip`, `combobox`) require **Chrome 125+ / Edge 125+**. All other components work across all modern browsers.
+| Browser Support        |              All modern browsers              |
 
 ## Setup
 

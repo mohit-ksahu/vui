@@ -62,6 +62,13 @@
         document.addEventListener("theme:change", (event) =>
           updateTheme(event.detail.isDark),
         );
+
+        if (matchMedia("(max-width: 768px)").matches) {
+          document.addEventListener("DOMContentLoaded", () => {
+            const provider = document.querySelector(".sidebar-provider");
+            if (provider) provider.dataset.state = "closed";
+          });
+        }
       }
     </script>
 

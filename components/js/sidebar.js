@@ -1,3 +1,19 @@
+/**
+ * Prevent Sidebar FOUC (Flash of Unstyled Content)
+ *
+ * To prevent the sidebar from flashing open or closed on page load (e.g. on mobile devices),
+ * add this lightweight inline script right after the `.sidebar-provider` element or in `<head>`:
+ *
+ * <script>
+ *   {
+ *     const provider = document.querySelector('.sidebar-provider');
+ *     if (provider && matchMedia('(max-width: 768px)').matches) {
+ *       provider.dataset.state = 'closed';
+ *     }
+ *   }
+ * <\/script>
+ */
+
 const mobileQuery = typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)') : null;
 const initialized = new WeakSet();
 let providers = null;

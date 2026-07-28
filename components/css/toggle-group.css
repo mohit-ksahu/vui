@@ -13,98 +13,66 @@
 
     &.gap-0 {
       gap: 0;
+      border: 1px solid var(--border);
+      overflow: hidden;
+
+      &.radius-full {
+        border-radius: var(--radius-10xl);
+      }
 
       & .toggle {
+        border: none;
         border-radius: 0;
+        position: relative;
+        background-clip: padding-box;
       }
 
-      & .toggle-input:first-of-type + .toggle {
-        border-top-left-radius: var(--radius-lg);
-        border-bottom-left-radius: var(--radius-lg);
-      }
+      & .toggle.toggle-outline,
+      & .toggle {
+        background-color: transparent;
+        color: var(--foreground);
 
-      & .toggle-input:last-of-type + .toggle {
-        border-top-right-radius: var(--radius-lg);
-        border-bottom-right-radius: var(--radius-lg);
-      }
+        @media (hover: hover) {
+          &:hover {
+            background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+            color: var(--foreground);
+            z-index: 10;
+          }
+        }
 
-      & .toggle.toggle-outline {
-        border-left-width: 0;
-      }
-      & .toggle-input:first-of-type + .toggle.toggle-outline,
-      & > .toggle.toggle-outline:first-child {
-        border-left-width: 1px;
-      }
-
-      & .toggle.toggle-outline:active,
-      & .toggle.toggle-outline:focus-visible,
-      & .toggle-input:checked + .toggle.toggle-outline {
-        border-left-width: 1px;
-        margin-left: -1px;
-        z-index: 10;
-      }
-      & .toggle-input:first-of-type + .toggle.toggle-outline:active,
-      & .toggle-input:first-of-type + .toggle.toggle-outline:focus-visible,
-      & .toggle-input:checked:first-of-type + .toggle.toggle-outline,
-      & > .toggle.toggle-outline:first-child:active,
-      & > .toggle.toggle-outline:first-child:focus-visible {
-        margin-left: 0;
-      }
-      @media (hover: hover) {
-        & .toggle.toggle-outline:hover {
-          border-left-width: 1px;
-          margin-left: -1px;
+        &:active {
+          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+          color: var(--foreground);
           z-index: 10;
         }
-        & .toggle-input:first-of-type + .toggle.toggle-outline:hover,
-        & > .toggle.toggle-outline:first-child:hover {
-          margin-left: 0;
+
+        &:focus-visible {
+          z-index: 20;
+        }
+      }
+
+      & .toggle-input:checked + .toggle,
+      & .toggle[aria-pressed="true"] {
+        background-color: var(--muted);
+        color: var(--foreground);
+        z-index: 10;
+      }
+
+      &:not([aria-orientation="vertical"]) {
+        flex-direction: row;
+
+        & .toggle-input ~ .toggle-input + .toggle,
+        & > .toggle ~ .toggle {
+          border-left: 1px solid var(--border);
         }
       }
 
       &[aria-orientation="vertical"] {
-        & .toggle-input:first-of-type + .toggle {
-          border-radius: 0;
-          border-top-left-radius: var(--radius-lg);
-          border-top-right-radius: var(--radius-lg);
-        }
-        & .toggle-input:last-of-type + .toggle {
-          border-radius: 0;
-          border-bottom-left-radius: var(--radius-lg);
-          border-bottom-right-radius: var(--radius-lg);
-        }
-        & .toggle.toggle-outline {
-          border-left-width: 1px;
-          border-top-width: 0;
-        }
-        & .toggle-input:first-of-type + .toggle.toggle-outline,
-        & > .toggle.toggle-outline:first-child {
-          border-top-width: 1px;
-        }
-        & .toggle.toggle-outline:active,
-        & .toggle.toggle-outline:focus-visible,
-        & .toggle-input:checked + .toggle.toggle-outline {
-          margin-left: 0;
-          border-top-width: 1px;
-          margin-top: -1px;
-        }
-        & .toggle-input:first-of-type + .toggle.toggle-outline:active,
-        & .toggle-input:first-of-type + .toggle.toggle-outline:focus-visible,
-        & .toggle-input:checked:first-of-type + .toggle.toggle-outline,
-        & > .toggle.toggle-outline:first-child:active,
-        & > .toggle.toggle-outline:first-child:focus-visible {
-          margin-top: 0;
-        }
-        @media (hover: hover) {
-          & .toggle.toggle-outline:hover {
-            margin-left: 0;
-            border-top-width: 1px;
-            margin-top: -1px;
-          }
-          & .toggle-input:first-of-type + .toggle.toggle-outline:hover,
-          & > .toggle.toggle-outline:first-child:hover {
-            margin-top: 0;
-          }
+        flex-direction: column;
+
+        & .toggle-input ~ .toggle-input + .toggle,
+        & > .toggle ~ .toggle {
+          border-top: 1px solid var(--border);
         }
       }
     }

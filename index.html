@@ -6,16 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>//</title>
     <link rel="stylesheet" href="index.min.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css"
-        id="prism-theme"
-        data-light="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css"
-        data-dark="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-dark.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link id="prism-theme-light" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css">
+    <link id="prism-theme-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-dark.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <script>
+        {
+            const theme = localStorage.getItem('theme') || 'system';
+            const isDark = theme === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : theme === 'dark';
+            
+            const updateTheme = (dark) => {
+                document.documentElement.classList.toggle('dark', dark);
+                document.documentElement.classList.toggle('light', !dark && theme !== 'system');
+                const lightStyle = document.getElementById('prism-theme-light');
+                const darkStyle = document.getElementById('prism-theme-dark');
+                if (lightStyle && darkStyle) {
+                    lightStyle.disabled = dark;
+                    darkStyle.disabled = !dark;
+                }
+            };
+
+            updateTheme(isDark);
+            document.addEventListener('theme:change', (event) => updateTheme(event.detail.isDark));
+        }
+    </script>
 
     <style>
         html,
@@ -180,7 +198,7 @@
             left: 0;
             right: 0;
             height: 100px;
-            background: linear-gradient(to bottom, oklch(from var(--background) l c h / 0) 0%, var(--background) 85%);
+            background: linear-gradient(to bottom, transparent 0%, var(--background) 85%);
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -219,6 +237,15 @@
             background: var(--background);
         }
 
+        .component-preview .sidebar-provider {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            z-index: 1;
+        }
+
         .component-preview.col {
             flex-direction: column;
             align-items: flex-start;
@@ -244,7 +271,7 @@
 
         .code-pane {
             max-height: 420px;
-            overflow-y: auto;
+            overflow: auto;
             border-top: 1px solid var(--border);
         }
 
@@ -253,7 +280,7 @@
             overflow-y: visible;
         }
 
-        .component-block .code-pane pre[class*="language-"] {
+        .component-block .code-pane pre {
             margin: 0;
             font-family: var(--font-mono);
             font-size: 0.82rem;
@@ -262,9 +289,10 @@
             border-radius: 0;
         }
 
-        code[class*="language-"] {
+        .code-pane code {
             background: transparent;
             text-shadow: none;
+            color: var(--foreground);
         }
 
         preview {
@@ -324,7 +352,7 @@
                 font-size: 1.15rem;
             }
 
-            .code-pane pre[class*="language-"] {
+            .code-pane pre {
                 padding: 1rem;
                 font-size: 0.75rem;
             }
@@ -393,7 +421,7 @@
 
 <body>
 
-    <div class="sidebar-provider" data-state="open">
+    <div class="sidebar-provider" data-state="open" data-variant="inset">
         <aside class="sidebar sidebar-aside" id="main-sidebar" data-placement="left" role="navigation">
             <div class="sidebar-header">
                 <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -580,6 +608,17 @@ npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code
                             <h2>Theming</h2>
                             <p class="section-meta">Customize the look and feel using design tokens and theme helpers.
                             </p>
+
+                            <h3>Prevent FOUC (Flash of Unstyled Content)</h3>
+                            <p>To prevent a flash of unstyled content on page load, add this inline script to the <code>&lt;head&gt;</code> of your HTML file. It must run before the page renders:</p>
+                            <pre data-label="HTML"><code class="language-html">&lt;script&gt;
+  {
+    const theme = localStorage.getItem('theme') || 'system';
+    const isDark = theme === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark && theme !== 'system');
+  }
+&lt;/script&gt;</code></pre>
 
                             <h3>CSS Variables</h3>
                             <p>Configure custom variables in your stylesheet. Add the <code>.dark</code> class to the
@@ -857,7 +896,7 @@ document.addEventListener('theme:change', (e) => {
                             <!-- 1. Basic -->
                             <preview>
                                 <span class="avatar">
-                                    <img src="https://i.pravatar.cc/150?u=cloud" alt="Alex" class="avatar-image"><span
+                                    <img src="https://i.pravatar.cc/150?u=cloud" alt="Alex" width="150" height="150" loading="lazy" class="avatar-image"><span
                                         class="avatar-fallback">AL</span>
                                 </span>
                             </preview>
@@ -866,13 +905,13 @@ document.addEventListener('theme:change', (e) => {
                             <h3>Status Badge</h3>
                             <preview>
                                 <span class="avatar">
-                                    <img src="https://i.pravatar.cc/150?u=cloud" alt="Elena" class="avatar-image"><span
+                                    <img src="https://i.pravatar.cc/150?u=cloud" alt="Elena" width="150" height="150" loading="lazy" class="avatar-image"><span
                                         class="avatar-fallback">EL</span>
                                     <span class="avatar-badge"
                                         style="background-color: var(--success, #10b981);"></span>
                                 </span>
                                 <span class="avatar">
-                                    <img src="https://i.pravatar.cc/150?u=devops" alt="Marcus"
+                                    <img src="https://i.pravatar.cc/150?u=devops" alt="Marcus" width="150" height="150" loading="lazy"
                                         class="avatar-image"><span class="avatar-fallback">MA</span>
                                     <span class="avatar-badge"
                                         style="background-color: var(--warning, #f59e0b);"></span>
@@ -889,16 +928,16 @@ document.addEventListener('theme:change', (e) => {
                             <preview>
                                 <div class="avatar-group">
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Sophia"
+                                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Sophia" width="150" height="150" loading="lazy"
                                             class="avatar-image"><span class="avatar-fallback">SO</span>
                                     </span>
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=a04258a2462d826712d" alt="Elena"
+                                        <img src="https://i.pravatar.cc/150?u=a04258a2462d826712d" alt="Elena" width="150" height="150" loading="lazy"
                                             class="avatar-image">
                                         <span class="avatar-fallback">EL</span>
                                     </span>
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Marcus"
+                                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Marcus" width="150" height="150" loading="lazy"
                                             class="avatar-image">
                                         <span class="avatar-fallback">MA</span>
                                     </span>
@@ -913,11 +952,11 @@ document.addEventListener('theme:change', (e) => {
                             <preview>
                                 <div class="avatar-group">
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=1" alt="Designer"
+                                        <img src="https://i.pravatar.cc/150?u=1" alt="Designer" width="150" height="150" loading="lazy"
                                             class="avatar-image"><span class="avatar-fallback">D1</span>
                                     </span>
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=2" alt="Reviewer" class="avatar-image">
+                                        <img src="https://i.pravatar.cc/150?u=2" alt="Reviewer" width="150" height="150" loading="lazy" class="avatar-image">
                                         <span class="avatar-fallback">R1</span>
                                     </span>
                                     <div class="avatar-group-count">+12</div>
@@ -929,11 +968,11 @@ document.addEventListener('theme:change', (e) => {
                             <preview>
                                 <div class="avatar-group">
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=root" alt="Root"
+                                        <img src="https://i.pravatar.cc/150?u=root" alt="Root" width="150" height="150" loading="lazy"
                                             class="avatar-image"><span class="avatar-fallback">RT</span>
                                     </span>
                                     <span class="avatar">
-                                        <img src="https://i.pravatar.cc/150?u=guest" alt="Guest"
+                                        <img src="https://i.pravatar.cc/150?u=guest" alt="Guest" width="150" height="150" loading="lazy"
                                             class="avatar-image"><span class="avatar-fallback">GS</span>
                                     </span>
                                     <div class="avatar-group-count" style="cursor: pointer;" title="Add node">
@@ -946,19 +985,19 @@ document.addEventListener('theme:change', (e) => {
                             <h3>Sizes</h3>
                             <preview>
                                 <span class="avatar" style="width:1.5rem;height:1.5rem;">
-                                    <img src="https://i.pravatar.cc/150?u=5" alt="Mini" class="avatar-image"><span
+                                    <img src="https://i.pravatar.cc/150?u=5" alt="Mini" width="150" height="150" loading="lazy" class="avatar-image"><span
                                         class="avatar-fallback">MN</span>
                                 </span>
                                 <span class="avatar">
-                                    <img src="https://i.pravatar.cc/150?u=5" alt="Standard" class="avatar-image"><span
+                                    <img src="https://i.pravatar.cc/150?u=5" alt="Standard" width="150" height="150" loading="lazy" class="avatar-image"><span
                                         class="avatar-fallback">ST</span>
                                 </span>
                                 <span class="avatar" style="width:3rem;height:3rem;">
-                                    <img src="https://i.pravatar.cc/150?u=5" alt="Large" class="avatar-image"><span
+                                    <img src="https://i.pravatar.cc/150?u=5" alt="Large" width="150" height="150" loading="lazy" class="avatar-image"><span
                                         class="avatar-fallback">LG</span>
                                 </span>
                                 <span class="avatar" style="width:4rem;height:4rem;">
-                                    <img src="https://i.pravatar.cc/150?u=5" alt="Extra Large"
+                                    <img src="https://i.pravatar.cc/150?u=5" alt="Extra Large" width="150" height="150" loading="lazy"
                                         class="avatar-image"><span class="avatar-fallback">XL</span>
                                 </span>
                             </preview>
@@ -1967,233 +2006,8 @@ document.addEventListener('theme:change', (e) => {
                                 </menu>
                             </preview>
 
-                            <!-- Submenu -->
-                            <h3>Submenu</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-sub" class="btn btn-outline"
-                                    style="anchor-name:--dd-sub;">
-                                    Export
-                                </button>
-                                <menu id="dd-sub" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor:--dd-sub;">
-                                    <button class="menu-item" role="menuitem">Export as CSV</button>
-                                    <button class="menu-item" role="menuitem">Export as JSON</button>
-                                    <button aria-haspopup="menu" popovertarget="dd-sub-sub"
-                                        class="menu-item submenu-trigger" role="menuitem"
-                                        style="anchor-name:--dd-sub-sub;">
-                                        Advanced
-                                        <i data-lucide="chevron-right" class="submenu-icon"></i>
-                                    </button>
-                                    <menu id="dd-sub-sub" popover class="dropdown submenu" data-placement="right-start"
-                                        role="menu" style="position-anchor:--dd-sub-sub;">
-                                        <button class="menu-item" role="menuitem">SQL Dump</button>
-                                        <button class="menu-item" role="menuitem">XML Format</button>
-                                    </menu>
-                                </menu>
-                            </preview>
-
-                            <!-- Shortcuts -->
-                            <h3>Shortcuts</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-short" class="btn btn-outline"
-                                    style="anchor-name:--dd-short;">
-                                    File Actions
-                                </button>
-                                <menu id="dd-short" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor:--dd-short;">
-                                    <button class="menu-item" role="menuitem">
-                                        New Document <span class="shortcut">⌘N</span>
-                                    </button>
-                                    <button class="menu-item" role="menuitem">
-                                        Open File <span class="shortcut">⌘O</span>
-                                    </button>
-                                    <button class="menu-item" role="menuitem">
-                                        Save Changes <span class="shortcut">⌘S</span>
-                                    </button>
-                                </menu>
-                            </preview>
-
-                            <!-- Icons -->
-                            <h3>Icons</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-icons" class="btn btn-outline"
-                                    style="anchor-name:--dd-icons;">
-                                    Media Options
-                                </button>
-                                <menu id="dd-icons" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor:--dd-icons;">
-                                    <button class="menu-item" role="menuitem">
-                                        <i data-lucide="play"></i> Play Sequence
-                                    </button>
-                                    <button class="menu-item" role="menuitem">
-                                        <i data-lucide="volume-x"></i> Mute Audio
-                                    </button>
-                                    <button class="menu-item" role="menuitem">
-                                        <i data-lucide="closed-captioning"></i> Toggle Subtitles
-                                    </button>
-                                </menu>
-                            </preview>
-
-                            <!-- Checkboxes -->
-                            <h3>Checkboxes</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-check" class="btn btn-outline"
-                                    style="anchor-name:--dd-check;">
-                                    View Layers
-                                </button>
-                                <menu id="dd-check" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor:--dd-check;">
-                                    <label class="menu-item" style="justify-content: space-between;"
-                                        role="menuitemcheckbox">
-                                        Background
-                                        <input type="checkbox" class="checkbox" checked aria-hidden="true"
-                                            tabindex="-1">
-                                    </label>
-                                    <label class="menu-item" style="justify-content: space-between;"
-                                        role="menuitemcheckbox">
-                                        Foreground
-                                        <input type="checkbox" class="checkbox" aria-hidden="true" tabindex="-1">
-                                    </label>
-                                    <label class="menu-item" style="justify-content: space-between;"
-                                        role="menuitemcheckbox">
-                                        Overlays
-                                        <input type="checkbox" class="checkbox" checked aria-hidden="true"
-                                            tabindex="-1">
-                                    </label>
-                                </menu>
-                            </preview>
-
-                            <!-- Checkboxes Icons -->
-                            <h3>Checkbox Icons</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-check-icons" class="btn btn-outline"
-                                    style="anchor-name:--dd-check-icons;">
-                                    Integrations
-                                </button>
-                                <menu id="dd-check-icons" popover class="dropdown" data-placement="bottom-start"
-                                    role="menu" style="position-anchor:--dd-check-icons;">
-                                    <label class="menu-item" style="justify-content: space-between;"
-                                        role="menuitemcheckbox">
-                                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" class="github-icon"
-                                                style="width: 1rem; height: 1rem;">
-                                                <path
-                                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                                            </svg> GitHub Sync
-                                        </span>
-                                        <input type="checkbox" class="checkbox" checked aria-hidden="true"
-                                            tabindex="-1">
-                                    </label>
-                                    <label class="menu-item" style="justify-content: space-between;"
-                                        role="menuitemcheckbox">
-                                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <i data-lucide="slack"></i> Slack Alerts
-                                        </span>
-                                        <input type="checkbox" class="checkbox" aria-hidden="true" tabindex="-1">
-                                    </label>
-                                    <label class="menu-item" style="justify-content: space-between;"
-                                        role="menuitemcheckbox">
-                                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <i data-lucide="trello"></i> Trello Cards
-                                        </span>
-                                        <input type="checkbox" class="checkbox" checked aria-hidden="true"
-                                            tabindex="-1">
-                                    </label>
-                                </menu>
-                            </preview>
-
-                            <!-- Radio Group -->
-                            <h3>Radio Group</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-radio" class="btn btn-outline"
-                                    style="anchor-name:--dd-radio;">
-                                    Sort Order
-                                </button>
-                                <menu id="dd-radio" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor:--dd-radio;">
-                                    <div class="menu-label">Direction</div>
-                                    <label class="menu-item" role="menuitemradio">
-                                        <input type="radio" name="dd-radio-group" class="radio" style="flex-shrink:0;"
-                                            checked>
-                                        Ascending
-                                    </label>
-                                    <label class="menu-item" role="menuitemradio">
-                                        <input type="radio" name="dd-radio-group" class="radio" style="flex-shrink:0;">
-                                        Descending
-                                    </label>
-                                </menu>
-                            </preview>
-
-                            <!-- Radio Icons -->
-                            <h3>Radio Icons</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-radio-icons" class="btn btn-outline"
-                                    style="anchor-name:--dd-radio-icons;">
-                                    Connection
-                                </button>
-                                <menu id="dd-radio-icons" popover class="dropdown" data-placement="bottom-start"
-                                    role="menu" style="position-anchor:--dd-radio-icons;">
-                                    <div class="menu-label">Protocol</div>
-                                    <label class="menu-item" role="menuitemradio">
-                                        <input type="radio" name="dd-radio-icons-group" class="radio"
-                                            style="flex-shrink:0;" checked>
-                                        <i data-lucide="wifi"></i> WebSocket
-                                    </label>
-                                    <label class="menu-item" role="menuitemradio">
-                                        <input type="radio" name="dd-radio-icons-group" class="radio"
-                                            style="flex-shrink:0;">
-                                        <i data-lucide="globe"></i> HTTP Polling
-                                    </label>
-                                </menu>
-                            </preview>
-
-                            <!-- Destructive -->
-                            <h3>Destructive</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-destructive" class="btn btn-outline"
-                                    style="anchor-name:--dd-destructive;">
-                                    Account Actions
-                                </button>
-                                <menu id="dd-destructive" popover class="dropdown" data-placement="bottom-start"
-                                    role="menu" style="position-anchor:--dd-destructive;">
-                                    <button class="menu-item" role="menuitem">Sign out of all devices</button>
-                                    <button class="menu-item" role="menuitem">Deactivate Account</button>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item menu-item-destructive" role="menuitem">
-                                        Delete Account
-                                        <span class="shortcut">⌘⌫</span>
-                                    </button>
-                                </menu>
-                            </preview>
-
-                            <!-- Avatar -->
-                            <h3>Avatar</h3>
-                            <preview>
-                                <button aria-haspopup="menu" popovertarget="dd-avatar" class="avatar"
-                                    style="anchor-name:--dd-avatar; border: none; padding: 0; background: transparent; cursor: pointer;">
-                                    <img src="https://i.pravatar.cc/80?u=admin" alt="Admin" class="avatar-image"><span
-                                        class="avatar-fallback">AD</span>
-                                </button>
-                                <menu id="dd-avatar" popover class="dropdown" data-placement="bottom-start" role="menu"
-                                    style="position-anchor:--dd-avatar;">
-                                    <div class="menu-label" style="display: flex; flex-direction: column;">
-                                        <span style="font-weight:600;color:var(--foreground);">Alex</span>
-                                        <span style="font-weight:normal;font-size:0.75rem;">alex@example.com</span>
-                                    </div>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item" role="menuitem">Profile</button>
-                                    <button class="menu-item" role="menuitem">Settings</button>
-                                    <button class="menu-item" role="menuitem">Notifications</button>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item" role="menuitem">Log out</button>
-                                </menu>
-                            </preview>
-
-                            <!-- Complex -->
-                            <h3>Complex</h3>
+                            <!-- Interactive Menu -->
+                            <h3>Interactive Menu</h3>
                             <preview>
                                 <button aria-haspopup="menu" popovertarget="dd-complex" class="btn btn-outline"
                                     style="anchor-name:--dd-complex;">
@@ -2306,47 +2120,130 @@ document.addEventListener('theme:change', (e) => {
                                 </menu>
                             </preview>
 
+                            <!-- Avatar -->
+                            <h3>Avatar</h3>
+                            <preview>
+                                <button aria-haspopup="menu" popovertarget="dd-avatar" class="avatar"
+                                    style="anchor-name:--dd-avatar; border: none; padding: 0; background: transparent; cursor: pointer;">
+                                    <img src="https://i.pravatar.cc/80?u=admin" alt="Admin" class="avatar-image"><span
+                                        class="avatar-fallback">AD</span>
+                                </button>
+                                <menu id="dd-avatar" popover class="dropdown" data-placement="bottom-start" role="menu"
+                                    style="position-anchor:--dd-avatar;">
+                                    <div class="menu-label" style="display: flex; flex-direction: column;">
+                                        <span style="font-weight:600;color:var(--foreground);">Alex</span>
+                                        <span style="font-weight:normal;font-size:0.75rem;">alex@example.com</span>
+                                    </div>
+                                    <div class="menu-separator"></div>
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                    <button class="menu-item" role="menuitem">Notifications</button>
+                                    <div class="menu-separator"></div>
+                                    <button class="menu-item" role="menuitem">Log out</button>
+                                </menu>
+                            </preview>
+
                             <!-- Placements -->
                             <h3>Placements</h3>
-                            <preview style="gap: 1rem; flex-wrap: wrap; justify-content: center; padding: 2rem;">
-                                <button aria-haspopup="menu" popovertarget="dd-placed-bottom" class="btn btn-outline"
-                                    style="anchor-name: --dd-placed-bottom;">Bottom</button>
-                                <menu id="dd-placed-bottom" popover class="dropdown" data-placement="bottom" role="menu"
-                                    style="position-anchor: --dd-placed-bottom; width: auto;">
+                            <preview style="gap: 0.75rem; flex-wrap: wrap; justify-content: center; padding: 2.5rem;">
+                                <!-- Top Variants -->
+                                <button aria-haspopup="menu" popovertarget="dd-p-ts" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-ts;">Top Start</button>
+                                <menu id="dd-p-ts" popover class="dropdown" data-placement="top-start" role="menu"
+                                    style="position-anchor: --dd-p-ts; width: auto;">
                                     <button class="menu-item" role="menuitem">Profile</button>
                                     <button class="menu-item" role="menuitem">Settings</button>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item" role="menuitem">Help & Support</button>
                                 </menu>
 
-                                <button aria-haspopup="menu" popovertarget="dd-placed-top" class="btn btn-outline"
-                                    style="anchor-name: --dd-placed-top;">Top</button>
-                                <menu id="dd-placed-top" popover class="dropdown" data-placement="top" role="menu"
-                                    style="position-anchor: --dd-placed-top; width: auto;">
+                                <button aria-haspopup="menu" popovertarget="dd-p-t" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-t;">Top</button>
+                                <menu id="dd-p-t" popover class="dropdown" data-placement="top" role="menu"
+                                    style="position-anchor: --dd-p-t; width: auto;">
                                     <button class="menu-item" role="menuitem">Profile</button>
                                     <button class="menu-item" role="menuitem">Settings</button>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item" role="menuitem">Help & Support</button>
                                 </menu>
 
-                                <button aria-haspopup="menu" popovertarget="dd-placed-left" class="btn btn-outline"
-                                    style="anchor-name: --dd-placed-left;">Left</button>
-                                <menu id="dd-placed-left" popover class="dropdown" data-placement="left" role="menu"
-                                    style="position-anchor: --dd-placed-left; width: auto;">
+                                <button aria-haspopup="menu" popovertarget="dd-p-te" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-te;">Top End</button>
+                                <menu id="dd-p-te" popover class="dropdown" data-placement="top-end" role="menu"
+                                    style="position-anchor: --dd-p-te; width: auto;">
                                     <button class="menu-item" role="menuitem">Profile</button>
                                     <button class="menu-item" role="menuitem">Settings</button>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item" role="menuitem">Help & Support</button>
                                 </menu>
 
-                                <button aria-haspopup="menu" popovertarget="dd-placed-right" class="btn btn-outline"
-                                    style="anchor-name: --dd-placed-right;">Right</button>
-                                <menu id="dd-placed-right" popover class="dropdown" data-placement="right" role="menu"
-                                    style="position-anchor: --dd-placed-right; width: auto;">
+                                <!-- Bottom Variants -->
+                                <button aria-haspopup="menu" popovertarget="dd-p-bs" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-bs;">Bottom Start</button>
+                                <menu id="dd-p-bs" popover class="dropdown" data-placement="bottom-start" role="menu"
+                                    style="position-anchor: --dd-p-bs; width: auto;">
                                     <button class="menu-item" role="menuitem">Profile</button>
                                     <button class="menu-item" role="menuitem">Settings</button>
-                                    <div class="menu-separator"></div>
-                                    <button class="menu-item" role="menuitem">Help & Support</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-p-b" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-b;">Bottom</button>
+                                <menu id="dd-p-b" popover class="dropdown" data-placement="bottom" role="menu"
+                                    style="position-anchor: --dd-p-b; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-p-be" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-be;">Bottom End</button>
+                                <menu id="dd-p-be" popover class="dropdown" data-placement="bottom-end" role="menu"
+                                    style="position-anchor: --dd-p-be; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <!-- Left Variants -->
+                                <button aria-haspopup="menu" popovertarget="dd-p-ls" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-ls;">Left Start</button>
+                                <menu id="dd-p-ls" popover class="dropdown" data-placement="left-start" role="menu"
+                                    style="position-anchor: --dd-p-ls; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-p-l" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-l;">Left</button>
+                                <menu id="dd-p-l" popover class="dropdown" data-placement="left" role="menu"
+                                    style="position-anchor: --dd-p-l; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-p-le" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-le;">Left End</button>
+                                <menu id="dd-p-le" popover class="dropdown" data-placement="left-end" role="menu"
+                                    style="position-anchor: --dd-p-le; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <!-- Right Variants -->
+                                <button aria-haspopup="menu" popovertarget="dd-p-rs" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-rs;">Right Start</button>
+                                <menu id="dd-p-rs" popover class="dropdown" data-placement="right-start" role="menu"
+                                    style="position-anchor: --dd-p-rs; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-p-r" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-r;">Right</button>
+                                <menu id="dd-p-r" popover class="dropdown" data-placement="right" role="menu"
+                                    style="position-anchor: --dd-p-r; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
+                                </menu>
+
+                                <button aria-haspopup="menu" popovertarget="dd-p-re" class="btn btn-outline btn-sm"
+                                    style="anchor-name: --dd-p-re;">Right End</button>
+                                <menu id="dd-p-re" popover class="dropdown" data-placement="right-end" role="menu"
+                                    style="position-anchor: --dd-p-re; width: auto;">
+                                    <button class="menu-item" role="menuitem">Profile</button>
+                                    <button class="menu-item" role="menuitem">Settings</button>
                                 </menu>
                             </preview>
                         </section>
@@ -5188,60 +5085,50 @@ toastClear();
             pre.replaceWith(wrapper);
         });
 
-        const wrapper = document.querySelector('.content-wrapper');
-        const sections = Array.from(document.querySelectorAll('.section'));
-        const links = Array.from(document.querySelectorAll('#main-sidebar .sidebar-menu-button'));
+        const sidebarLinks = Array.from(document.querySelectorAll('#main-sidebar a[href^="#"]'));
+        const linkMap = new Map(sidebarLinks.map(link => [link.hash.slice(1), link]));
+        let activeLink = null;
 
-        const updateActive = () => {
-            const wRect = wrapper.getBoundingClientRect();
-            const threshold = wRect.top + wRect.height * 0.4;
-            let cur = sections[0];
-            for (const s of sections) if (s.getBoundingClientRect().top <= threshold) cur = s;
-            links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur.id));
-        };
-
-        wrapper.addEventListener('scroll', updateActive, { passive: true });
-
-        links.forEach(link => link.addEventListener('click', e => {
-            const id = link.getAttribute('href')?.slice(1);
-            const t = id && document.getElementById(id);
-            if (t) {
-                e.preventDefault();
-                t.scrollIntoView({ behavior: 'instant', block: 'start' });
-                history.pushState(null, null, '#' + id);
-            }
-        }));
-
-        window.lucide?.createIcons({ root: document.body });
-        setTimeout(() => window.Prism?.highlightAll(), 0);
-
-        const applyTheme = () => {
-            const el = document.getElementById('prism-theme');
-            if (el) {
-                const isDark = document.documentElement.classList.contains('dark');
-                el.href = el.getAttribute(isDark ? 'data-dark' : 'data-light');
+        const setActiveLink = (id) => {
+            const link = linkMap.get(id);
+            if (link && link !== activeLink) {
+                activeLink?.classList.remove('active');
+                activeLink = link;
+                activeLink.classList.add('active');
             }
         };
-        document.addEventListener('theme:change', applyTheme);
-        requestAnimationFrame(applyTheme);
 
-        const init = () => {
-            window.lucide?.createIcons({ root: document.body });
-            updateActive();
-            if (location.hash) {
-                const target = document.getElementById(location.hash.slice(1));
-                if (target) {
-                    setTimeout(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }), 50);
+        const mainContent = document.querySelector('.sidebar-inset > main');
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) setActiveLink(entry.target.id);
+            });
+        }, { root: mainContent, rootMargin: '-10% 0px -70% 0px' });
+
+        document.querySelectorAll('section[id]').forEach(section => scrollObserver.observe(section));
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetId = link.hash.slice(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    event.preventDefault();
+                    setActiveLink(targetId);
+                    targetSection.scrollIntoView({ block: 'start' });
+                    history.pushState(null, null, '#' + targetId);
                 }
-            }
-        };
-        if (document.readyState === 'complete') init();
-        else window.addEventListener('load', init);
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
-</body>
+            });
+        });
 
+        window.addEventListener('load', () => {
+            window.lucide?.createIcons({ root: document.body });
+            window.Prism?.highlightAll();
+            const initialHash = location.hash.slice(1);
+            if (initialHash && document.getElementById(initialHash)) {
+                setActiveLink(initialHash);
+                document.getElementById(initialHash).scrollIntoView({ block: 'start' });
+            }
+        });
+    </script>
+</body>
 </html>

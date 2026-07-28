@@ -1,95 +1,79 @@
 import { keyNav } from './base.js';
 
-const getMenuItems = (menu) => [...menu.querySelectorAll('[role="menuitem"]')];
+const queryAll = (selector, container = document) => [...container.querySelectorAll(selector)];
 
-const closeNestedSiblings = (menu) => {
-  menu.parentElement?.closest('[popover]')
-    ?.querySelectorAll(':scope > [popover]:popover-open')
-    .forEach(sub => sub !== menu && sub.hidePopover());
-};
-
-const handleToggle = (event, menu) => {
-  const trigger = document.querySelector(`[popovertarget="${menu.id}"]`);
-  if (trigger) trigger.setAttribute('data-state', event.newState);
-  if (event.newState === 'open') {
-    getMenuItems(menu)[0]?.focus();
-    closeNestedSiblings(menu);
-  }
-};
-
-const openSubmenu = (item) => {
-  const sub = document.getElementById(item.getAttribute('popovertarget'));
-  if (sub) {
-    sub.showPopover();
-    sub.querySelector('[role="menuitem"]')?.focus();
-  }
-};
-
-const collapseToParent = (menu, trigger) => {
-  menu.hidePopover();
-  trigger?.focus();
-};
-
-const closeMenuChain = (menu) => {
-  let current = menu;
-  while (current) {
-    current.hidePopover();
-    current = document.querySelector(`[popovertarget="${current.id}"]`)?.closest('[popover]');
-  }
-};
-
-const handleKeydown = (event, menu) => {
-  const items = getMenuItems(menu);
-  const currentIndex = items.indexOf(event.target);
-  if (currentIndex < 0) return;
-
-  const nextIndex = keyNav(event, currentIndex, items.length, { prevKey: 'ArrowUp', nextKey: 'ArrowDown', homeEnd: true });
-  if (nextIndex >= 0) items[nextIndex].focus();
-
-  const trigger = document.querySelector(`[popovertarget="${menu.id}"]`);
-  if (event.key === 'ArrowRight' && event.target.hasAttribute('popovertarget')) openSubmenu(event.target);
-  else if (event.key === 'ArrowLeft' && trigger?.closest('[popover]')) collapseToParent(menu, trigger);
-};
-
-const handleClick = (event, menu) => {
-  if (event.target.closest('[role="menuitem"]:not([popovertarget])')) closeMenuChain(menu);
-};
-
-const handleDropdownEventInternal = event => {
-  const menu = event.target.closest('[popover]');
+const handleDropdownEvent = e => {
+  const menu = e.target.closest('[popover]');
+  const target = e.target;
   if (!menu) return;
-  if (event.type === 'toggle') handleToggle(event, menu);
-  else if (event.type === 'keydown') handleKeydown(event, menu);
-  else if (event.type === 'click') handleClick(event, menu);
+  
+  if (e.type === 'toggle') {
+    const trigger = document.querySelector(`[popovertarget="${menu.id}"]`);
+    if (trigger) trigger.setAttribute('data-state', e.newState);
+    
+    if (e.newState === 'open') {
+      queryAll('[role="menuitem"]', menu)[0]?.focus();
+      const parentPopover = menu.parentElement?.closest('[popover]');
+      if (parentPopover) {
+        parentPopover.querySelectorAll(':scope > [popover]:popover-open').forEach(sibling => {
+          if (sibling !== menu) sibling.hidePopover();
+        });
+      }
+    }
+  } else if (e.type === 'keydown') {
+    const items = queryAll('[role="menuitem"]', menu);
+    const index = items.indexOf(target);
+    if (index < 0) return;
+    
+    const nextIndex = keyNav(e, index, items.length, { prevKey: 'ArrowUp', nextKey: 'ArrowDown', homeEnd: true });
+    if (nextIndex >= 0) items[nextIndex].focus();
+    
+    const trigger = document.querySelector(`[popovertarget="${menu.id}"]`);
+    if (e.key === 'ArrowRight' && target.hasAttribute('popovertarget')) {
+      const subMenu = document.getElementById(target.getAttribute('popovertarget'));
+      if (subMenu) {
+        subMenu.showPopover();
+        subMenu.querySelector('[role="menuitem"]')?.focus();
+      }
+    } else if (e.key === 'ArrowLeft' && trigger?.closest('[popover]')) {
+      menu.hidePopover();
+      trigger.focus();
+    }
+  } else if (e.type === 'click' && target.closest('[role="menuitem"]:not([popovertarget])')) {
+    let currentMenu = menu;
+    while (currentMenu) {
+      currentMenu.hidePopover();
+      const nextTrigger = document.querySelector(`[popovertarget="${currentMenu.id}"]`);
+      currentMenu = nextTrigger?.closest('[popover]');
+    }
+  }
 };
 
-['keydown', 'click'].forEach(type =>
-  document.addEventListener(type, e => e.target.closest('[role="menuitem"]') && handleDropdownEventInternal(e))
-);
-document.addEventListener('toggle', e => e.target.closest('[popover]') && handleDropdownEventInternal(e), true);
-
-let hoverTimer;
-
-const closeSiblingSubmenus = (menu, activeItem) => {
-  menu.querySelectorAll('[popovertarget]').forEach(trigger => {
-    if (trigger === activeItem) return;
-    const sub = document.getElementById(trigger.getAttribute('popovertarget'));
-    if (sub?.matches(':popover-open')) sub.hidePopover();
+if (typeof document !== 'undefined') {
+  ['keydown', 'click'].forEach(type => {
+    document.addEventListener(type, e => {
+      if (e.target.closest('[role="menuitem"]')) handleDropdownEvent(e);
+    });
   });
-};
-
-document.addEventListener('mouseover', e => {
-  const item = e.target.closest('[role="menuitem"]');
-  clearTimeout(hoverTimer);
-  if (!item) return;
-
-  hoverTimer = setTimeout(() => {
+  
+  document.addEventListener('toggle', e => {
+    if (e.target.closest('[popover]')) handleDropdownEvent(e);
+  }, { capture: true });
+  
+  document.addEventListener('mouseover', e => {
+    const item = e.target.closest('[role="menuitem"]');
+    if (!item) return;
+    
     const targetId = item.getAttribute('popovertarget');
     if (targetId) document.getElementById(targetId)?.showPopover();
-
+    
     const menu = item.closest('[popover]');
-    if (menu) closeSiblingSubmenus(menu, item);
-  }, 100);
-});
-
-export const handleDropdownEvent = handleDropdownEventInternal;
+    if (menu) {
+      menu.querySelectorAll('[popovertarget]').forEach(trigger => {
+        if (trigger === item) return;
+        const subMenu = document.getElementById(trigger.getAttribute('popovertarget'));
+        if (subMenu?.matches(':popover-open')) subMenu.hidePopover();
+      });
+    }
+  });
+}

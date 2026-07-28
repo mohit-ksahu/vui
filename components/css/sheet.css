@@ -24,12 +24,9 @@
     }
 
     &::backdrop {
-      background: oklch(0 0 0 / 0.1);
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
+      background: oklch(0 0 0 / 0.4);
       opacity: 0;
       transition: opacity 100ms ease,
-          backdrop-filter 100ms ease,
           display 100ms ease allow-discrete,
           overlay 100ms ease allow-discrete;
     }
@@ -40,8 +37,6 @@
 
       &::backdrop {
         opacity: 1;
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
       }
     }
 

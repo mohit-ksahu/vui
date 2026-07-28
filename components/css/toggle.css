@@ -21,12 +21,12 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--muted);
+        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
         color: var(--foreground);
       }
     }
     &:active {
-      background-color: var(--muted);
+      background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
       color: var(--foreground);
     }
 
@@ -46,14 +46,19 @@
     }
 
     &.toggle-outline {
-      border-color: var(--input);
-      background: transparent;
+      border-color: var(--border);
+      background-color: transparent;
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--muted);
+          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
           color: var(--foreground);
         }
+      }
+
+      &:active {
+        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+        color: var(--foreground);
       }
     }
 

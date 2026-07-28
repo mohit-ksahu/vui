@@ -15,7 +15,7 @@
     font-weight: 500;
     white-space: nowrap;
     text-decoration: none;
-    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 100ms cubic-bezier(0.4, 0, 0.2, 1), color 100ms cubic-bezier(0.4, 0, 0.2, 1), opacity 100ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &>svg,
     &>i {
@@ -54,7 +54,7 @@
       color: var(--secondary-foreground);
 
       &:is(a):hover {
-        background-color: color-mix(in oklch, var(--secondary) 80%, transparent);
+        background-color: color-mix(in oklch, var(--foreground) 8%, transparent);
       }
     }
 

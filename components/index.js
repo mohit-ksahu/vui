@@ -1,3 +1,4 @@
+export * from './js/base.js';
 export * from './js/tabs.js';
 export * from './js/dropdown.js';
 export * from './js/sidebar.js';

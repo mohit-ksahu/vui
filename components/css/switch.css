@@ -75,9 +75,6 @@
       border-color: var(--destructive);
     }
 
-    .dark &[aria-invalid] {
-      border-color: oklch(from var(--destructive) l c h / 0.5);
-    }
 
     &:disabled {
       opacity: 0.5;

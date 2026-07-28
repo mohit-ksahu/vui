@@ -22,18 +22,12 @@
           }
 
           &[data-placement="bottom"],
+          &[data-placement="top"],
           &:not([data-placement]) {
             transform: translateX(-50%) translateY(0);
           }
 
-          &[data-placement="top"] {
-            transform: translateX(-50%) translateY(0);
-          }
-
-          &[data-placement="right"] {
-            transform: translateX(0) translateY(-50%);
-          }
-
+          &[data-placement="right"],
           &[data-placement="left"] {
             transform: translateX(0) translateY(-50%);
           }
@@ -49,27 +43,22 @@
         will-change: opacity, transform;
 
         &[data-placement="bottom"],
+        &[data-placement="top"],
+        &[data-placement="right"],
+        &[data-placement="left"],
         &:not([data-placement]) {
           opacity: 1;
           visibility: visible;
+        }
+
+        &[data-placement="bottom"],
+        &[data-placement="top"],
+        &:not([data-placement]) {
           transform: translateX(-50%) translateY(0);
         }
 
-        &[data-placement="top"] {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-        }
-
-        &[data-placement="right"] {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(0) translateY(-50%);
-        }
-
+        &[data-placement="right"],
         &[data-placement="left"] {
-          opacity: 1;
-          visibility: visible;
           transform: translateX(0) translateY(-50%);
         }
       }
@@ -81,19 +70,23 @@
 
         & .tooltip-content {
           will-change: opacity, transform;
-          opacity: 1;
-          visibility: visible;
 
           &[data-placement="bottom"],
+          &[data-placement="top"],
+          &[data-placement="right"],
+          &[data-placement="left"],
+          &:not([data-placement]) {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          &[data-placement="bottom"],
+          &[data-placement="top"],
           &:not([data-placement]) {
             transform: translateX(-50%) translateY(0);
           }
-          &[data-placement="top"] {
-            transform: translateX(-50%) translateY(0);
-          }
-          &[data-placement="right"] {
-            transform: translateX(0) translateY(-50%);
-          }
+
+          &[data-placement="right"],
           &[data-placement="left"] {
             transform: translateX(0) translateY(-50%);
           }
@@ -122,30 +115,6 @@
       transform 100ms cubic-bezier(0.4, 0, 0.2, 1),
       visibility 100ms cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 100ms;
-
-    @media (hover: hover) {
-      &:hover {
-        opacity: 1;
-        visibility: visible;
-
-        &[data-placement="bottom"],
-        &:not([data-placement]) {
-          transform: translateX(-50%) translateY(0);
-        }
-
-        &[data-placement="top"] {
-          transform: translateX(-50%) translateY(0);
-        }
-
-        &[data-placement="right"] {
-          transform: translateX(0) translateY(-50%);
-        }
-
-        &[data-placement="left"] {
-          transform: translateX(0) translateY(-50%);
-        }
-      }
-    }
 
     &[data-placement="top"],
     &:not([data-placement]) {
@@ -179,6 +148,22 @@
       transform: translateX(-6px) translateY(-50%);
       margin-left: 6px;
       position-try-fallbacks: flip-inline;
+    }
+
+    &:is(:hover, :focus-within, [data-state="open"]) {
+      opacity: 1;
+      visibility: visible;
+
+      &[data-placement="top"],
+      &[data-placement="bottom"],
+      &:not([data-placement]) {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      &[data-placement="left"],
+      &[data-placement="right"] {
+        transform: translateX(0) translateY(-50%);
+      }
     }
   }
 }

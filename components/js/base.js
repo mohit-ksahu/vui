@@ -1,52 +1,45 @@
-export function keyNav(e, idx, len, { prevKey, nextKey, homeEnd = false }) {
+export const keyNav = (e, index, length, { prevKey, nextKey, homeEnd = false }) => {
   const { key } = e;
-  let next = -1;
-
-  if (key === nextKey) next = (idx + 1) % len;
-  else if (key === prevKey) next = (idx - 1 + len) % len;
-  else if (homeEnd && key === 'Home') next = 0;
-  else if (homeEnd && key === 'End') next = len - 1;
-
-  if (next >= 0) e.preventDefault();
-  return next;
-}
-
-const resolveDialogCommand = (target, command) => {
-  if (command === 'show-modal') return 'showModal';
-  if (command === 'close') return 'close';
-  return target.open ? 'close' : 'showModal';
+  let nextIndex = -1;
+  
+  if (key === nextKey) {
+    nextIndex = (index + 1) % length;
+  } else if (key === prevKey) {
+    nextIndex = (index - 1 + length) % length;
+  } else if (homeEnd && key === 'Home') {
+    nextIndex = 0;
+  } else if (homeEnd && key === 'End') {
+    nextIndex = length - 1;
+  }
+  
+  if (nextIndex >= 0) e.preventDefault();
+  return nextIndex;
 };
 
-document.addEventListener('click', e => {
-  const btn = e.target.closest('button[commandfor]');
-  if (!btn) return;
-
-  const target = document.getElementById(btn.getAttribute('commandfor'));
-  if (!target) return;
-
-  const command = btn.getAttribute('command') || 'toggle';
-
-  if (target instanceof HTMLDialogElement) {
-    const action = resolveDialogCommand(target, command);
-    if (action === 'showModal' && !target.open) {
-      target.showModal();
-      e.preventDefault();
-    } else if (action === 'close' && target.open) {
-      target.close();
-      e.preventDefault();
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('button[commandfor]');
+    if (!btn) return;
+    
+    const target = document.getElementById(btn.getAttribute('commandfor'));
+    if (!target) return;
+    
+    const command = btn.getAttribute('command') || 'toggle';
+    
+    if (target instanceof HTMLDialogElement) {
+      const action = command === 'show-modal' ? 'showModal' : command === 'close' ? 'close' : target.open ? 'close' : 'showModal';
+      if ((action === 'showModal' && !target.open) || (action === 'close' && target.open)) {
+        target[action]();
+        e.preventDefault();
+      }
+    } else if (target.hasAttribute('popover')) {
+      const isVisible = target.matches(':popover-open');
+      const method = ['hide-popover', 'close'].includes(command) ? 'hidePopover' : command === 'show-popover' ? 'showPopover' : isVisible ? 'hidePopover' : 'showPopover';
+      
+      if ((method === 'showPopover' && !isVisible) || (method === 'hidePopover' && isVisible)) {
+        target[method]();
+        e.preventDefault();
+      }
     }
-  } else if (target.hasAttribute('popover')) {
-    const method = command === 'hide-popover' || command === 'close' ? 'hidePopover'
-      : command === 'show-popover' ? 'showPopover'
-      : target.matches(':popover-open') ? 'hidePopover' : 'showPopover';
-
-    const isVisible = target.matches(':popover-open');
-    if (method === 'showPopover' && !isVisible) {
-      target.showPopover();
-      e.preventDefault();
-    } else if (method === 'hidePopover' && isVisible) {
-      target.hidePopover();
-      e.preventDefault();
-    }
-  }
-});
+  });
+}

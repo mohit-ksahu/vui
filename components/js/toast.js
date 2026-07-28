@@ -1,119 +1,90 @@
-const toasts = {};
+const toastMap = {};
 
-function _get(placement) {
-  if (!toasts[placement]) {
-    const el = document.createElement('div');
-    el.className = 'toast-container';
-    el.setAttribute('popover', 'manual');
-    el.setAttribute('data-placement', placement);
-    el.setAttribute('role', 'log');
-    el.setAttribute('aria-live', 'polite');
-    document.body.appendChild(el);
-    toasts[placement] = el;
+const getToastContainer = placement => {
+  if (!toastMap[placement]) {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    container.setAttribute('popover', 'manual');
+    container.setAttribute('data-placement', placement);
+    container.setAttribute('role', 'log');
+    container.setAttribute('aria-live', 'polite');
+    document.body.appendChild(container);
+    toastMap[placement] = container;
   }
+  return toastMap[placement];
+};
 
-  return toasts[placement];
-}
+const removeToast = (element, container) => {
+  element.remove();
+  if (!container.children.length) container.hidePopover();
+};
 
-function _show(el, options = {}) {
-  const { placement = 'top-right', duration = 4000 } = options;
-  const p = _get(placement);
-
-  el.classList.add('toast');
-
+const showToast = (element, { placement = 'top-right', duration = 4000 } = {}) => {
+  const container = getToastContainer(placement);
   let timeout;
-
-  el.onmouseenter = () => clearTimeout(timeout);
-  el.onmouseleave = () => {
-    if (duration > 0) {
-      timeout = setTimeout(() => _remove(el, p), duration);
-    }
+  
+  element.classList.add('toast');
+  element.onmouseenter = () => clearTimeout(timeout);
+  element.onmouseleave = () => {
+    if (duration > 0) timeout = setTimeout(() => removeToast(element, container), duration);
   };
+  
+  container.appendChild(element);
+  if (!container.matches(':popover-open')) container.showPopover();
+  if (duration > 0) timeout = setTimeout(() => removeToast(element, container), duration);
+  
+  return element;
+};
 
-  p.appendChild(el);
-  if (!p.matches(':popover-open')) {
-    p.showPopover();
-  }
-
-  if (duration > 0) {
-    timeout = setTimeout(() => _remove(el, p), duration);
-  }
-
-  return el;
-}
-
-function _remove(el, container) {
-  el.remove();
-  if (!container.children.length) {
-    container.hidePopover();
-  }
-}
-
-function toast(content, options = {}) {
-  const el = document.createElement('output');
-
+export const toast = (content, options = {}) => {
+  const element = document.createElement('output');
   if (typeof content === 'string') {
-    el.innerHTML = content;
+    element.innerHTML = content;
   } else if (content instanceof Node) {
-    el.appendChild(content);
+    element.appendChild(content);
   }
+  return showToast(element, options);
+};
 
-  return _show(el, options);
-}
-
-function toastEl(el, options = {}) {
-  let t;
-
-  if (el instanceof HTMLTemplateElement) {
-    t = el.content.firstElementChild?.cloneNode(true);
-  } else if (el) {
-    t = el.cloneNode(true);
+export const toastEl = (element, options = {}) => {
+  const isTemplate = element instanceof HTMLTemplateElement;
+  const clone = isTemplate ? element.content.firstElementChild?.cloneNode(true) : element?.cloneNode(true);
+  
+  if (clone) {
+    clone.removeAttribute('id');
+    return showToast(clone, options);
   }
+};
 
-  if (!t) {
-    return;
-  }
-
-  t.removeAttribute('id');
-  return _show(t, options);
-}
-
-function toastClear(placement) {
-  if (placement && toasts[placement]) {
-    toasts[placement].innerHTML = '';
-    toasts[placement].hidePopover();
+export const toastClear = placement => {
+  if (placement && toastMap[placement]) {
+    toastMap[placement].innerHTML = '';
+    toastMap[placement].hidePopover();
   } else {
-    Object.values(toasts).forEach(c => {
-      c.innerHTML = '';
-      c.hidePopover();
+    Object.values(toastMap).forEach(container => {
+      container.innerHTML = '';
+      container.hidePopover();
     });
   }
-}
+};
 
-function toastDismiss(el) {
-  const container = el.closest('.toast-container');
-  if (container) {
-    _remove(el, container);
-  }
-}
+export const toastDismiss = element => {
+  const container = element.closest('.toast-container');
+  if (container) removeToast(element, container);
+};
 
-document.addEventListener('click', e => {
-  const dismissBtn = e.target.closest('[data-dismiss]');
-  if (dismissBtn) {
-    const toastEl = dismissBtn.closest('.toast');
-    if (toastEl) {
-      toastDismiss(toastEl);
-      return;
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', e => {
+    const dismissBtn = e.target.closest('[data-dismiss]');
+    const targetToast = dismissBtn ? dismissBtn.closest('.toast') : e.target.closest('.toast');
+    
+    if (targetToast && (dismissBtn || !e.target.closest('button, a, input, select, textarea'))) {
+      toastDismiss(targetToast);
     }
-  }
+  });
 
-  const toastEl = e.target.closest('.toast');
-  if (toastEl && !e.target.closest('button, a, input, select, textarea')) {
-    toastDismiss(toastEl);
-  }
-});
-
-window.toast = toast;
-window.toastEl = toastEl;
-window.toastClear = toastClear;
-window.toastDismiss = toastDismiss;
+  window.toast = toast;
+  window.toastEl = toastEl;
+  window.toastClear = toastClear;
+  window.toastDismiss = toastDismiss;
+}

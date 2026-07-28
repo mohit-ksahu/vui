@@ -11,7 +11,7 @@
     position: relative;
     flex-shrink: 0;
     outline: none;
-    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 100ms cubic-bezier(0.4, 0, 0.2, 1), border-color 100ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:focus-visible {
       border-color: var(--ring);
@@ -22,11 +22,6 @@
       border-color: var(--destructive);
     }
 
-    .dark & {
-      &[aria-invalid] {
-        border-color: color-mix(in oklch, var(--destructive) 50%, transparent);
-      }
-    }
 
     &:checked {
       border-color: var(--accent);

@@ -34,14 +34,8 @@
     }
 
     .dark & {
-      background-color: color-mix(in oklch, var(--input) 18%, transparent);
-
       &:disabled {
-        background-color: color-mix(in oklch, var(--input) 80%, transparent);
-      }
-
-      &[aria-invalid] {
-        border-color: color-mix(in oklch, var(--destructive) 50%, transparent);
+        background-color: color-mix(in oklch, var(--input) 50%, transparent);
       }
     }
 

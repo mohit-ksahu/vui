@@ -1,38 +1,100 @@
+const mobileQuery = typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)') : null;
 const initialized = new WeakSet();
+let providers = null;
+let resizeTimer = null;
 
-export const sidebar = () => {
-  document.querySelectorAll('.sidebar-provider').forEach((provider) => {
-    if (initialized.has(provider)) return;
-    initialized.add(provider);
-    if (window.innerWidth <= 768) provider.dataset.state = 'closed';
-  });
+const getProviders = () => providers ||= Array.from(document.querySelectorAll('.sidebar-provider'));
+const clearCache = () => providers = null;
+
+const syncAria = (p) => {
+  const open = p.dataset.state === 'open';
+  p.querySelectorAll('.sidebar-trigger').forEach(t => t.setAttribute('aria-expanded', open ? 'true' : 'false'));
 };
 
-window.sidebar = sidebar;
-sidebar();
-
-new MutationObserver(sidebar).observe(document.body, { childList: true, subtree: true });
-
-const isMobile = () => window.innerWidth <= 768;
-
-const handleTriggerClick = (provider) => {
-  const sidebarEl = provider.querySelector('.sidebar');
-  if (sidebarEl && sidebarEl.getAttribute('data-collapsible') === 'none' && !isMobile()) return;
-  provider.dataset.state = provider.dataset.state === 'open' ? 'closed' : 'open';
+const init = (p) => {
+  if (initialized.has(p)) return;
+  initialized.add(p);
+  clearCache();
+  const mobile = mobileQuery?.matches;
+  p.dataset.desktopState ||= mobile ? 'open' : (p.dataset.state || 'open');
+  if (mobile) p.dataset.state = 'closed';
+  syncAria(p);
 };
 
-const handleMobileOverlayClick = (provider, target) => {
-  const isNavTarget = target === provider || target.closest('a[href], .sidebar-menu-button:not(summary)');
-  if (isNavTarget) provider.dataset.state = 'closed';
+const animate = (s) => {
+  if (!s) return;
+  s.classList.add('is-animating');
+  s.addEventListener('transitionend', () => s.classList.remove('is-animating'), { once: true });
 };
 
-document.addEventListener('click', (e) => {
-  const provider = e.target.closest('.sidebar-provider');
-  if (!provider) return;
+if (typeof document !== 'undefined') {
+  const runInit = () => getProviders().forEach(init);
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', runInit) : runInit();
 
-  if (e.target.closest('.sidebar-trigger')) {
-    handleTriggerClick(provider);
-  } else if (isMobile() && provider.dataset.state === 'open') {
-    handleMobileOverlayClick(provider, e.target);
+  if (typeof MutationObserver !== 'undefined') {
+    new MutationObserver(m => {
+      let hit = false;
+      m.forEach(r => r.addedNodes.forEach(n => {
+        if (n.nodeType === 1) {
+          if (n.classList?.contains('sidebar-provider')) { init(n); hit = true; }
+          n.querySelectorAll?.('.sidebar-provider')?.forEach(p => { init(p); hit = true; });
+        }
+      }));
+      if (hit) clearCache();
+    }).observe(document.body, { childList: true, subtree: true });
   }
-});
+
+  mobileQuery?.addEventListener('change', e => {
+    requestAnimationFrame(() => {
+      getProviders().forEach(p => {
+        if (e.matches) {
+          if (p.dataset.state) p.dataset.desktopState = p.dataset.state;
+          p.dataset.state = 'closed';
+        } else {
+          p.dataset.state = p.dataset.desktopState || 'open';
+        }
+        syncAria(p);
+      });
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape' || !mobileQuery?.matches) return;
+    getProviders().filter(p => p.dataset.state === 'open').forEach(p => {
+      animate(p.querySelector('.sidebar'));
+      requestAnimationFrame(() => {
+        p.dataset.state = 'closed';
+        syncAria(p);
+        p.querySelector('.sidebar-trigger')?.focus();
+      });
+    });
+  });
+
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('.sidebar-trigger');
+    const p = e.target.closest('.sidebar-provider');
+    if (!p) return;
+    const mobile = mobileQuery?.matches;
+
+    if (trigger) {
+      const s = p.querySelector('.sidebar');
+      if (!s || s.getAttribute('data-collapsible') !== 'none' || mobile) {
+        const next = (p.dataset.state || 'open') === 'open' ? 'closed' : 'open';
+        animate(s);
+        requestAnimationFrame(() => {
+          p.dataset.state = next;
+          if (!mobile) p.dataset.desktopState = next;
+          syncAria(p);
+        });
+      }
+    } else if (mobile && p.dataset.state === 'open') {
+      if (e.target === p || e.target.closest('a[href], .sidebar-menu-button:not(summary)')) {
+        animate(p.querySelector('.sidebar'));
+        requestAnimationFrame(() => {
+          p.dataset.state = 'closed';
+          syncAria(p);
+        });
+      }
+    }
+  });
+}

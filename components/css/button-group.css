@@ -5,14 +5,11 @@
     align-items: stretch;
     isolation: isolate;
     border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
 
     &.radius-full {
       border-radius: var(--radius-10xl);
-    }
-
-    .dark & {
-      --border: color-mix(in oklch, var(--foreground) 10%, var(--background));
-      --input: color-mix(in oklch, var(--foreground) 15%, var(--background));
     }
 
     & > .btn,
@@ -20,8 +17,10 @@
     & > .select,
     & > .select > button {
       position: relative;
+      border: none;
       border-radius: 0;
       flex: 1 1 auto;
+      background-clip: padding-box;
 
       &:hover,
       &:active {
@@ -33,39 +32,36 @@
       }
     }
 
+    & > .btn:not(.btn-primary):not(.btn-secondary):not(.btn-destructive):not(.btn-ghost) {
+      background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+      color: var(--foreground);
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+          color: var(--foreground);
+        }
+      }
+
+      &:active {
+        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+        color: var(--foreground);
+      }
+    }
+
     &:not([aria-orientation="vertical"]) {
       flex-direction: row;
 
-      & > :not(:first-child) {
-        margin-left: -1px;
-      }
-
-      & > :first-child {
-        border-top-left-radius: inherit;
-        border-bottom-left-radius: inherit;
-      }
-
-      & > :last-child {
-        border-top-right-radius: inherit;
-        border-bottom-right-radius: inherit;
+      & > :not(:last-child) {
+        border-right: 1px solid var(--border);
       }
     }
 
     &[aria-orientation="vertical"] {
       flex-direction: column;
 
-      & > :not(:first-child) {
-        margin-top: -1px;
-      }
-
-      & > :first-child {
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
-      }
-
-      & > :last-child {
-        border-bottom-left-radius: inherit;
-        border-bottom-right-radius: inherit;
+      & > :not(:last-child) {
+        border-bottom: 1px solid var(--border);
       }
     }
   }

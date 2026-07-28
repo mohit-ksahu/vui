@@ -72,45 +72,30 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: oklch(from var(--secondary) l c h / 0.8);
+          background-color: color-mix(in oklch, var(--foreground) 6%, transparent);
         }
       }
 
       &:active {
-        background-color: oklch(from var(--secondary) l c h / 0.8);
+        background-color: color-mix(in oklch, var(--foreground) 6%, transparent);
       }
     }
 
     &.btn-outline {
       border: 1px solid var(--border);
-      background-color: var(--background);
+      background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
       color: var(--foreground);
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--muted);
+          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
           color: var(--foreground);
         }
       }
 
       &:active {
-        background-color: var(--muted);
+        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
         color: var(--foreground);
-      }
-
-      .dark & {
-        border-color: var(--input);
-        background-color: color-mix(in oklch, var(--input) 22%, transparent);
-
-        @media (hover: hover) {
-          &:hover {
-            background-color: color-mix(in oklch, var(--input) 50%, transparent);
-          }
-        }
-
-        &:active {
-          background-color: color-mix(in oklch, var(--input) 50%, transparent);
-        }
       }
     }
 
@@ -128,18 +113,6 @@
       &:active {
         background-color: var(--muted);
         color: var(--foreground);
-      }
-
-      .dark & {
-        @media (hover: hover) {
-          &:hover {
-            background-color: color-mix(in oklch, var(--muted) 90%, transparent);
-          }
-        }
-
-        &:active {
-          background-color: color-mix(in oklch, var(--muted) 90%, transparent);
-        }
       }
     }
 

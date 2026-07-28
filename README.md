@@ -17,6 +17,8 @@
 - **No external dependencies** — entirely self-contained
 - **Framework-agnostic** — works with React, Vue, or plain HTML
 - **Design-token driven** — easy customization via CSS variables
+- **Dark mode** — built-in light/dark/system theme support
+- **Accessible** — keyboard navigation and ARIA attributes throughout
 
 ## Metrics
 
@@ -25,8 +27,10 @@
 | Components             |                 **35**                 |
 | Dark Mode              |                    ✅                   |
 | External JS Dependency |                **None**                |
-| Browser Support        |                 Latest                 |
+| Bundle Size (CSS)      |              ~59 KB minified           |
+| Browser Support        |         Chrome 123+, Edge 123+, Safari 17.4+, Firefox 125+        |
 
+> Components using CSS Anchor Positioning (`popover`, `dropdown`, `tooltip`, `combobox`) require **Chrome 125+ / Edge 125+**. All other components work across all modern browsers.
 
 ## Setup
 
@@ -69,5 +73,4 @@ You can bundle and minify the source files using **esbuild** to optimize network
 
 ## Usage
 
-Use any component markup from the documentation (`index.html`). Interaction behavior (like tabs switching) is automatically handled once `index.js` or `index.min.js` is imported.
-[Browse Components](https://mohit-ksahu.github.io/vui/)
+Use any component markup from the [documentation](https://mohit-ksahu.github.io/vui/). Interaction behavior (like tabs switching, dropdowns, toasts) is automatically handled once `index.js` or `index.min.js` is imported.

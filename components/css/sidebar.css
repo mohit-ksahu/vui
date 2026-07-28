@@ -1,6 +1,6 @@
 @layer components {
   .sidebar-provider {
-    --sidebar-width: 16rem;
+    --sidebar-width: 14rem;
     --sidebar-width-rail: 3rem;
     --sidebar-width-mobile: 18rem;
 

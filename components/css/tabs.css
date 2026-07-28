@@ -38,10 +38,10 @@
       background: var(--card);
       border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
-      transition: left var(--duration-normal) var(--ease-default),
-                  top var(--duration-normal) var(--ease-default),
-                  width var(--duration-normal) var(--ease-default),
-                  height var(--duration-normal) var(--ease-default);
+      transition: left var(--duration-fast) var(--ease-default),
+                  top var(--duration-fast) var(--ease-default),
+                  width var(--duration-fast) var(--ease-default),
+                  height var(--duration-fast) var(--ease-default);
       pointer-events: none;
     }
   }

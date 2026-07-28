@@ -52,9 +52,9 @@
     --shadow: 0 0 8px 0 oklch(0 0 0 / 0.03);
     --shadow-lg: 0 0 16px 0 oklch(0 0 0 / 0.04);
 
-    --duration-fast: 100ms;
-    --duration-normal: 150ms;
-    --duration-slow: 300ms;
+    --duration-fast: 80ms;
+    --duration-normal: 100ms;
+    --duration-slow: 200ms;
     --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);

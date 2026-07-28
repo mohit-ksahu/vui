@@ -1032,7 +1032,7 @@ document.addEventListener('theme:change', (e) => {
       const staticPages = ["introduction", "installation", "theming"];
       const mainContent = document.getElementById("main-content");
       const homeContent = document.getElementById("home-content");
-      const scrollContainer = document.querySelector(".sidebar-inset > main");
+      const scrollContainer = document.querySelector(".content-wrapper");
 
       const sidebarLinks = Array.from(
         document.querySelectorAll('#main-sidebar a[href^="#"]'),
@@ -1059,16 +1059,11 @@ document.addEventListener('theme:change', (e) => {
         mainContent.style.display = isStatic ? "none" : "block";
 
         if (isStatic) {
-          const section = document.getElementById(pageId);
-          if (section && scrollContainer) {
-            scrollContainer.scrollTop = section.offsetTop;
-          }
+          document.getElementById(pageId)?.scrollIntoView({ behavior: "instant", block: "start" });
         } else {
-          mainContent.innerHTML = await (
-            await fetch(`pages/${pageId}.html`)
-          ).text();
+          if (scrollContainer) scrollContainer.scrollTop = 0;
+          mainContent.innerHTML = await (await fetch(`pages/${pageId}.html`)).text();
           hydrateComponent(mainContent);
-          scrollContainer?.scrollTo(0, 0);
         }
       };
 

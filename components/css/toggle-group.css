@@ -32,16 +32,8 @@
         background-color: transparent;
         color: var(--foreground);
 
-        @media (hover: hover) {
-          &:hover {
-            background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
-            color: var(--foreground);
-            z-index: 10;
-          }
-        }
-
-        &:active {
-          background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+        &:is(:hover, :active, [aria-pressed="true"]) {
+          background-color: var(--muted);
           color: var(--foreground);
           z-index: 10;
         }
@@ -52,8 +44,7 @@
         }
       }
 
-      & .toggle-input:checked + .toggle,
-      & .toggle[aria-pressed="true"] {
+      & .toggle-input:checked + .toggle {
         background-color: var(--muted);
         color: var(--foreground);
         z-index: 10;

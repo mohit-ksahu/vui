@@ -1,616 +1,833 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>//</title>
-    <link rel="stylesheet" href="index.min.css">
-    <link id="prism-theme-light" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css">
-    <link id="prism-theme-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-dark.css">
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="index.min.css" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+      id="prism-theme-light"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css"
+    />
+    <link
+      id="prism-theme-dark"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-dark.css"
+    />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+      defer
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        {
-            const theme = localStorage.getItem('theme') || 'system';
-            const isDark = theme === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : theme === 'dark';
-            
-            const updateTheme = (dark) => {
-                document.documentElement.classList.toggle('dark', dark);
-                document.documentElement.classList.toggle('light', !dark && theme !== 'system');
-                const lightStyle = document.getElementById('prism-theme-light');
-                const darkStyle = document.getElementById('prism-theme-dark');
-                if (lightStyle && darkStyle) {
-                    lightStyle.disabled = dark;
-                    darkStyle.disabled = !dark;
-                }
-            };
+      {
+        const theme = localStorage.getItem("theme") || "system";
+        const isDark =
+          theme === "system"
+            ? matchMedia("(prefers-color-scheme: dark)").matches
+            : theme === "dark";
 
-            updateTheme(isDark);
-            document.addEventListener('theme:change', (event) => updateTheme(event.detail.isDark));
-        }
+        const updateTheme = (dark) => {
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.classList.toggle(
+            "light",
+            !dark && theme !== "system",
+          );
+          const lightStyle = document.getElementById("prism-theme-light");
+          const darkStyle = document.getElementById("prism-theme-dark");
+          if (lightStyle && darkStyle) {
+            lightStyle.disabled = dark;
+            darkStyle.disabled = !dark;
+          }
+        };
+
+        updateTheme(isDark);
+        document.addEventListener("theme:change", (event) =>
+          updateTheme(event.detail.isDark),
+        );
+      }
     </script>
 
     <style>
-        html,
-        body {
-            scroll-behavior: auto !important;
-        }
+      html,
+      body {
+        scroll-behavior: auto !important;
+      }
 
-        .header-actions {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+      .header-actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        .sidebar-trigger-btn {
-            margin-right: 0.5rem;
-        }
+      .sidebar-trigger-btn {
+        margin-right: 0.5rem;
+      }
 
-        .content-wrapper {
-            display: flex;
-            flex: 1;
-            min-height: 0;
-            position: relative;
-            overflow-y: auto;
-        }
+      .content-wrapper {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+        position: relative;
+        overflow-y: auto;
+      }
 
-        .main-content {
-            flex: 1;
-            min-width: 0;
-        }
+      .main-content {
+        flex: 1;
+        min-width: 0;
+      }
 
+      .content {
+        padding: 0 2.5rem;
+      }
+
+      .section {
+        padding: 1.75rem 0;
+      }
+
+      .section > :first-child {
+        margin-top: 0 !important;
+      }
+
+      :is(.content, .section) > h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+
+      :is(.content, .section) > h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        margin: 1.5rem 0 1rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+      }
+
+      :is(.content, .section) > h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 2rem 0 1rem;
+      }
+
+      :is(.content, .section) > p {
+        margin-bottom: 1.25rem;
+        color: var(--muted-foreground);
+        line-height: 1.7;
+      }
+
+      :is(.content, .section) > ul {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        color: var(--muted-foreground);
+        line-height: 1.7;
+      }
+
+      :is(.content, .section) > ul li {
+        margin-bottom: 0.35rem;
+      }
+
+      :is(.content, .section) > :is(p, ul) code {
+        font-family: var(--font-mono);
+        font-size: 0.85em;
+        background: var(--muted);
+        padding: 0.15em 0.3em;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        color: var(--foreground);
+      }
+
+      :is(.content, .section) > .section-meta {
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+      }
+
+      .separator {
+        margin: 1.5rem 0;
+      }
+
+      .component-block {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+
+      .component-block-header {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        border-bottom: 1px solid var(--border);
+        padding: 0.25rem 0.75rem;
+        background: var(--background);
+      }
+
+      .component-block-header .label {
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+        font-weight: 500;
+      }
+
+      .component-block-header .btn {
+        margin-left: auto;
+      }
+
+      .component-block-header.code-header:not(:first-child) {
+        border-top: 1px solid var(--border);
+      }
+
+      .code-header {
+        border-bottom: none;
+      }
+
+      /* Collapsible Code Previews (Shadcn style) */
+      .code-pane-wrapper {
+        position: relative;
+        background: var(--background);
+      }
+
+      .code-pane-wrapper > .btn-icon-xs {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 20;
+      }
+
+      .code-pane-wrapper.collapsed {
+        max-height: 140px;
+        overflow: hidden;
+      }
+
+      .code-pane-wrapper.collapsed .code-pane {
+        max-height: 104px;
+        overflow: hidden;
+      }
+
+      .code-expand-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          var(--background) 85%
+        );
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 0.75rem;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .code-pane-wrapper:not(.collapsed) .code-expand-overlay {
+        display: none;
+      }
+
+      .code-expand-overlay .btn-outline {
+        background-color: var(--background);
+      }
+
+      .code-expand-overlay .btn-outline:hover {
+        background-color: var(--muted);
+      }
+
+      .dark .code-expand-overlay .btn-outline {
+        background-color: var(--background);
+      }
+
+      .dark .code-expand-overlay .btn-outline:hover {
+        background-color: color-mix(
+          in oklch,
+          var(--input) 50%,
+          var(--background)
+        );
+      }
+
+      .component-preview {
+        padding: 3rem 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: var(--background);
+      }
+
+      .component-preview .sidebar-provider {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        z-index: 1;
+      }
+
+      .component-preview.col {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .component-preview.start {
+        justify-content: flex-start;
+      }
+
+      .component-preview.gap-1-5 {
+        gap: 0.375rem;
+      }
+
+      .component-preview.max-w-sm > * {
+        max-width: 320px;
+        width: 100%;
+      }
+
+      .component-preview.max-w-md > * {
+        max-width: 380px;
+        width: 100%;
+      }
+
+      .code-pane {
+        max-height: 420px;
+        overflow: auto;
+        border-top: 1px solid var(--border);
+      }
+
+      #theming .code-pane {
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .component-block .code-pane pre {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        background: var(--background);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0;
+      }
+
+      .code-pane code {
+        background: transparent;
+        text-shadow: none;
+        color: var(--foreground);
+      }
+
+      preview {
+        white-space: pre;
+        display: none;
+      }
+
+      /* Theme icon visibility */
+      .theme-show-dark {
+        display: none;
+      }
+
+      .theme-show-light {
+        display: inline-flex;
+      }
+
+      html.dark .theme-show-dark {
+        display: inline-flex;
+      }
+
+      html.dark .theme-show-light {
+        display: none;
+      }
+
+      @media (max-width: 1100px) {
         .content {
-            padding: 0 2.5rem;
+          padding: 0 2rem;
         }
 
         .section {
-            padding: 1.75rem 0;
+          padding: 1.5rem 0;
         }
-        
-        .section> :first-child {
-            margin-top: 0 !important;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          padding: 0 1rem;
         }
 
-        :is(.content, .section)>h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-
-        :is(.content, .section)>h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            margin: 1.5rem 0 1rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        :is(.content, .section)>h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-        }
-
-        :is(.content, .section)>p {
-            margin-bottom: 1.25rem;
-            color: var(--muted-foreground);
-            line-height: 1.7;
-        }
-
-        :is(.content, .section)>ul {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            color: var(--muted-foreground);
-            line-height: 1.7;
-        }
-
-        :is(.content, .section)>ul li {
-            margin-bottom: 0.35rem;
-        }
-
-        :is(.content, .section)> :is(p, ul) code {
-            font-family: var(--font-mono);
-            font-size: 0.85em;
-            background: var(--muted);
-            padding: 0.15em 0.3em;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            color: var(--foreground);
-        }
-
-        :is(.content, .section)>.section-meta {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-        }
-
-        .separator {
-            margin: 1.5rem 0;
-        }
-
-        .component-block {
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .component-block-header {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            border-bottom: 1px solid var(--border);
-            padding: 0.25rem 0.75rem;
-            background: var(--background);
-        }
-
-        .component-block-header .label {
-            font-size: 0.75rem;
-            color: var(--muted-foreground);
-            font-weight: 500;
-        }
-
-        .component-block-header .btn {
-            margin-left: auto;
-        }
-
-        .component-block-header.code-header:not(:first-child) {
-            border-top: 1px solid var(--border);
-        }
-
-        .code-header {
-            border-bottom: none;
-        }
-
-        /* Collapsible Code Previews (Shadcn style) */
-        .code-pane-wrapper {
-            position: relative;
-            background: var(--background);
-        }
-
-        .code-pane-wrapper>.btn-icon-xs {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            z-index: 20;
-        }
-
-        .code-pane-wrapper.collapsed {
-            max-height: 140px;
-            overflow: hidden;
-        }
-
-        .code-pane-wrapper.collapsed .code-pane {
-            max-height: 104px;
-            overflow: hidden;
-        }
-
-        .code-expand-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent 0%, var(--background) 85%);
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 0.75rem;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .code-pane-wrapper:not(.collapsed) .code-expand-overlay {
-            display: none;
-        }
-
-        .code-expand-overlay .btn-outline {
-            background-color: var(--background);
-        }
-
-        .code-expand-overlay .btn-outline:hover {
-            background-color: var(--muted);
-        }
-
-        .dark .code-expand-overlay .btn-outline {
-            background-color: var(--background);
-        }
-
-        .dark .code-expand-overlay .btn-outline:hover {
-            background-color: color-mix(in oklch, var(--input) 50%, var(--background));
+        .section {
+          padding: 1.25rem 0;
         }
 
         .component-preview {
-            padding: 3rem 2.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            background: var(--background);
+          padding: 1.5rem 1rem;
         }
 
-        .component-preview .sidebar-provider {
-            position: relative;
-            inset: auto;
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            z-index: 1;
+        :is(.content, .section) > h1 {
+          font-size: 1.85rem;
         }
 
-        .component-preview.col {
-            flex-direction: column;
-            align-items: flex-start;
+        :is(.content, .section) > h2 {
+          font-size: 1.4rem;
         }
 
-        .component-preview.start {
-            justify-content: flex-start;
+        :is(.content, .section) > h3 {
+          font-size: 1.15rem;
         }
 
-        .component-preview.gap-1-5 {
-            gap: 0.375rem;
+        .code-pane pre {
+          padding: 1rem;
+          font-size: 0.75rem;
         }
-
-        .component-preview.max-w-sm>* {
-            max-width: 320px;
-            width: 100%;
-        }
-
-        .component-preview.max-w-md>* {
-            max-width: 380px;
-            width: 100%;
-        }
-
-        .code-pane {
-            max-height: 420px;
-            overflow: auto;
-            border-top: 1px solid var(--border);
-        }
-
-        #theming .code-pane {
-            max-height: none;
-            overflow-y: visible;
-        }
-
-        .component-block .code-pane pre {
-            margin: 0;
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            background: var(--background);
-            padding: 1.25rem 1.5rem;
-            border-radius: 0;
-        }
-
-        .code-pane code {
-            background: transparent;
-            text-shadow: none;
-            color: var(--foreground);
-        }
-
-        preview {
-            white-space: pre;
-            display: none;
-        }
-
-        /* Theme icon visibility */
-        .theme-show-dark {
-            display: none;
-        }
-
-        .theme-show-light {
-            display: inline-flex;
-        }
-
-        html.dark .theme-show-dark {
-            display: inline-flex;
-        }
-
-        html.dark .theme-show-light {
-            display: none;
-        }
-
-        @media (max-width: 1100px) {
-            .content {
-                padding: 0 2rem;
-            }
-
-            .section {
-                padding: 1.5rem 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .content {
-                padding: 0 1rem;
-            }
-
-            .section {
-                padding: 1.25rem 0;
-            }
-
-            .component-preview {
-                padding: 1.5rem 1rem;
-            }
-
-            :is(.content, .section)>h1 {
-                font-size: 1.85rem;
-            }
-
-            :is(.content, .section)>h2 {
-                font-size: 1.4rem;
-            }
-
-            :is(.content, .section)>h3 {
-                font-size: 1.15rem;
-            }
-
-            .code-pane pre {
-                padding: 1rem;
-                font-size: 0.75rem;
-            }
-        }
-
-        /* Sidebar profile and header styling */
-        .sidebar-footer-user {
-            justify-content: flex-start;
-            align-items: center;
-            height: 3.25rem;
-            padding: 0.5rem;
-            gap: 0.75rem;
-        }
-
-        .sidebar-footer-user .avatar {
-            width: 1.75rem;
-            height: 1.75rem;
-            border: 1px solid var(--border);
-            flex-shrink: 0;
-        }
-
-        .footer-user-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 1.2;
-            overflow: hidden;
-        }
-
-        .user-name {
-            font-weight: 600;
-            font-size: 0.8125rem;
-            color: var(--foreground);
-            white-space: nowrap;
-        }
-
-        .user-role {
-            font-size: 0.6875rem;
-            color: var(--muted-foreground);
-            white-space: nowrap;
-        }
-
-        .sidebar-footer-user .chevron {
-            margin-left: auto;
-            width: 14px;
-            height: 14px;
-            opacity: 0.5;
-            flex-shrink: 0;
-        }
-
-        /* Rail mode footer adjustments */
-        .sidebar-provider[data-state="closed"] .sidebar[data-collapsible="icon"] .sidebar-footer-user {
-            padding: 0;
-            width: 2rem;
-            height: 2rem;
-            gap: 0;
-            justify-content: center;
-        }
-
-        .sidebar-provider[data-state="closed"] .sidebar[data-collapsible="icon"] .footer-user-info,
-        .sidebar-provider[data-state="closed"] .sidebar[data-collapsible="icon"] .sidebar-footer-user .chevron {
-            display: none;
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="sidebar-provider" data-state="open" data-variant="inset">
-        <aside class="sidebar sidebar-aside" id="main-sidebar" data-placement="left" role="navigation">
-            <div class="sidebar-header">
-                <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                    <span
-                        style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--foreground);">//</span>
-                </div>
+      <aside
+        class="sidebar sidebar-aside"
+        id="main-sidebar"
+        data-placement="left"
+        role="navigation"
+      >
+        <div class="sidebar-header">
+          <div
+            style="
+              width: 2rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+            "
+          >
+            <span
+              style="
+                font-weight: 700;
+                font-size: 1.2rem;
+                letter-spacing: -0.02em;
+                color: var(--foreground);
+              "
+              >//</span
+            >
+          </div>
+        </div>
+        <nav class="sidebar-content">
+          <ul class="sidebar-menu">
+            <li>
+              <details class="sidebar-group" open>
+                <summary class="sidebar-menu-button" title="Getting Started">
+                  <span class="sidebar-expanded-only">Getting Started</span>
+                </summary>
+                <ul class="sidebar-menu sidebar-menu-sub">
+                  <li>
+                    <a class="sidebar-menu-button" href="#introduction"
+                      ><span class="sidebar-expanded-only"
+                        >Introduction</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a class="sidebar-menu-button" href="#installation"
+                      ><span class="sidebar-expanded-only"
+                        >Installation</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a class="sidebar-menu-button" href="#theming"
+                      ><span class="sidebar-expanded-only">Theming</span></a
+                    >
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+
+          <div class="sidebar-group">
+            <div
+              class="sidebar-group-label sidebar-expanded-only"
+              style="margin-top: 0.75rem"
+            >
+              Components
             </div>
-            <nav class="sidebar-content">
+            <ul class="sidebar-menu">
+              <li>
+                <a class="sidebar-menu-button" href="#accordion"
+                  ><span class="sidebar-expanded-only">Accordion</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#avatar"
+                  ><span class="sidebar-expanded-only">Avatar</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#badge"
+                  ><span class="sidebar-expanded-only">Badge</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#breadcrumb"
+                  ><span class="sidebar-expanded-only">Breadcrumb</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#button"
+                  ><span class="sidebar-expanded-only">Button</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#button-group"
+                  ><span class="sidebar-expanded-only">Button Group</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#card"
+                  ><span class="sidebar-expanded-only">Card</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#checkbox"
+                  ><span class="sidebar-expanded-only">Checkbox</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#combobox"
+                  ><span class="sidebar-expanded-only">Combobox</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#dialog"
+                  ><span class="sidebar-expanded-only">Dialog</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#dropdown"
+                  ><span class="sidebar-expanded-only">Dropdown</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#hover-card"
+                  ><span class="sidebar-expanded-only">Hover Card</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#input"
+                  ><span class="sidebar-expanded-only">Input</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#input-group"
+                  ><span class="sidebar-expanded-only">Input Group</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#kbd"
+                  ><span class="sidebar-expanded-only">Kbd</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#label"
+                  ><span class="sidebar-expanded-only">Label</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#pagination"
+                  ><span class="sidebar-expanded-only">Pagination</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#popover"
+                  ><span class="sidebar-expanded-only">Popover</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#progress"
+                  ><span class="sidebar-expanded-only">Progress</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#radio-group"
+                  ><span class="sidebar-expanded-only">Radio Group</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#select"
+                  ><span class="sidebar-expanded-only">Select</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#separator"
+                  ><span class="sidebar-expanded-only">Separator</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#sheet"
+                  ><span class="sidebar-expanded-only">Sheet</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#sidebar"
+                  ><span class="sidebar-expanded-only">Sidebar</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#skeleton"
+                  ><span class="sidebar-expanded-only">Skeleton</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#slider"
+                  ><span class="sidebar-expanded-only">Slider</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#spinner"
+                  ><span class="sidebar-expanded-only">Spinner</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#switch"
+                  ><span class="sidebar-expanded-only">Switch</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#table"
+                  ><span class="sidebar-expanded-only">Table</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#tabs"
+                  ><span class="sidebar-expanded-only">Tabs</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#textarea"
+                  ><span class="sidebar-expanded-only">Textarea</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#toast"
+                  ><span class="sidebar-expanded-only">Toast</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#toggle"
+                  ><span class="sidebar-expanded-only">Toggle</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#toggle-group"
+                  ><span class="sidebar-expanded-only">Toggle Group</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-menu-button" href="#tooltip"
+                  ><span class="sidebar-expanded-only">Tooltip</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <footer class="sidebar-footer">
+          <div
+            class="card sidebar-expanded-only"
+            style="
+              padding: 0.5rem;
+              gap: 0.25rem;
+              margin-top: auto;
+              width: 100%;
+              background-color: var(--background);
+            "
+          >
+            <div style="display: flex; flex-direction: column; gap: 0.25rem">
+              <span
+                style="
+                  font-size: 0.75rem;
+                  opacity: 0.6;
+                  font-family: var(--font-mono);
+                  line-height: 1;
+                "
+                >v0.0.1</span
+              >
+              <p
+                style="
+                  margin: 0;
+                  font-size: 0.8125rem;
+                  font-weight: 500;
+                  color: var(--foreground);
+                  line-height: 1.2;
+                "
+              >
+                UI Foundation
+              </p>
+            </div>
+          </div>
+        </footer>
+      </aside>
 
-                <div class="sidebar-group">
-                    <div class="sidebar-group-label sidebar-expanded-only" style="margin-top: 0.75rem;">Getting Started
-                    </div>
-                    <ul class="sidebar-menu">
-                        <li><a class="sidebar-menu-button" href="#introduction"><span
-                                    class="sidebar-expanded-only">Introduction</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#installation"><span
-                                    class="sidebar-expanded-only">Installation</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#theming"><span
-                                    class="sidebar-expanded-only">Theming</span></a></li>
-                    </ul>
-                </div>
+      <div class="sidebar-inset">
+        <header class="topnav">
+          <div style="display: flex; align-items: center; gap: 0.25rem">
+            <div
+              class="sidebar-collapsed-only"
+              style="
+                align-items: center;
+                justify-content: center;
+                width: 2rem;
+                flex-shrink: 0;
+              "
+            >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: 1.2rem;
+                  letter-spacing: -0.02em;
+                  color: var(--foreground);
+                "
+                >//</span
+              >
+            </div>
+            <button
+              class="sidebar-trigger btn btn-ghost btn-icon-sm"
+              aria-label="Toggle Sidebar"
+              aria-controls="main-sidebar"
+            >
+              <i
+                data-lucide="arrow-left-to-line"
+                class="sidebar-expanded-only"
+                style="stroke-width: 1.5"
+              ></i>
+              <i
+                data-lucide="panel-left"
+                class="sidebar-collapsed-only"
+                style="stroke-width: 1.5"
+              ></i>
+            </button>
+          </div>
+          <div class="header-actions">
+            <a
+              href="https://github.com/mohit-ksahu/vui"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-ghost btn-icon-sm"
+              aria-label="GitHub Repository"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="github-icon"
+              >
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                />
+                <path d="M9 18c-4.51 2-5-2-7-2" />
+              </svg>
+            </a>
+            <button
+              class="btn btn-ghost btn-icon-sm theme-toggle"
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+            >
+              <i data-lucide="moon" class="theme-show-light"></i>
+              <i data-lucide="sun" class="theme-show-dark"></i>
+            </button>
+          </div>
+        </header>
 
-                <div class="sidebar-group">
-                    <div class="sidebar-group-label sidebar-expanded-only" style="margin-top: 0.75rem;">Components</div>
-                    <ul class="sidebar-menu">
-                        <li><a class="sidebar-menu-button" href="#accordion"><span
-                                    class="sidebar-expanded-only">Accordion</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#avatar"><span
-                                    class="sidebar-expanded-only">Avatar</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#badge"><span
-                                    class="sidebar-expanded-only">Badge</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#breadcrumb"><span
-                                    class="sidebar-expanded-only">Breadcrumb</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#button"><span
-                                    class="sidebar-expanded-only">Button</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#button-group"><span
-                                    class="sidebar-expanded-only">Button Group</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#card"><span
-                                    class="sidebar-expanded-only">Card</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#checkbox"><span
-                                    class="sidebar-expanded-only">Checkbox</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#combobox"><span
-                                    class="sidebar-expanded-only">Combobox</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#dialog"><span
-                                    class="sidebar-expanded-only">Dialog</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#dropdown"><span
-                                    class="sidebar-expanded-only">Dropdown</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#hover-card"><span class="sidebar-expanded-only">Hover
-                                    Card</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#input"><span
-                                    class="sidebar-expanded-only">Input</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#input-group"><span class="sidebar-expanded-only">Input
-                                    Group</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#kbd"><span
-                                    class="sidebar-expanded-only">Kbd</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#label"><span
-                                    class="sidebar-expanded-only">Label</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#pagination"><span
-                                    class="sidebar-expanded-only">Pagination</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#popover"><span
-                                    class="sidebar-expanded-only">Popover</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#progress"><span
-                                    class="sidebar-expanded-only">Progress</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#radio-group"><span class="sidebar-expanded-only">Radio
-                                    Group</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#select"><span
-                                    class="sidebar-expanded-only">Select</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#separator"><span
-                                    class="sidebar-expanded-only">Separator</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#sheet"><span
-                                    class="sidebar-expanded-only">Sheet</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#sidebar"><span
-                                    class="sidebar-expanded-only">Sidebar</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#skeleton"><span
-                                    class="sidebar-expanded-only">Skeleton</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#slider"><span
-                                    class="sidebar-expanded-only">Slider</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#spinner"><span
-                                    class="sidebar-expanded-only">Spinner</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#switch"><span
-                                    class="sidebar-expanded-only">Switch</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#table"><span
-                                    class="sidebar-expanded-only">Table</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#tabs"><span
-                                    class="sidebar-expanded-only">Tabs</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#textarea"><span
-                                    class="sidebar-expanded-only">Textarea</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#toast"><span
-                                    class="sidebar-expanded-only">Toast</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#toggle"><span
-                                    class="sidebar-expanded-only">Toggle</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#toggle-group"><span
-                                    class="sidebar-expanded-only">Toggle Group</span></a></li>
-                        <li><a class="sidebar-menu-button" href="#tooltip"><span
-                                    class="sidebar-expanded-only">Tooltip</span></a></li>
-                    </ul>
-                </div>
-            </nav>
-            <footer class="sidebar-footer">
-                <div class="card sidebar-expanded-only"
-                    style="padding: 0.5rem; gap: 0.25rem; margin-top: auto; width: 100%; background-color: var(--background);">
-                    <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-                        <span
-                            style="font-size: 0.75rem; opacity: 0.6; font-family: var(--font-mono); line-height: 1;">v0.0.1</span>
-                        <p
-                            style="margin: 0; font-size: 0.8125rem; font-weight: 500; color: var(--foreground); line-height: 1.2;">
-                            UI Foundation</p>
-                    </div>
-                </div>
-            </footer>
-        </aside>
+        <div class="content-wrapper">
+          <div class="main-content">
+            <main class="content">
+              <div id="home-content">
+                <section id="introduction" class="section">
+                  <h1>Introduction</h1>
+                  <p class="section-meta">
+                    A collection of ready-to-use UI components built with plain
+                    HTML, CSS, and JavaScript.
+                  </p>
 
-        <div class="sidebar-inset">
-            <header class="topnav">
-                <div style="display: flex; align-items: center; gap: 0.25rem;">
-                    <div class="sidebar-collapsed-only"
-                        style="align-items: center; justify-content: center; width: 2rem; flex-shrink: 0;">
-                        <span
-                            style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--foreground);">//</span>
-                    </div>
-                    <button class="sidebar-trigger btn btn-ghost btn-icon-sm" aria-label="Toggle Sidebar"
-                        aria-controls="main-sidebar">
-                        <i data-lucide="arrow-left-to-line" class="sidebar-expanded-only"
-                            style="stroke-width: 1.5;"></i>
-                        <i data-lucide="panel-left" class="sidebar-collapsed-only" style="stroke-width: 1.5;"></i>
-                    </button>
-                </div>
-                <div class="header-actions">
-                    <a href="https://github.com/mohit-ksahu/vui" target="_blank" rel="noopener noreferrer"
-                        class="btn btn-ghost btn-icon-sm" aria-label="GitHub Repository">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="github-icon">
-                            <path
-                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                            <path d="M9 18c-4.51 2-5-2-7-2" />
-                        </svg>
-                    </a>
-                    <button class="btn btn-ghost btn-icon-sm theme-toggle" aria-pressed="false"
-                        aria-label="Toggle dark mode">
-                        <i data-lucide="moon" class="theme-show-light"></i>
-                        <i data-lucide="sun" class="theme-show-dark"></i>
-                    </button>
-                </div>
-            </header>
+                  <h2>Features</h2>
+                  <ul
+                    style="
+                      color: var(--foreground);
+                      line-height: 1.8;
+                      margin-bottom: 2.5rem;
+                      padding-left: 1.2rem;
+                    "
+                  >
+                    <li>
+                      <strong>No external dependencies</strong> — entirely
+                      self-contained
+                    </li>
+                    <li>
+                      <strong>Framework-agnostic</strong> — works with React,
+                      Vue, or plain HTML
+                    </li>
+                    <li>
+                      <strong>Design-token driven</strong> — easy customization
+                      via CSS variables
+                    </li>
+                  </ul>
+                </section>
+                <section id="installation" class="section">
+                  <h2>Installation</h2>
+                  <p class="section-meta">
+                    Include the library in your project by copying the
+                    components or referencing compiled bundles.
+                  </p>
 
-            <div class="content-wrapper">
-                <div class="main-content">
-                    <main class="content">
-                        <div id="home-content">
-<section id="introduction" class="section">
-                            <h1>Introduction</h1>
-                            <p class="section-meta">A collection of ready-to-use UI components built with plain HTML,
-                                CSS, and JavaScript.</p>
-
-                            <h2>Features</h2>
-                            <ul
-                                style="color: var(--foreground); line-height: 1.8; margin-bottom: 2.5rem; padding-left: 1.2rem;">
-                                <li><strong>No external dependencies</strong> — entirely self-contained</li>
-                                <li><strong>Framework-agnostic</strong> — works with React, Vue, or plain HTML</li>
-                                <li><strong>Design-token driven</strong> — easy customization via CSS variables</li>
-                            </ul>
-                        </section>
-<section id="installation" class="section">
-                            <h2>Installation</h2>
-                            <p class="section-meta">Include the library in your project by copying the components or referencing
-                                compiled bundles.</p>
-
-                            <h3>1. Add files</h3>
-                            <pre data-label="HTML"><code class="language-html">&lt;link rel="stylesheet" href="path/to/components/index.css"&gt;
+                  <h3>1. Add files</h3>
+                  <pre
+                    data-label="HTML"
+                  ><code class="language-html">&lt;link rel="stylesheet" href="path/to/components/index.css"&gt;
 &lt;script type="module" src="path/to/components/index.js"&gt;&lt;/script&gt;</code></pre>
 
-                            <h3>2. Minified Bundles (optional)</h3>
-                            <p>For production, you can compile and reference minified bundles (<code>index.min.js</code>
-                                and <code>index.min.css</code>) using <strong>esbuild</strong>:</p>
-                            <pre data-label="Bash"><code class="language-bash">npx esbuild components/index.js --bundle --minify --format=esm --outfile=index.min.js
+                  <h3>2. Minified Bundles (optional)</h3>
+                  <p>
+                    For production, you can compile and reference minified
+                    bundles (<code>index.min.js</code> and
+                    <code>index.min.css</code>) using <strong>esbuild</strong>:
+                  </p>
+                  <pre
+                    data-label="Bash"
+                  ><code class="language-bash">npx esbuild components/index.js --bundle --minify --format=esm --outfile=index.min.js
 npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code></pre>
-                            <p style="margin-top: 1rem;">Then include the minified outputs in your HTML:</p>
-                            <pre data-label="HTML"><code class="language-html">&lt;link rel="stylesheet" href="path/to/index.min.css"&gt;
+                  <p style="margin-top: 1rem">
+                    Then include the minified outputs in your HTML:
+                  </p>
+                  <pre
+                    data-label="HTML"
+                  ><code class="language-html">&lt;link rel="stylesheet" href="path/to/index.min.css"&gt;
 &lt;script type="module" src="path/to/index.min.js"&gt;&lt;/script&gt;</code></pre>
-                        </section>
-<section id="theming" class="section">
-                            <h2>Theming</h2>
-                            <p class="section-meta">Customize the look and feel using design tokens and theme helpers.
-                            </p>
+                </section>
+                <section id="theming" class="section">
+                  <h2>Theming</h2>
+                  <p class="section-meta">
+                    Customize the look and feel using design tokens and theme
+                    helpers.
+                  </p>
 
-                            <h3>Prevent FOUC (Flash of Unstyled Content)</h3>
-                            <p>To prevent a flash of unstyled content on page load, add this inline script to the <code>&lt;head&gt;</code> of your HTML file. It must run before the page renders:</p>
-                            <pre data-label="HTML"><code class="language-html">&lt;script&gt;
+                  <h3>Prevent FOUC (Flash of Unstyled Content)</h3>
+                  <p>
+                    To prevent a flash of unstyled content on page load, add
+                    this inline script to the <code>&lt;head&gt;</code> of your
+                    HTML file. It must run before the page renders:
+                  </p>
+                  <pre
+                    data-label="HTML"
+                  ><code class="language-html">&lt;script&gt;
   {
     const theme = localStorage.getItem('theme') || 'system';
     const isDark = theme === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : theme === 'dark';
@@ -619,10 +836,13 @@ npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code
   }
 &lt;/script&gt;</code></pre>
 
-                            <h3>CSS Variables</h3>
-                            <p>Configure custom variables in your stylesheet. Add the <code>.dark</code> class to the
-                                <code>&lt;html&gt;</code> element for dark mode.</p>
-                            <pre data-label="CSS"><code class="language-css">  :root {
+                  <h3>CSS Variables</h3>
+                  <p>
+                    Configure custom variables in your stylesheet. Add the
+                    <code>.dark</code> class to the
+                    <code>&lt;html&gt;</code> element for dark mode.
+                  </p>
+                  <pre data-label="CSS"><code class="language-css">  :root {
     color-scheme: light;
 
     --background: oklch(0.985 0.002 286.350);
@@ -700,13 +920,19 @@ npx esbuild components/index.css --bundle --minify --outfile=index.min.css</code
     --sidebar-ring: oklch(0.522 0.177 255.830);
   }</code></pre>
 
-                            <h3>Theme Management & Utilities</h3>
-                            <p>Toggle elements dynamically using utility classes, or control theme state
-                                programmatically.</p>
-                            <pre data-label="HTML"><code class="language-html">&lt;span class="dark:hidden"&gt;Visible in light mode&lt;/span&gt;
+                  <h3>Theme Management & Utilities</h3>
+                  <p>
+                    Toggle elements dynamically using utility classes, or
+                    control theme state programmatically.
+                  </p>
+                  <pre
+                    data-label="HTML"
+                  ><code class="language-html">&lt;span class="dark:hidden"&gt;Visible in light mode&lt;/span&gt;
 &lt;span class="hidden dark:block"&gt;Visible in dark mode&lt;/span&gt;</code></pre>
 
-                            <pre data-label="JavaScript"><code class="language-javascript">import { setTheme, switchTheme } from './index.js';
+                  <pre
+                    data-label="JavaScript"
+                  ><code class="language-javascript">import { setTheme, switchTheme } from './index.js';
 
 // Toggle or force themes
 switchTheme(); 
@@ -717,168 +943,166 @@ document.addEventListener('theme:change', (e) => {
   console.log(e.detail.isDark); // true/false
   console.log(e.detail.theme);  // 'light' | 'dark' | 'system'
 });</code></pre>
-                        </section>
-</div>
-                        <div id="main-content"></div>
-
-
-                    </main>
-                </div>
-            </div>
+                </section>
+              </div>
+              <div id="main-content"></div>
+            </main>
+          </div>
         </div>
+      </div>
     </div>
 
     <script type="module">
-        import './index.min.js';
+      import "./index.min.js";
 
-        const dedent = t => { const l = t.split('\n').filter(s => s.trim()); const m = Math.min(...l.map(s => s.match(/^\s*/)[0].length)); return l.map(s => s.slice(m)).join('\n').trim(); };
+      const dedent = (t) => {
+        const l = t.split("\n").filter((s) => s.trim());
+        const m = Math.min(...l.map((s) => s.match(/^\s*/)[0].length));
+        return l
+          .map((s) => s.slice(m))
+          .join("\n")
+          .trim();
+      };
 
-        const COPY_BTN = `<button class="btn btn-ghost btn-icon-xs" aria-label="Copy code" onclick="copyCode(this, event)"><i data-lucide="copy" class="icon-copy"></i><i data-lucide="check-check" class="icon-check" style="display:none"></i></button>`;
+      const COPY_BTN = `<button class="btn btn-ghost btn-icon-xs" aria-label="Copy code" onclick="copyCode(this, event)"><i data-lucide="copy" class="icon-copy"></i><i data-lucide="check-check" class="icon-check" style="display:none"></i></button>`;
 
-        window.copyCode = (btn, e) => {
-            if (e) e.stopPropagation();
-            navigator.clipboard.writeText(btn.nextElementSibling.textContent);
-            const [c, k] = [btn.querySelector('.icon-copy'), btn.querySelector('.icon-check')];
-            c.style.display = 'none'; k.style.display = '';
-            setTimeout(() => { c.style.display = ''; k.style.display = 'none'; }, 2000);
-        };
+      window.copyCode = (btn, e) => {
+        if (e) e.stopPropagation();
+        navigator.clipboard.writeText(btn.nextElementSibling.textContent);
+        const [c, k] = [
+          btn.querySelector(".icon-copy"),
+          btn.querySelector(".icon-check"),
+        ];
+        c.style.display = "none";
+        k.style.display = "";
+        setTimeout(() => {
+          c.style.display = "";
+          k.style.display = "none";
+        }, 2000);
+      };
 
-        const codeBlock = (p, raw, cls = '') => {
-            const isSmall = raw.split('\n').length <= 7;
-            return `<div class="component-block">
-                ${p ? `<div class="component-preview ${cls}">${p}</div>` : ''}
-                <div class="code-pane-wrapper${isSmall ? '' : ' collapsed'}">
+      const createCodeBlock = (preview, raw, cls = "") => {
+        const isSmall = raw.split("\n").length <= 7;
+        return `<div class="component-block">
+                ${preview ? `<div class="component-preview ${cls}">${preview}</div>` : ""}
+                <div class="code-pane-wrapper${isSmall ? "" : " collapsed"}">
                     ${COPY_BTN}
                     <script type="text/plain" style="display:none">${raw}<\/script>
-                    <div class="code-pane"><pre><code class="language-html">${raw.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre></div>
-                    ${isSmall ? '' : `
+                    <div class="code-pane"><pre><code class="language-html">${raw.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre></div>
+                    ${
+                      isSmall
+                        ? ""
+                        : `
                     <div class="code-expand-overlay">
                         <button class="btn btn-outline btn-sm" style="border-radius: var(--radius-10xl); pointer-events: auto;" onclick="this.closest('.code-pane-wrapper').classList.remove('collapsed')">View Code</button>
                     </div>
-                    `}
+                    `
+                    }
                 </div>
             </div>`;
-        };
+      };
 
-        const initComponents = (container = document) => {
-            Array.from(container.querySelectorAll('.section preview')).forEach(el => { el.outerHTML = codeBlock(el.innerHTML, dedent(el.innerHTML), el.className); });
+      const hydrateComponent = (container = document) => {
+        Array.from(container.querySelectorAll(".section preview")).forEach(
+          (el) => {
+            el.outerHTML = createCodeBlock(
+              el.innerHTML,
+              dedent(el.innerHTML),
+              el.className,
+            );
+          },
+        );
 
-            container.querySelectorAll('.section pre:not(.component-block pre)').forEach(pre => {
-                const label = pre.getAttribute('data-label') || 'Code';
-                const wrapper = document.createElement('div');
-                wrapper.className = 'component-block';
-                wrapper.innerHTML = `<div class="component-block-header code-header"><span class="label">${label}</span>${COPY_BTN}<script type="text/plain" style="display:none">${pre.textContent.trim()}<\/script></div><div class="code-pane"></div>`;
-                wrapper.querySelector('.code-pane').appendChild(pre.cloneNode(true));
-                pre.replaceWith(wrapper);
+        container
+          .querySelectorAll(".section pre:not(.component-block pre)")
+          .forEach((pre) => {
+            const label = pre.getAttribute("data-label") || "Code";
+            const wrapper = document.createElement("div");
+            wrapper.className = "component-block";
+            wrapper.innerHTML = `<div class="component-block-header code-header"><span class="label">${label}</span>${COPY_BTN}<script type="text/plain" style="display:none">${pre.textContent.trim()}<\/script></div><div class="code-pane"></div>`;
+            wrapper
+              .querySelector(".code-pane")
+              .appendChild(pre.cloneNode(true));
+            pre.replaceWith(wrapper);
+          });
+        window.lucide?.createIcons({ root: container });
+        window.Prism?.highlightAllUnder(container);
+      };
+
+      const staticPages = ["introduction", "installation", "theming"];
+      const mainContent = document.getElementById("main-content");
+      const homeContent = document.getElementById("home-content");
+      const scrollContainer = document.querySelector(".sidebar-inset > main");
+
+      const sidebarLinks = Array.from(
+        document.querySelectorAll('#main-sidebar a[href^="#"]'),
+      );
+      const linkMap = new Map(
+        sidebarLinks.map((link) => [link.hash.slice(1), link]),
+      );
+      let activeLink = null;
+
+      const updateActiveSidebarLink = (id) => {
+        const link = linkMap.get(id);
+        if (link && link !== activeLink) {
+          activeLink?.classList.remove("active");
+          (activeLink = link).classList.add("active");
+        }
+      };
+
+      const loadPage = async (pageId) => {
+        if (!pageId) return;
+        updateActiveSidebarLink(pageId);
+
+        const isStatic = staticPages.includes(pageId);
+        homeContent.style.display = isStatic ? "block" : "none";
+        mainContent.style.display = isStatic ? "none" : "block";
+
+        if (isStatic) {
+          document.getElementById(pageId)?.scrollIntoView({ block: "start" });
+        } else {
+          mainContent.innerHTML = await (
+            await fetch(`pages/${pageId}.html`)
+          ).text();
+          hydrateComponent(mainContent);
+          scrollContainer?.scrollTo(0, 0);
+        }
+      };
+
+      window.addEventListener("hashchange", () =>
+        loadPage(location.hash.slice(1)),
+      );
+
+      window.addEventListener("load", () => {
+        window.lucide?.createIcons({ root: document.body });
+        hydrateComponent(homeContent);
+
+        const intersecting = new Set();
+        const scrollObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) intersecting.add(entry.target.id);
+              else intersecting.delete(entry.target.id);
             });
-            window.lucide?.createIcons({ root: container });
-            window.Prism?.highlightAllUnder(container);
-        };
 
-        const sidebarLinks = Array.from(document.querySelectorAll('#main-sidebar a[href^="#"]'));
-        const linkMap = new Map(sidebarLinks.map(link => [link.hash.slice(1), link]));
-        let activeLink = null;
-
-        const setActiveLink = (id) => {
-            const link = linkMap.get(id);
-            if (link && link !== activeLink) {
-                activeLink?.classList.remove('active');
-                activeLink = link;
-                activeLink.classList.add('active');
+            if (intersecting.size > 0 && homeContent.style.display !== "none") {
+              const visibleIds = staticPages.filter((id) =>
+                intersecting.has(id),
+              );
+              updateActiveSidebarLink(visibleIds[visibleIds.length - 1]);
             }
-        };
+          },
+          { root: scrollContainer, rootMargin: "-10% 0px -60% 0px" },
+        );
 
-        const staticPages = ['introduction', 'installation', 'theming'];
-        const mainContent = document.getElementById('main-content');
-        
-        // 1. Generate placeholders
-        const dynamicIds = sidebarLinks.map(l => l.hash.slice(1)).filter(id => !staticPages.includes(id));
-        
-        dynamicIds.forEach(id => {
-            const placeholder = document.createElement('div');
-            placeholder.id = id;
-            placeholder.className = 'lazy-component';
-            placeholder.dataset.src = `pages/${id}.html`;
-            placeholder.style.minHeight = '50vh';
-            mainContent.appendChild(placeholder);
-        });
-        
-        // 2. Intersection Observer for lazy loading
-        const lazyObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(async entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    observer.unobserve(el);
-                    const response = await fetch(el.dataset.src);
-                    const html = await response.text();
-                    el.innerHTML = html;
-                    el.style.minHeight = '';
-                    initComponents(el);
-                }
-            });
-        }, { rootMargin: '150% 0px 150% 0px' });
-
-        document.querySelectorAll('.lazy-component').forEach(el => lazyObserver.observe(el));
-
-        // 3. Scroll observer for active links
-        const scrollContainer = document.querySelector('.sidebar-inset > main');
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) setActiveLink(entry.target.id);
-            });
-        }, { root: scrollContainer, rootMargin: '-10% 0px -70% 0px' });
-
-        const observeAllSections = () => {
-            document.querySelectorAll('section[id], .lazy-component').forEach(section => scrollObserver.observe(section));
-        };
-
-        // 4. Handle clicks on sidebar links
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', async (event) => {
-                const targetId = link.hash.slice(1);
-                const targetEl = document.getElementById(targetId);
-                
-                if (targetEl) {
-                    event.preventDefault();
-                    if (targetEl.classList.contains('lazy-component') && !targetEl.innerHTML) {
-                        const response = await fetch(targetEl.dataset.src);
-                        targetEl.innerHTML = await response.text();
-                        targetEl.style.minHeight = '';
-                        initComponents(targetEl);
-                        lazyObserver.unobserve(targetEl);
-                    }
-                    
-                    targetEl.scrollIntoView({ block: 'start' });
-                    history.pushState(null, null, '#' + targetId);
-                    setActiveLink(targetId);
-                }
-            });
+        staticPages.forEach((id) => {
+          const section = document.getElementById(id);
+          if (section) scrollObserver.observe(section);
         });
 
-        window.addEventListener('load', async () => {
-            window.lucide?.createIcons({ root: document.body });
-            initComponents(document.getElementById('home-content'));
-            observeAllSections();
-            
-            const initialHash = location.hash.slice(1);
-            if (initialHash) {
-                const targetEl = document.getElementById(initialHash);
-                if (targetEl && targetEl.classList.contains('lazy-component') && !targetEl.innerHTML) {
-                    const response = await fetch(targetEl.dataset.src);
-                    targetEl.innerHTML = await response.text();
-                    targetEl.style.minHeight = '';
-                    initComponents(targetEl);
-                    lazyObserver.unobserve(targetEl);
-                    
-                    // Allow rendering before scroll
-                    requestAnimationFrame(() => {
-                        targetEl.scrollIntoView({ block: 'start' });
-                    });
-                }
-            } else {
-                setActiveLink('introduction');
-            }
-        });
+        const hash = location.hash.slice(1);
+        if (hash) loadPage(hash);
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -61,6 +61,9 @@
           &[data-variant="inset"] {
             padding: 0;
           }
+          .sidebar-header {
+            padding: 0 calc(var(--spacing) * 3);
+          }
           .sidebar-menu-button {
             width: 2rem;
             padding: 0;
@@ -219,6 +222,7 @@
         &:is(:hover, :focus-visible, :active, .active) {
           background-color: var(--sidebar-accent);
           color: var(--sidebar-accent-foreground);
+          transition: none;
         }
 
         &:focus-visible {

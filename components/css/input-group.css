@@ -8,19 +8,27 @@
     min-width: 0;
     border-radius: var(--radius-lg);
     border: 1px solid var(--input);
-    background-color: transparent;
-    transition: color 100ms ease, background-color 100ms ease, border-color 100ms ease, opacity 100ms ease;
+    background-color: color-mix(in oklch, var(--foreground) 1%, transparent);
+    transition: color var(--duration-normal) var(--ease-default), background-color var(--duration-normal) var(--ease-default), border-color var(--duration-normal) var(--ease-default), opacity var(--duration-normal) var(--ease-default);
     outline: none;
     overflow: hidden;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+      }
+    }
 
     &:has(.input:focus-visible),
     &:has(.textarea:focus-visible),
     &:has(.select:focus-visible) {
       border-color: var(--ring);
+      transition: none;
     }
 
     &:has(:disabled) {
       pointer-events: none;
+      cursor: not-allowed;
 
       background-color: color-mix(in oklch, var(--input) 50%, transparent);
       opacity: 0.5;

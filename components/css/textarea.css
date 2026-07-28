@@ -5,17 +5,24 @@
     width: 100%;
     border-radius: var(--radius-lg);
     border: 1px solid var(--input);
-    background-color: transparent;
+    background-color: color-mix(in oklch, var(--foreground) 1%, transparent);
     padding: calc(var(--spacing) * 2) calc(var(--spacing) * 2.5);
     font-size: 0.875rem;
     color: var(--foreground);
     font-family: inherit;
     resize: vertical;
-    transition: border-color 100ms ease;
+    transition: color var(--duration-normal) var(--ease-default), background-color var(--duration-normal) var(--ease-default), border-color var(--duration-normal) var(--ease-default), opacity var(--duration-normal) var(--ease-default);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+      }
+    }
     outline: none;
 
     &:focus-visible {
       border-color: var(--ring);
+      transition: none;
     }
 
     &::placeholder {

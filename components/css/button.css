@@ -20,7 +20,7 @@
     background-color: var(--foreground);
     color: var(--background);
     outline: none;
-    transition: background-color 100ms, border-color 100ms, color 100ms;
+    transition: background-color var(--duration-normal), border-color var(--duration-normal), color var(--duration-normal);
 
     @media (hover: hover) {
       &:hover {
@@ -30,6 +30,7 @@
 
     &:active {
       background-color: oklch(from var(--foreground) l c h / 0.9);
+      transition: none;
     }
 
     &:not(.btn-icon):not(.btn-icon-sm):not(.btn-icon-lg):not(.btn-icon-xs):not(.btn-icon-xl):empty {
@@ -39,6 +40,7 @@
     &:focus-visible:not(:active) {
       border-color: var(--ring);
       outline: none;
+      transition: none;
     }
 
     &:disabled {
@@ -83,18 +85,18 @@
 
     &.btn-outline {
       border: 1px solid var(--border);
-      background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+      background-color: color-mix(in oklch, var(--foreground) 1%, transparent);
       color: var(--foreground);
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+          background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
           color: var(--foreground);
         }
       }
 
       &:active {
-        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
         color: var(--foreground);
       }
     }

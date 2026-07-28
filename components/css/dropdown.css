@@ -99,6 +99,7 @@
     &[data-state="open"] {
       background-color: var(--muted);
       color: var(--foreground);
+      transition: none;
     }
 
     &:disabled {
@@ -119,6 +120,7 @@
       &:focus-visible {
         background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
         color: var(--destructive);
+        transition: none;
       }
 
       & svg, & i {

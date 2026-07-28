@@ -21,18 +21,19 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
         color: var(--foreground);
       }
     }
     &:active {
-      background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+      background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
       color: var(--foreground);
     }
 
     &:focus-visible {
       border-color: var(--ring);
       outline: none;
+      transition: none;
     }
 
     &[aria-pressed="true"] {
@@ -51,13 +52,13 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+          background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
           color: var(--foreground);
         }
       }
 
       &:active {
-        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
         color: var(--foreground);
       }
     }

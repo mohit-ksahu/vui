@@ -14,10 +14,10 @@
     max-height: none;
     box-sizing: border-box;
     overflow-y: auto;
-    transition: transform 100ms ease-in-out,
-        opacity 100ms ease-in-out,
-        display 100ms ease-in-out allow-discrete,
-        overlay 100ms ease-in-out allow-discrete;
+    transition: transform var(--duration-normal) var(--ease-in-out),
+        opacity var(--duration-normal) var(--ease-in-out),
+        display var(--duration-normal) var(--ease-in-out) allow-discrete,
+        overlay var(--duration-normal) var(--ease-in-out) allow-discrete;
 
     &:not([open]) {
       display: none;
@@ -26,9 +26,9 @@
     &::backdrop {
       background: oklch(0 0 0 / 0.4);
       opacity: 0;
-      transition: opacity 100ms ease,
-          display 100ms ease allow-discrete,
-          overlay 100ms ease allow-discrete;
+      transition: opacity var(--duration-normal) var(--ease-in-out),
+          display var(--duration-normal) var(--ease-in-out) allow-discrete,
+          overlay var(--duration-normal) var(--ease-in-out) allow-discrete;
     }
 
     &[open] {

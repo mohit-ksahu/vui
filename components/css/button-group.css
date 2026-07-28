@@ -29,22 +29,24 @@
 
       &:focus-visible {
         z-index: 20;
+        transition: none;
       }
     }
 
     & > .btn:not(.btn-primary):not(.btn-secondary):not(.btn-destructive):not(.btn-ghost) {
-      background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+      background-color: color-mix(in oklch, var(--foreground) 1%, transparent);
       color: var(--foreground);
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+          background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
           color: var(--foreground);
+          z-index: 10;
         }
       }
 
       &:active {
-        background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
         color: var(--foreground);
       }
     }

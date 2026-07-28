@@ -77,8 +77,9 @@
     }
 
     &:focus-visible {
-      border-color: var(--ring);
-      outline: none;
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+      transition: none;
     }
 
     .tabs-list[aria-orientation="vertical"] & {

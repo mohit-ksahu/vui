@@ -149,6 +149,6 @@
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.12s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: var(--duration-normal);
+  animation-timing-function: var(--ease-default);
 }

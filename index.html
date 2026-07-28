@@ -1030,6 +1030,7 @@ document.addEventListener('theme:change', (e) => {
       };
 
       const staticPages = ["introduction", "installation", "theming"];
+      const pageCache = new Map();
       const mainContent = document.getElementById("main-content");
       const homeContent = document.getElementById("home-content");
       const scrollContainer = document.querySelector(".content-wrapper");
@@ -1062,7 +1063,8 @@ document.addEventListener('theme:change', (e) => {
           document.getElementById(pageId)?.scrollIntoView({ behavior: "instant", block: "start" });
         } else {
           if (scrollContainer) scrollContainer.scrollTop = 0;
-          mainContent.innerHTML = await (await fetch(`pages/${pageId}.html`)).text();
+          if (!pageCache.has(pageId)) pageCache.set(pageId, await (await fetch(`pages/${pageId}.html`)).text());
+          mainContent.innerHTML = pageCache.get(pageId);
           hydrateComponent(mainContent);
         }
       };
@@ -1100,6 +1102,11 @@ document.addEventListener('theme:change', (e) => {
 
         const hash = location.hash.slice(1);
         if (hash) loadPage(hash);
+
+        sidebarLinks
+          .map((a) => a.hash.slice(1))
+          .filter((id) => !staticPages.includes(id))
+          .forEach((id) => requestIdleCallback(() => fetch(`pages/${id}.html`).then((r) => r.text()).then((html) => pageCache.set(id, html))));
       });
     </script>
   </body>

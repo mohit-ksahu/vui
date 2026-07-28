@@ -1,25 +1,14 @@
 <section id="combobox" class="section">
   <h2>Combobox</h2>
-  <p class="section-meta">
-    Autocomplete input and command palette with a list of suggestions.
-  </p>
+  <p class="section-meta">Autocomplete input and command palette with a list of suggestions.</p>
 
   <h3>Basic</h3>
-  <p class="section-meta">
-    A combobox acting as a select with search capabilities.
-  </p>
+  <p class="section-meta">A combobox acting as a select with search capabilities.</p>
   <preview style="padding: 4rem 1rem">
     <!-- Trigger Button -->
-    <button
-      popovertarget="combo-lang"
-      class="combobox-trigger"
-      style="width: 200px; anchor-name: --a-combo-lang"
-    >
+    <button popovertarget="combo-lang" class="combobox-trigger" style="width: 200px; anchor-name: --a-combo-lang">
       <span class="combobox-value">Select project...</span>
-      <i
-        data-lucide="chevrons-up-down"
-        style="width: 1rem; height: 1rem; opacity: 0.5"
-      ></i>
+      <i data-lucide="chevrons-up-down" style="width: 1rem; height: 1rem; opacity: 0.5"></i>
     </button>
 
     <!-- Popover Content -->
@@ -32,11 +21,7 @@
     >
       <div class="combobox-search">
         <i data-lucide="search"></i>
-        <input
-          type="text"
-          class="combobox-input"
-          placeholder="Search project..."
-        />
+        <input type="text" class="combobox-input" placeholder="Search project..." />
       </div>
       <div class="combobox-content">
         <div class="combobox-empty">No project found.</div>
@@ -65,9 +50,7 @@
   </preview>
 
   <h3>Disabled</h3>
-  <p class="section-meta">
-    Disable the entire combobox to prevent user interaction.
-  </p>
+  <p class="section-meta">Disable the entire combobox to prevent user interaction.</p>
   <preview style="padding: 4rem 1rem">
     <!-- Trigger Button -->
     <button
@@ -77,10 +60,7 @@
       style="width: 200px; anchor-name: --a-combo-disabled"
     >
       <span class="combobox-value">Select timezone...</span>
-      <i
-        data-lucide="chevrons-up-down"
-        style="width: 1rem; height: 1rem; opacity: 0.5"
-      ></i>
+      <i data-lucide="chevrons-up-down" style="width: 1rem; height: 1rem; opacity: 0.5"></i>
     </button>
 
     <!-- Popover Content -->
@@ -93,11 +73,7 @@
     >
       <div class="combobox-search">
         <i data-lucide="search"></i>
-        <input
-          type="text"
-          class="combobox-input"
-          placeholder="Search timezone..."
-        />
+        <input type="text" class="combobox-input" placeholder="Search timezone..." />
       </div>
       <div class="combobox-content">
         <div class="combobox-empty">No timezone found.</div>
@@ -113,16 +89,9 @@
   <p class="section-meta">Organize options into groups using group labels.</p>
   <preview style="padding: 4rem 1rem">
     <!-- Trigger Button -->
-    <button
-      popovertarget="combo-browser"
-      class="combobox-trigger"
-      style="width: 220px; anchor-name: --a-combo-browser"
-    >
+    <button popovertarget="combo-browser" class="combobox-trigger" style="width: 220px; anchor-name: --a-combo-browser">
       <span class="combobox-value">Select a browser...</span>
-      <i
-        data-lucide="chevrons-up-down"
-        style="width: 1rem; height: 1rem; opacity: 0.5"
-      ></i>
+      <i data-lucide="chevrons-up-down" style="width: 1rem; height: 1rem; opacity: 0.5"></i>
     </button>
 
     <!-- Popover Content -->
@@ -135,11 +104,7 @@
     >
       <div class="combobox-search">
         <i data-lucide="search"></i>
-        <input
-          type="text"
-          class="combobox-input"
-          placeholder="Search browsers..."
-        />
+        <input type="text" class="combobox-input" placeholder="Search browsers..." />
       </div>
       <div class="combobox-content">
         <div class="combobox-empty">No browser found.</div>
@@ -173,21 +138,13 @@
 
   <h3>Combobox Height</h3>
   <p class="section-meta">
-    Force a fixed height to prevent the popover from resizing drastically when
-    filtering returns few or no results.
+    Force a fixed height to prevent the popover from resizing drastically when filtering returns few or no results.
   </p>
   <preview style="padding: 4rem 1rem">
     <!-- Trigger Button -->
-    <button
-      popovertarget="combo-height"
-      class="combobox-trigger"
-      style="width: 200px; anchor-name: --a-combo-height"
-    >
+    <button popovertarget="combo-height" class="combobox-trigger" style="width: 200px; anchor-name: --a-combo-height">
       <span class="combobox-value">Select state...</span>
-      <i
-        data-lucide="chevrons-up-down"
-        style="width: 1rem; height: 1rem; opacity: 0.5"
-      ></i>
+      <i data-lucide="chevrons-up-down" style="width: 1rem; height: 1rem; opacity: 0.5"></i>
     </button>
 
     <!-- Popover Content -->
@@ -200,11 +157,7 @@
     >
       <div class="combobox-search">
         <i data-lucide="search"></i>
-        <input
-          type="text"
-          class="combobox-input"
-          placeholder="Search state..."
-        />
+        <input type="text" class="combobox-input" placeholder="Search state..." />
       </div>
       <div class="combobox-content" style="height: 120px">
         <div class="combobox-empty">No state found.</div>
@@ -230,24 +183,15 @@
 
   <h3>Combobox Inline</h3>
   <p class="section-meta">
-    A modernized combobox where the search input itself acts as the trigger,
-    similar to modern combobox components.
+    A modernized combobox where the search input itself acts as the trigger, similar to modern combobox components.
   </p>
   <preview style="padding: 4rem 1rem">
     <!-- Trigger Input Group -->
-    <div
-      class="input-group combobox-input-trigger"
-      style="width: 250px; anchor-name: --a-combo-inline"
-    >
+    <div class="input-group combobox-input-trigger" style="width: 250px; anchor-name: --a-combo-inline">
       <span class="input-group-addon text-muted-foreground">
         <i data-lucide="search" style="width: 1rem; height: 1rem"></i>
       </span>
-      <input
-        type="text"
-        class="input"
-        data-popover-target="combo-inline"
-        placeholder="Search frameworks..."
-      />
+      <input type="text" class="input" data-popover-target="combo-inline" placeholder="Search frameworks..." />
     </div>
 
     <!-- Popover Content (No internal search box needed) -->
@@ -281,22 +225,11 @@
   </preview>
 
   <h3>Combobox Custom</h3>
-  <p class="section-meta">
-    You can render custom components or complex layouts inside the combobox
-    items.
-  </p>
+  <p class="section-meta">You can render custom components or complex layouts inside the combobox items.</p>
   <preview style="padding: 4rem 1rem">
     <!-- Trigger Input Group -->
-    <div
-      class="input-group combobox-input-trigger"
-      style="width: 280px; anchor-name: --a-combo-custom"
-    >
-      <input
-        type="text"
-        class="input"
-        data-popover-target="combo-custom"
-        placeholder="Assign to..."
-      />
+    <div class="input-group combobox-input-trigger" style="width: 280px; anchor-name: --a-combo-custom">
+      <input type="text" class="input" data-popover-target="combo-custom" placeholder="Assign to..." />
       <span class="input-group-addon text-muted-foreground">
         <i data-lucide="chevron-down" style="width: 1rem; height: 1rem"></i>
       </span>
@@ -315,9 +248,7 @@
         <div class="combobox-item" data-value="alex" data-label="Alex">
           <div style="display: flex; flex-direction: column; gap: 0.125rem">
             <span>Alex</span>
-            <span class="text-muted-foreground" style="font-size: 0.75rem"
-              >Project Manager</span
-            >
+            <span class="text-muted-foreground" style="font-size: 0.75rem">Project Manager</span>
           </div>
           <div class="combobox-item-icon"><i data-lucide="check"></i></div>
         </div>
@@ -325,9 +256,7 @@
         <div class="combobox-item" data-value="elena" data-label="Elena">
           <div style="display: flex; flex-direction: column; gap: 0.125rem">
             <span>Elena</span>
-            <span class="text-muted-foreground" style="font-size: 0.75rem"
-              >Lead Designer</span
-            >
+            <span class="text-muted-foreground" style="font-size: 0.75rem">Lead Designer</span>
           </div>
           <div class="combobox-item-icon"><i data-lucide="check"></i></div>
         </div>
@@ -335,9 +264,7 @@
         <div class="combobox-item" data-value="marcus" data-label="Marcus">
           <div style="display: flex; flex-direction: column; gap: 0.125rem">
             <span>Marcus</span>
-            <span class="text-muted-foreground" style="font-size: 0.75rem"
-              >Frontend Developer</span
-            >
+            <span class="text-muted-foreground" style="font-size: 0.75rem">Frontend Developer</span>
           </div>
           <div class="combobox-item-icon"><i data-lucide="check"></i></div>
         </div>
@@ -345,9 +272,7 @@
         <div class="combobox-item" data-value="sarah" data-label="Sarah">
           <div style="display: flex; flex-direction: column; gap: 0.125rem">
             <span>Sarah Connor</span>
-            <span class="text-muted-foreground" style="font-size: 0.75rem"
-              >Quality Assurance</span
-            >
+            <span class="text-muted-foreground" style="font-size: 0.75rem">Quality Assurance</span>
           </div>
           <div class="combobox-item-icon"><i data-lucide="check"></i></div>
         </div>

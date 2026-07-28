@@ -2,7 +2,7 @@
 
 <p align="center">
   UI components built with plain HTML, CSS, and vanilla JavaScript.<br>
-  No build step. No dependencies. Drop it in and go.
+  No build step. No dependencies.
 </p>
 
 <p align="center">

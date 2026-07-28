@@ -1,19 +1,13 @@
 <section id="dropdown" class="section">
   <h2>Dropdown Menu</h2>
   <p class="section-meta">
-    Displays a menu to the user — such as a set of actions or functions —
-    triggered by a button.
+    Displays a menu to the user — such as a set of actions or functions — triggered by a button.
   </p>
 
   <!-- Basic -->
   <h3>Basic</h3>
   <preview>
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-basic"
-      class="btn btn-outline"
-      style="anchor-name: --dd-basic"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-basic" class="btn btn-outline" style="anchor-name: --dd-basic">
       Filter
     </button>
     <menu
@@ -33,12 +27,7 @@
   <!-- Interactive Menu -->
   <h3>Interactive Menu</h3>
   <preview>
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-complex"
-      class="btn btn-outline"
-      style="anchor-name: --dd-complex"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-complex" class="btn btn-outline" style="anchor-name: --dd-complex">
       Settings
     </button>
     <menu
@@ -51,10 +40,12 @@
     >
       <div class="menu-label">Projects</div>
       <button class="menu-item" role="menuitem">
-        <i data-lucide="plus-circle"></i> Create New
+        <i data-lucide="plus-circle"></i>
+        Create New
       </button>
       <button class="menu-item" role="menuitem">
-        <i data-lucide="folder"></i> Open Existing
+        <i data-lucide="folder"></i>
+        Open Existing
       </button>
 
       <button
@@ -64,7 +55,8 @@
         role="menuitem"
         style="anchor-name: --dd-complex-recent"
       >
-        <i data-lucide="clock"></i> Recent Files
+        <i data-lucide="clock"></i>
+        Recent Files
         <i data-lucide="chevron-right" class="submenu-icon"></i>
       </button>
       <menu
@@ -77,10 +69,12 @@
       >
         <div class="menu-label">History</div>
         <button class="menu-item" role="menuitem">
-          <i data-lucide="file-text"></i> index.html
+          <i data-lucide="file-text"></i>
+          index.html
         </button>
         <button class="menu-item" role="menuitem">
-          <i data-lucide="file-text"></i> styles.css
+          <i data-lucide="file-text"></i>
+          styles.css
         </button>
 
         <button
@@ -90,7 +84,8 @@
           role="menuitem"
           style="anchor-name: --dd-complex-more-proj"
         >
-          <i data-lucide="more-horizontal"></i> More
+          <i data-lucide="more-horizontal"></i>
+          More
           <i data-lucide="chevron-right" class="submenu-icon"></i>
         </button>
         <menu
@@ -102,53 +97,39 @@
           style="position-anchor: --dd-complex-more-proj; width: 12rem"
         >
           <button class="menu-item" role="menuitem">
-            <i data-lucide="archive"></i> Archived
+            <i data-lucide="archive"></i>
+            Archived
           </button>
           <button class="menu-item" role="menuitem">
-            <i data-lucide="trash"></i> Deleted
+            <i data-lucide="trash"></i>
+            Deleted
           </button>
         </menu>
       </menu>
 
       <div class="menu-separator"></div>
       <button class="menu-item" role="menuitem">
-        <i data-lucide="download"></i> Export Data
+        <i data-lucide="download"></i>
+        Export Data
         <span class="shortcut">⌘E</span>
       </button>
 
       <div class="menu-separator"></div>
 
       <div class="menu-label">Notifications</div>
-      <label
-        class="menu-item"
-        style="justify-content: space-between"
-        role="menuitemcheckbox"
-      >
+      <label class="menu-item" style="justify-content: space-between" role="menuitemcheckbox">
         <span style="display: flex; align-items: center; gap: 0.5rem">
-          <i data-lucide="mail"></i> Email Updates
+          <i data-lucide="mail"></i>
+          Email Updates
         </span>
-        <input
-          type="checkbox"
-          class="checkbox"
-          checked
-          aria-hidden="true"
-          tabindex="-1"
-        />
+        <input type="checkbox" class="checkbox" checked aria-hidden="true" tabindex="-1" />
       </label>
-      <label
-        class="menu-item"
-        style="justify-content: space-between"
-        role="menuitemcheckbox"
-      >
+      <label class="menu-item" style="justify-content: space-between" role="menuitemcheckbox">
         <span style="display: flex; align-items: center; gap: 0.5rem">
-          <i data-lucide="bell"></i> Push Alerts
+          <i data-lucide="bell"></i>
+          Push Alerts
         </span>
-        <input
-          type="checkbox"
-          class="checkbox"
-          aria-hidden="true"
-          tabindex="-1"
-        />
+        <input type="checkbox" class="checkbox" aria-hidden="true" tabindex="-1" />
       </label>
 
       <button
@@ -158,7 +139,8 @@
         role="menuitem"
         style="anchor-name: --dd-complex-theme"
       >
-        <i data-lucide="palette"></i> Theme Mode
+        <i data-lucide="palette"></i>
+        Theme Mode
         <i data-lucide="chevron-right" class="submenu-icon"></i>
       </button>
       <menu
@@ -171,31 +153,15 @@
       >
         <div class="menu-label">Preferences</div>
         <label class="menu-item" role="menuitemradio">
-          <input
-            type="radio"
-            name="dd-complex-time"
-            class="radio"
-            style="flex-shrink: 0"
-            checked
-          />
+          <input type="radio" name="dd-complex-time" class="radio" style="flex-shrink: 0" checked />
           Light
         </label>
         <label class="menu-item" role="menuitemradio">
-          <input
-            type="radio"
-            name="dd-complex-time"
-            class="radio"
-            style="flex-shrink: 0"
-          />
+          <input type="radio" name="dd-complex-time" class="radio" style="flex-shrink: 0" />
           Dark
         </label>
         <label class="menu-item" role="menuitemradio">
-          <input
-            type="radio"
-            name="dd-complex-time"
-            class="radio"
-            style="flex-shrink: 0"
-          />
+          <input type="radio" name="dd-complex-time" class="radio" style="flex-shrink: 0" />
           System
         </label>
       </menu>
@@ -203,7 +169,8 @@
       <div class="menu-separator"></div>
 
       <button class="menu-item menu-item-destructive" role="menuitem">
-        <i data-lucide="trash"></i> Clear History
+        <i data-lucide="trash"></i>
+        Clear History
         <span class="shortcut">⇧⌘D</span>
       </button>
     </menu>
@@ -216,19 +183,10 @@
       aria-haspopup="menu"
       popovertarget="dd-avatar"
       class="avatar"
-      style="
-        anchor-name: --dd-avatar;
-        border: none;
-        padding: 0;
-        background: transparent;
-        cursor: pointer;
-      "
+      style="anchor-name: --dd-avatar; border: none; padding: 0; background: transparent; cursor: pointer"
     >
-      <img
-        src="https://i.pravatar.cc/80?u=admin"
-        alt="Admin"
-        class="avatar-image"
-      /><span class="avatar-fallback">AD</span>
+      <img src="https://i.pravatar.cc/80?u=admin" alt="Admin" class="avatar-image" />
+      <span class="avatar-fallback">AD</span>
     </button>
     <menu
       id="dd-avatar"
@@ -240,9 +198,7 @@
     >
       <div class="menu-label" style="display: flex; flex-direction: column">
         <span style="font-weight: 600; color: var(--foreground)">Alex</span>
-        <span style="font-weight: normal; font-size: 0.75rem"
-          >alex@example.com</span
-        >
+        <span style="font-weight: normal; font-size: 0.75rem">alex@example.com</span>
       </div>
       <div class="menu-separator"></div>
       <button class="menu-item" role="menuitem">Profile</button>
@@ -255,21 +211,9 @@
 
   <!-- Placements -->
   <h3>Placements</h3>
-  <preview
-    style="
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2.5rem;
-    "
-  >
+  <preview style="gap: 0.75rem; flex-wrap: wrap; justify-content: center; padding: 2.5rem">
     <!-- Top Variants -->
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-ts"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-ts"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-ts" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-ts">
       Top Start
     </button>
     <menu
@@ -284,12 +228,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-t"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-t"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-t" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-t">
       Top
     </button>
     <menu
@@ -304,12 +243,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-te"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-te"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-te" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-te">
       Top End
     </button>
     <menu
@@ -325,12 +259,7 @@
     </menu>
 
     <!-- Bottom Variants -->
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-bs"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-bs"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-bs" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-bs">
       Bottom Start
     </button>
     <menu
@@ -345,12 +274,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-b"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-b"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-b" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-b">
       Bottom
     </button>
     <menu
@@ -365,12 +289,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-be"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-be"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-be" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-be">
       Bottom End
     </button>
     <menu
@@ -386,12 +305,7 @@
     </menu>
 
     <!-- Left Variants -->
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-ls"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-ls"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-ls" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-ls">
       Left Start
     </button>
     <menu
@@ -406,12 +320,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-l"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-l"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-l" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-l">
       Left
     </button>
     <menu
@@ -426,12 +335,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-le"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-le"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-le" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-le">
       Left End
     </button>
     <menu
@@ -447,12 +351,7 @@
     </menu>
 
     <!-- Right Variants -->
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-rs"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-rs"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-rs" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-rs">
       Right Start
     </button>
     <menu
@@ -467,12 +366,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-r"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-r"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-r" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-r">
       Right
     </button>
     <menu
@@ -487,12 +381,7 @@
       <button class="menu-item" role="menuitem">Settings</button>
     </menu>
 
-    <button
-      aria-haspopup="menu"
-      popovertarget="dd-p-re"
-      class="btn btn-outline btn-sm"
-      style="anchor-name: --dd-p-re"
-    >
+    <button aria-haspopup="menu" popovertarget="dd-p-re" class="btn btn-outline btn-sm" style="anchor-name: --dd-p-re">
       Right End
     </button>
     <menu

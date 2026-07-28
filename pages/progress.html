@@ -1,37 +1,17 @@
 <section id="progress" class="section">
   <h2>Progress</h2>
   <p class="section-meta">
-    Displays an indicator showing the completion progress of a task, with
-    support for various functional color states.
+    Displays an indicator showing the completion progress of a task, with support for various functional color states.
   </p>
 
   <h3>Default</h3>
   <preview>
-    <div
-      style="
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      "
-    >
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.875rem;
-        "
-      >
+    <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 0.5rem">
+      <div style="display: flex; justify-content: space-between; font-size: 0.875rem">
         <span style="font-weight: 500">Downloading Assets</span>
         <span style="color: var(--muted-foreground)">60%</span>
       </div>
-      <progress
-        class="progress"
-        value="60"
-        max="100"
-        style="width: 100%"
-      ></progress>
+      <progress class="progress" value="60" max="100" style="width: 100%"></progress>
     </div>
   </preview>
 
@@ -73,87 +53,30 @@
       }
     </style>
     <!-- Success -->
-    <div
-      style="
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      "
-    >
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.875rem;
-        "
-      >
+    <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 0.5rem">
+      <div style="display: flex; justify-content: space-between; font-size: 0.875rem">
         <span style="font-weight: 500">Task Completed</span>
         <span style="color: var(--muted-foreground)">100%</span>
       </div>
-      <progress
-        class="progress progress-success"
-        value="100"
-        max="100"
-        style="width: 100%"
-      ></progress>
+      <progress class="progress progress-success" value="100" max="100" style="width: 100%"></progress>
     </div>
 
     <!-- Warning -->
-    <div
-      style="
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      "
-    >
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.875rem;
-        "
-      >
+    <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 0.5rem">
+      <div style="display: flex; justify-content: space-between; font-size: 0.875rem">
         <span style="font-weight: 500">Storage Usage</span>
         <span style="color: var(--muted-foreground)">85%</span>
       </div>
-      <progress
-        class="progress progress-warning"
-        value="85"
-        max="100"
-        style="width: 100%"
-      ></progress>
+      <progress class="progress progress-warning" value="85" max="100" style="width: 100%"></progress>
     </div>
 
     <!-- Destructive -->
-    <div
-      style="
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      "
-    >
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.875rem;
-        "
-      >
+    <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 0.5rem">
+      <div style="display: flex; justify-content: space-between; font-size: 0.875rem">
         <span style="font-weight: 500">Memory Usage</span>
         <span style="color: var(--muted-foreground)">98%</span>
       </div>
-      <progress
-        class="progress progress-destructive"
-        value="98"
-        max="100"
-        style="width: 100%"
-      ></progress>
+      <progress class="progress progress-destructive" value="98" max="100" style="width: 100%"></progress>
     </div>
   </preview>
 

@@ -45,9 +45,7 @@
   }
 
   /* Rail mode footer adjustments */
-  .sidebar-provider[data-state="closed"]
-    .sidebar[data-collapsible="icon"]
-    .sidebar-footer-user {
+  .sidebar-provider[data-state="closed"] .sidebar[data-collapsible="icon"] .sidebar-footer-user {
     padding: 0;
     width: 2rem;
     height: 2rem;
@@ -55,27 +53,19 @@
     justify-content: center;
   }
 
-  .sidebar-provider[data-state="closed"]
-    .sidebar[data-collapsible="icon"]
-    .footer-user-info,
-  .sidebar-provider[data-state="closed"]
-    .sidebar[data-collapsible="icon"]
-    .sidebar-footer-user
-    .chevron {
+  .sidebar-provider[data-state="closed"] .sidebar[data-collapsible="icon"] .footer-user-info,
+  .sidebar-provider[data-state="closed"] .sidebar[data-collapsible="icon"] .sidebar-footer-user .chevron {
     display: none;
   }
 </style>
 <section id="sidebar" class="section">
   <h2>Sidebar</h2>
   <p class="section-meta">
-    Responsive, collapsible application sidebar with rail mode, nested
-    navigation, and visibility control.
+    Responsive, collapsible application sidebar with rail mode, nested navigation, and visibility control.
   </p>
 
   <h3>Default</h3>
-  <p class="section-meta">
-    Standard sidebar variant sitting flush with the container edge.
-  </p>
+  <p class="section-meta">Standard sidebar variant sitting flush with the container edge.</p>
   <preview>
     <div
       class="sidebar-provider"
@@ -88,53 +78,27 @@
         width: 100%;
       "
     >
-      <aside
-        class="sidebar"
-        role="navigation"
-        data-collapsible="icon"
-        data-variant="default"
-      >
+      <aside class="sidebar" role="navigation" data-collapsible="icon" data-variant="default">
         <header class="sidebar-header">
-          <span
-            class="sidebar-expanded-only"
-            style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em"
-            >Acme Corp</span
-          >
+          <span class="sidebar-expanded-only" style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em">
+            Acme Corp
+          </span>
           <div class="sidebar-collapsed-only">
-            <div
-              style="
-                width: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                data-lucide="command"
-                style="width: 1.2rem; height: 1.2rem; color: var(--primary)"
-              ></i>
+            <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="command" style="width: 1.2rem; height: 1.2rem; color: var(--primary)"></i>
             </div>
           </div>
         </header>
         <nav class="sidebar-content">
           <ul class="sidebar-menu">
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button active"
-                title="Dashboard"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button active" title="Dashboard">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="sidebar-expanded-only">Dashboard</span>
               </a>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button"
-                title="Analytics"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button" title="Analytics">
                 <i data-lucide="bar-chart-2"></i>
                 <span class="sidebar-expanded-only">Analytics</span>
               </a>
@@ -144,23 +108,20 @@
                 <summary class="sidebar-menu-button" title="Projects">
                   <div class="summary-content">
                     <i data-lucide="folder" class="sidebar-collapsed-only"></i>
-                    <i
-                      data-lucide="folder-open"
-                      class="sidebar-expanded-only"
-                    ></i>
+                    <i data-lucide="folder-open" class="sidebar-expanded-only"></i>
                   </div>
                   <span class="sidebar-expanded-only">Projects</span>
                 </summary>
                 <ul class="sidebar-menu sidebar-menu-sub">
                   <li>
-                    <a href="javascript:void(0)" class="sidebar-menu-button"
-                      ><span class="sidebar-expanded-only">Frontend</span></a
-                    >
+                    <a href="javascript:void(0)" class="sidebar-menu-button">
+                      <span class="sidebar-expanded-only">Frontend</span>
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)" class="sidebar-menu-button"
-                      ><span class="sidebar-expanded-only">Backend</span></a
-                    >
+                    <a href="javascript:void(0)" class="sidebar-menu-button">
+                      <span class="sidebar-expanded-only">Backend</span>
+                    </a>
                   </li>
                 </ul>
               </details>
@@ -176,20 +137,14 @@
             title="Profile"
           >
             <span class="avatar">
-              <img
-                src="https://i.pravatar.cc/80?u=ds"
-                alt="Alex"
-                class="avatar-image"
-              /><span class="avatar-fallback">AL</span>
+              <img src="https://i.pravatar.cc/80?u=ds" alt="Alex" class="avatar-image" />
+              <span class="avatar-fallback">AL</span>
             </span>
             <div class="sidebar-expanded-only footer-user-info">
               <span class="user-name">Alex</span>
               <span class="user-role">Admin</span>
             </div>
-            <i
-              data-lucide="chevron-up"
-              class="sidebar-expanded-only chevron"
-            ></i>
+            <i data-lucide="chevron-up" class="sidebar-expanded-only chevron"></i>
           </button>
           <menu
             id="sidebar-menu-default"
@@ -197,52 +152,31 @@
             class="dropdown"
             data-placement="top-start"
             role="menu"
-            style="
-              position-anchor: --sidebar-menu-default-anchor;
-              width: anchor-size(width);
-            "
+            style="position-anchor: --sidebar-menu-default-anchor; width: anchor-size(width)"
           >
             <div class="menu-label">My Account</div>
             <button class="menu-item" role="menuitem">
-              <i data-lucide="user"></i>Profile
+              <i data-lucide="user"></i>
+              Profile
             </button>
             <div class="menu-separator"></div>
             <button class="menu-item menu-item-destructive" role="menuitem">
-              <i data-lucide="log-out"></i>Log out
+              <i data-lucide="log-out"></i>
+              Log out
             </button>
           </menu>
         </footer>
       </aside>
       <div class="sidebar-inset">
         <header class="topnav">
-          <button
-            class="btn btn-ghost btn-icon-sm sidebar-trigger"
-            aria-label="Toggle Sidebar"
-          >
-            <i
-              data-lucide="arrow-left-to-line"
-              class="sidebar-expanded-only"
-              style="stroke-width: 1.5"
-            ></i>
-            <i
-              data-lucide="panel-left"
-              class="sidebar-collapsed-only"
-              style="stroke-width: 1.5"
-            ></i>
+          <button class="btn btn-ghost btn-icon-sm sidebar-trigger" aria-label="Toggle Sidebar">
+            <i data-lucide="arrow-left-to-line" class="sidebar-expanded-only" style="stroke-width: 1.5"></i>
+            <i data-lucide="panel-left" class="sidebar-collapsed-only" style="stroke-width: 1.5"></i>
           </button>
-          <span style="font-size: 0.875rem; font-weight: 500"
-            >Default Sidebar Layout</span
-          >
+          <span style="font-size: 0.875rem; font-weight: 500">Default Sidebar Layout</span>
         </header>
-        <main
-          style="
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-          "
-        >
-          The default variant aligns the sidebar edge flush with the parent
-          panel boundaries.
+        <main style="padding: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground)">
+          The default variant aligns the sidebar edge flush with the parent panel boundaries.
         </main>
       </div>
     </div>
@@ -262,53 +196,27 @@
         width: 100%;
       "
     >
-      <aside
-        class="sidebar"
-        role="navigation"
-        data-collapsible="icon"
-        data-variant="inset"
-      >
+      <aside class="sidebar" role="navigation" data-collapsible="icon" data-variant="inset">
         <header class="sidebar-header">
-          <span
-            class="sidebar-expanded-only"
-            style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em"
-            >Acme Corp</span
-          >
+          <span class="sidebar-expanded-only" style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em">
+            Acme Corp
+          </span>
           <div class="sidebar-collapsed-only">
-            <div
-              style="
-                width: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                data-lucide="command"
-                style="width: 1.2rem; height: 1.2rem; color: var(--primary)"
-              ></i>
+            <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="command" style="width: 1.2rem; height: 1.2rem; color: var(--primary)"></i>
             </div>
           </div>
         </header>
         <nav class="sidebar-content">
           <ul class="sidebar-menu">
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button active"
-                title="Dashboard"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button active" title="Dashboard">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="sidebar-expanded-only">Dashboard</span>
               </a>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button"
-                title="Analytics"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button" title="Analytics">
                 <i data-lucide="bar-chart-2"></i>
                 <span class="sidebar-expanded-only">Analytics</span>
               </a>
@@ -318,23 +226,20 @@
                 <summary class="sidebar-menu-button" title="Projects">
                   <div class="summary-content">
                     <i data-lucide="folder" class="sidebar-collapsed-only"></i>
-                    <i
-                      data-lucide="folder-open"
-                      class="sidebar-expanded-only"
-                    ></i>
+                    <i data-lucide="folder-open" class="sidebar-expanded-only"></i>
                   </div>
                   <span class="sidebar-expanded-only">Projects</span>
                 </summary>
                 <ul class="sidebar-menu sidebar-menu-sub">
                   <li>
-                    <a href="javascript:void(0)" class="sidebar-menu-button"
-                      ><span class="sidebar-expanded-only">Frontend</span></a
-                    >
+                    <a href="javascript:void(0)" class="sidebar-menu-button">
+                      <span class="sidebar-expanded-only">Frontend</span>
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)" class="sidebar-menu-button"
-                      ><span class="sidebar-expanded-only">Backend</span></a
-                    >
+                    <a href="javascript:void(0)" class="sidebar-menu-button">
+                      <span class="sidebar-expanded-only">Backend</span>
+                    </a>
                   </li>
                 </ul>
               </details>
@@ -350,20 +255,14 @@
             title="Profile"
           >
             <span class="avatar">
-              <img
-                src="https://i.pravatar.cc/80?u=in"
-                alt="Alex"
-                class="avatar-image"
-              /><span class="avatar-fallback">AL</span>
+              <img src="https://i.pravatar.cc/80?u=in" alt="Alex" class="avatar-image" />
+              <span class="avatar-fallback">AL</span>
             </span>
             <div class="sidebar-expanded-only footer-user-info">
               <span class="user-name">Alex</span>
               <span class="user-role">Admin</span>
             </div>
-            <i
-              data-lucide="chevron-up"
-              class="sidebar-expanded-only chevron"
-            ></i>
+            <i data-lucide="chevron-up" class="sidebar-expanded-only chevron"></i>
           </button>
           <menu
             id="sidebar-menu-inset"
@@ -371,61 +270,39 @@
             class="dropdown"
             data-placement="top-start"
             role="menu"
-            style="
-              position-anchor: --sidebar-menu-inset-anchor;
-              width: anchor-size(width);
-            "
+            style="position-anchor: --sidebar-menu-inset-anchor; width: anchor-size(width)"
           >
             <div class="menu-label">My Account</div>
             <button class="menu-item" role="menuitem">
-              <i data-lucide="user"></i>Profile
+              <i data-lucide="user"></i>
+              Profile
             </button>
             <div class="menu-separator"></div>
             <button class="menu-item menu-item-destructive" role="menuitem">
-              <i data-lucide="log-out"></i>Log out
+              <i data-lucide="log-out"></i>
+              Log out
             </button>
           </menu>
         </footer>
       </aside>
       <div class="sidebar-inset">
         <header class="topnav">
-          <button
-            class="btn btn-ghost btn-icon-sm sidebar-trigger"
-            aria-label="Toggle Sidebar"
-          >
-            <i
-              data-lucide="arrow-left-to-line"
-              class="sidebar-expanded-only"
-              style="stroke-width: 1.5"
-            ></i>
-            <i
-              data-lucide="panel-left"
-              class="sidebar-collapsed-only"
-              style="stroke-width: 1.5"
-            ></i>
+          <button class="btn btn-ghost btn-icon-sm sidebar-trigger" aria-label="Toggle Sidebar">
+            <i data-lucide="arrow-left-to-line" class="sidebar-expanded-only" style="stroke-width: 1.5"></i>
+            <i data-lucide="panel-left" class="sidebar-collapsed-only" style="stroke-width: 1.5"></i>
           </button>
-          <span style="font-size: 0.875rem; font-weight: 500"
-            >Inset Sidebar Layout</span
-          >
+          <span style="font-size: 0.875rem; font-weight: 500">Inset Sidebar Layout</span>
         </header>
-        <main
-          style="
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-          "
-        >
-          The inset variant separates the main content panel visually by
-          wrapping it in an elevated card inside the viewport.
+        <main style="padding: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground)">
+          The inset variant separates the main content panel visually by wrapping it in an elevated card inside the
+          viewport.
         </main>
       </div>
     </div>
   </preview>
 
   <h3>Floating</h3>
-  <p class="section-meta">
-    Floating card style detached from the layout boundaries.
-  </p>
+  <p class="section-meta">Floating card style detached from the layout boundaries.</p>
   <preview>
     <div
       class="sidebar-provider"
@@ -438,53 +315,27 @@
         width: 100%;
       "
     >
-      <aside
-        class="sidebar"
-        role="navigation"
-        data-collapsible="icon"
-        data-variant="floating"
-      >
+      <aside class="sidebar" role="navigation" data-collapsible="icon" data-variant="floating">
         <header class="sidebar-header">
-          <span
-            class="sidebar-expanded-only"
-            style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em"
-            >Acme Corp</span
-          >
+          <span class="sidebar-expanded-only" style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em">
+            Acme Corp
+          </span>
           <div class="sidebar-collapsed-only">
-            <div
-              style="
-                width: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                data-lucide="command"
-                style="width: 1.2rem; height: 1.2rem; color: var(--primary)"
-              ></i>
+            <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="command" style="width: 1.2rem; height: 1.2rem; color: var(--primary)"></i>
             </div>
           </div>
         </header>
         <nav class="sidebar-content">
           <ul class="sidebar-menu">
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button active"
-                title="Dashboard"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button active" title="Dashboard">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="sidebar-expanded-only">Dashboard</span>
               </a>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button"
-                title="Analytics"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button" title="Analytics">
                 <i data-lucide="bar-chart-2"></i>
                 <span class="sidebar-expanded-only">Analytics</span>
               </a>
@@ -494,23 +345,20 @@
                 <summary class="sidebar-menu-button" title="Projects">
                   <div class="summary-content">
                     <i data-lucide="folder" class="sidebar-collapsed-only"></i>
-                    <i
-                      data-lucide="folder-open"
-                      class="sidebar-expanded-only"
-                    ></i>
+                    <i data-lucide="folder-open" class="sidebar-expanded-only"></i>
                   </div>
                   <span class="sidebar-expanded-only">Projects</span>
                 </summary>
                 <ul class="sidebar-menu sidebar-menu-sub">
                   <li>
-                    <a href="javascript:void(0)" class="sidebar-menu-button"
-                      ><span class="sidebar-expanded-only">Frontend</span></a
-                    >
+                    <a href="javascript:void(0)" class="sidebar-menu-button">
+                      <span class="sidebar-expanded-only">Frontend</span>
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)" class="sidebar-menu-button"
-                      ><span class="sidebar-expanded-only">Backend</span></a
-                    >
+                    <a href="javascript:void(0)" class="sidebar-menu-button">
+                      <span class="sidebar-expanded-only">Backend</span>
+                    </a>
                   </li>
                 </ul>
               </details>
@@ -526,20 +374,14 @@
             title="Profile"
           >
             <span class="avatar">
-              <img
-                src="https://i.pravatar.cc/80?u=fl"
-                alt="Alex"
-                class="avatar-image"
-              /><span class="avatar-fallback">AL</span>
+              <img src="https://i.pravatar.cc/80?u=fl" alt="Alex" class="avatar-image" />
+              <span class="avatar-fallback">AL</span>
             </span>
             <div class="sidebar-expanded-only footer-user-info">
               <span class="user-name">Alex</span>
               <span class="user-role">Admin</span>
             </div>
-            <i
-              data-lucide="chevron-up"
-              class="sidebar-expanded-only chevron"
-            ></i>
+            <i data-lucide="chevron-up" class="sidebar-expanded-only chevron"></i>
           </button>
           <menu
             id="sidebar-menu-floating"
@@ -547,61 +389,39 @@
             class="dropdown"
             data-placement="top-start"
             role="menu"
-            style="
-              position-anchor: --sidebar-menu-floating-anchor;
-              width: anchor-size(width);
-            "
+            style="position-anchor: --sidebar-menu-floating-anchor; width: anchor-size(width)"
           >
             <div class="menu-label">My Account</div>
             <button class="menu-item" role="menuitem">
-              <i data-lucide="user"></i>Profile
+              <i data-lucide="user"></i>
+              Profile
             </button>
             <div class="menu-separator"></div>
             <button class="menu-item menu-item-destructive" role="menuitem">
-              <i data-lucide="log-out"></i>Log out
+              <i data-lucide="log-out"></i>
+              Log out
             </button>
           </menu>
         </footer>
       </aside>
       <div class="sidebar-inset">
         <header class="topnav">
-          <button
-            class="btn btn-ghost btn-icon-sm sidebar-trigger"
-            aria-label="Toggle Sidebar"
-          >
-            <i
-              data-lucide="arrow-left-to-line"
-              class="sidebar-expanded-only"
-              style="stroke-width: 1.5"
-            ></i>
-            <i
-              data-lucide="panel-left"
-              class="sidebar-collapsed-only"
-              style="stroke-width: 1.5"
-            ></i>
+          <button class="btn btn-ghost btn-icon-sm sidebar-trigger" aria-label="Toggle Sidebar">
+            <i data-lucide="arrow-left-to-line" class="sidebar-expanded-only" style="stroke-width: 1.5"></i>
+            <i data-lucide="panel-left" class="sidebar-collapsed-only" style="stroke-width: 1.5"></i>
           </button>
-          <span style="font-size: 0.875rem; font-weight: 500"
-            >Floating Sidebar Layout</span
-          >
+          <span style="font-size: 0.875rem; font-weight: 500">Floating Sidebar Layout</span>
         </header>
-        <main
-          style="
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-          "
-        >
-          The floating variant applies an outer margin and border radius to
-          detach the sidebar card from the container edges.
+        <main style="padding: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground)">
+          The floating variant applies an outer margin and border radius to detach the sidebar card from the container
+          edges.
         </main>
       </div>
     </div>
   </preview>
 
   <h3>Right Placement</h3>
-  <p class="section-meta">
-    Sidebar positioned on the right side of the container.
-  </p>
+  <p class="section-meta">Sidebar positioned on the right side of the container.</p>
   <preview>
     <div
       class="sidebar-provider"
@@ -614,54 +434,27 @@
         width: 100%;
       "
     >
-      <aside
-        class="sidebar"
-        data-placement="right"
-        role="navigation"
-        data-collapsible="icon"
-        data-variant="default"
-      >
+      <aside class="sidebar" data-placement="right" role="navigation" data-collapsible="icon" data-variant="default">
         <header class="sidebar-header">
-          <span
-            class="sidebar-expanded-only"
-            style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em"
-            >Acme Corp</span
-          >
+          <span class="sidebar-expanded-only" style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em">
+            Acme Corp
+          </span>
           <div class="sidebar-collapsed-only">
-            <div
-              style="
-                width: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                data-lucide="command"
-                style="width: 1.2rem; height: 1.2rem; color: var(--primary)"
-              ></i>
+            <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="command" style="width: 1.2rem; height: 1.2rem; color: var(--primary)"></i>
             </div>
           </div>
         </header>
         <nav class="sidebar-content">
           <ul class="sidebar-menu">
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button active"
-                title="Dashboard"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button active" title="Dashboard">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="sidebar-expanded-only">Dashboard</span>
               </a>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button"
-                title="Analytics"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button" title="Analytics">
                 <i data-lucide="bar-chart-2"></i>
                 <span class="sidebar-expanded-only">Analytics</span>
               </a>
@@ -677,20 +470,14 @@
             title="Profile"
           >
             <span class="avatar">
-              <img
-                src="https://i.pravatar.cc/80?u=rp"
-                alt="Alex"
-                class="avatar-image"
-              /><span class="avatar-fallback">AL</span>
+              <img src="https://i.pravatar.cc/80?u=rp" alt="Alex" class="avatar-image" />
+              <span class="avatar-fallback">AL</span>
             </span>
             <div class="sidebar-expanded-only footer-user-info">
               <span class="user-name">Alex</span>
               <span class="user-role">Admin</span>
             </div>
-            <i
-              data-lucide="chevron-up"
-              class="sidebar-expanded-only chevron"
-            ></i>
+            <i data-lucide="chevron-up" class="sidebar-expanded-only chevron"></i>
           </button>
           <menu
             id="sidebar-menu-right"
@@ -698,69 +485,38 @@
             class="dropdown"
             data-placement="top-start"
             role="menu"
-            style="
-              position-anchor: --sidebar-menu-right-anchor;
-              width: anchor-size(width);
-            "
+            style="position-anchor: --sidebar-menu-right-anchor; width: anchor-size(width)"
           >
             <div class="menu-label">My Account</div>
             <button class="menu-item" role="menuitem">
-              <i data-lucide="user"></i>Profile
+              <i data-lucide="user"></i>
+              Profile
             </button>
             <div class="menu-separator"></div>
             <button class="menu-item menu-item-destructive" role="menuitem">
-              <i data-lucide="log-out"></i>Log out
+              <i data-lucide="log-out"></i>
+              Log out
             </button>
           </menu>
         </footer>
       </aside>
       <div class="sidebar-inset">
-        <header
-          class="topnav"
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-          "
-        >
-          <span style="font-size: 0.875rem; font-weight: 500"
-            >Right Sidebar Layout</span
-          >
-          <button
-            class="btn btn-ghost btn-icon-sm sidebar-trigger"
-            aria-label="Toggle Sidebar"
-          >
-            <i
-              data-lucide="arrow-right-to-line"
-              class="sidebar-expanded-only"
-              style="stroke-width: 1.5"
-            ></i>
-            <i
-              data-lucide="panel-right"
-              class="sidebar-collapsed-only"
-              style="stroke-width: 1.5"
-            ></i>
+        <header class="topnav" style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+          <span style="font-size: 0.875rem; font-weight: 500">Right Sidebar Layout</span>
+          <button class="btn btn-ghost btn-icon-sm sidebar-trigger" aria-label="Toggle Sidebar">
+            <i data-lucide="arrow-right-to-line" class="sidebar-expanded-only" style="stroke-width: 1.5"></i>
+            <i data-lucide="panel-right" class="sidebar-collapsed-only" style="stroke-width: 1.5"></i>
           </button>
         </header>
-        <main
-          style="
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-          "
-        >
-          The right-placed sidebar sits flush with the right boundary of the
-          container.
+        <main style="padding: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground)">
+          The right-placed sidebar sits flush with the right boundary of the container.
         </main>
       </div>
     </div>
   </preview>
 
   <h3>Full Collapse</h3>
-  <p class="section-meta">
-    Sidebar collapses completely out of view instead of showing a rail.
-  </p>
+  <p class="section-meta">Sidebar collapses completely out of view instead of showing a rail.</p>
   <preview>
     <div
       class="sidebar-provider"
@@ -775,46 +531,25 @@
     >
       <aside class="sidebar" role="navigation" data-variant="default">
         <header class="sidebar-header">
-          <span
-            class="sidebar-expanded-only"
-            style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em"
-            >Acme Corp</span
-          >
+          <span class="sidebar-expanded-only" style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em">
+            Acme Corp
+          </span>
           <div class="sidebar-collapsed-only">
-            <div
-              style="
-                width: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                data-lucide="command"
-                style="width: 1.2rem; height: 1.2rem; color: var(--primary)"
-              ></i>
+            <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="command" style="width: 1.2rem; height: 1.2rem; color: var(--primary)"></i>
             </div>
           </div>
         </header>
         <nav class="sidebar-content">
           <ul class="sidebar-menu">
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button active"
-                title="Dashboard"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button active" title="Dashboard">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="sidebar-expanded-only">Dashboard</span>
               </a>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button"
-                title="Analytics"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button" title="Analytics">
                 <i data-lucide="bar-chart-2"></i>
                 <span class="sidebar-expanded-only">Analytics</span>
               </a>
@@ -830,20 +565,14 @@
             title="Profile"
           >
             <span class="avatar">
-              <img
-                src="https://i.pravatar.cc/80?u=fc"
-                alt="Alex"
-                class="avatar-image"
-              /><span class="avatar-fallback">AL</span>
+              <img src="https://i.pravatar.cc/80?u=fc" alt="Alex" class="avatar-image" />
+              <span class="avatar-fallback">AL</span>
             </span>
             <div class="sidebar-expanded-only footer-user-info">
               <span class="user-name">Alex</span>
               <span class="user-role">Admin</span>
             </div>
-            <i
-              data-lucide="chevron-up"
-              class="sidebar-expanded-only chevron"
-            ></i>
+            <i data-lucide="chevron-up" class="sidebar-expanded-only chevron"></i>
           </button>
           <menu
             id="sidebar-menu-full"
@@ -851,61 +580,38 @@
             class="dropdown"
             data-placement="top-start"
             role="menu"
-            style="
-              position-anchor: --sidebar-menu-full-anchor;
-              width: anchor-size(width);
-            "
+            style="position-anchor: --sidebar-menu-full-anchor; width: anchor-size(width)"
           >
             <div class="menu-label">My Account</div>
             <button class="menu-item" role="menuitem">
-              <i data-lucide="user"></i>Profile
+              <i data-lucide="user"></i>
+              Profile
             </button>
             <div class="menu-separator"></div>
             <button class="menu-item menu-item-destructive" role="menuitem">
-              <i data-lucide="log-out"></i>Log out
+              <i data-lucide="log-out"></i>
+              Log out
             </button>
           </menu>
         </footer>
       </aside>
       <div class="sidebar-inset">
         <header class="topnav">
-          <button
-            class="btn btn-ghost btn-icon-sm sidebar-trigger"
-            aria-label="Toggle Sidebar"
-          >
-            <i
-              data-lucide="arrow-left-to-line"
-              class="sidebar-expanded-only"
-              style="stroke-width: 1.5"
-            ></i>
-            <i
-              data-lucide="panel-left"
-              class="sidebar-collapsed-only"
-              style="stroke-width: 1.5"
-            ></i>
+          <button class="btn btn-ghost btn-icon-sm sidebar-trigger" aria-label="Toggle Sidebar">
+            <i data-lucide="arrow-left-to-line" class="sidebar-expanded-only" style="stroke-width: 1.5"></i>
+            <i data-lucide="panel-left" class="sidebar-collapsed-only" style="stroke-width: 1.5"></i>
           </button>
-          <span style="font-size: 0.875rem; font-weight: 500"
-            >Full Collapse Layout</span
-          >
+          <span style="font-size: 0.875rem; font-weight: 500">Full Collapse Layout</span>
         </header>
-        <main
-          style="
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-          "
-        >
-          When collapsed, the sidebar disappears completely, and the inset area
-          takes up 100% of the available width.
+        <main style="padding: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground)">
+          When collapsed, the sidebar disappears completely, and the inset area takes up 100% of the available width.
         </main>
       </div>
     </div>
   </preview>
 
   <h3>Persistent Sidebar</h3>
-  <p class="section-meta">
-    Sidebar remains permanently visible on desktop and cannot be collapsed.
-  </p>
+  <p class="section-meta">Sidebar remains permanently visible on desktop and cannot be collapsed.</p>
   <preview>
     <div
       class="sidebar-provider"
@@ -918,53 +624,27 @@
         width: 100%;
       "
     >
-      <aside
-        class="sidebar"
-        role="navigation"
-        data-collapsible="none"
-        data-variant="default"
-      >
+      <aside class="sidebar" role="navigation" data-collapsible="none" data-variant="default">
         <header class="sidebar-header">
-          <span
-            class="sidebar-expanded-only"
-            style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em"
-            >Acme Corp</span
-          >
+          <span class="sidebar-expanded-only" style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em">
+            Acme Corp
+          </span>
           <div class="sidebar-collapsed-only">
-            <div
-              style="
-                width: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                data-lucide="command"
-                style="width: 1.2rem; height: 1.2rem; color: var(--primary)"
-              ></i>
+            <div style="width: 2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <i data-lucide="command" style="width: 1.2rem; height: 1.2rem; color: var(--primary)"></i>
             </div>
           </div>
         </header>
         <nav class="sidebar-content">
           <ul class="sidebar-menu">
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button active"
-                title="Dashboard"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button active" title="Dashboard">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="sidebar-expanded-only">Dashboard</span>
               </a>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
-                class="sidebar-menu-button"
-                title="Analytics"
-              >
+              <a href="javascript:void(0)" class="sidebar-menu-button" title="Analytics">
                 <i data-lucide="bar-chart-2"></i>
                 <span class="sidebar-expanded-only">Analytics</span>
               </a>
@@ -980,20 +660,14 @@
             title="Profile"
           >
             <span class="avatar">
-              <img
-                src="https://i.pravatar.cc/80?u=fn"
-                alt="Alex"
-                class="avatar-image"
-              /><span class="avatar-fallback">AL</span>
+              <img src="https://i.pravatar.cc/80?u=fn" alt="Alex" class="avatar-image" />
+              <span class="avatar-fallback">AL</span>
             </span>
             <div class="sidebar-expanded-only footer-user-info">
               <span class="user-name">Alex</span>
               <span class="user-role">Admin</span>
             </div>
-            <i
-              data-lucide="chevron-up"
-              class="sidebar-expanded-only chevron"
-            ></i>
+            <i data-lucide="chevron-up" class="sidebar-expanded-only chevron"></i>
           </button>
           <menu
             id="sidebar-menu-none"
@@ -1001,38 +675,27 @@
             class="dropdown"
             data-placement="top-start"
             role="menu"
-            style="
-              position-anchor: --sidebar-menu-none-anchor;
-              width: anchor-size(width);
-            "
+            style="position-anchor: --sidebar-menu-none-anchor; width: anchor-size(width)"
           >
             <div class="menu-label">My Account</div>
             <button class="menu-item" role="menuitem">
-              <i data-lucide="user"></i>Profile
+              <i data-lucide="user"></i>
+              Profile
             </button>
             <div class="menu-separator"></div>
             <button class="menu-item menu-item-destructive" role="menuitem">
-              <i data-lucide="log-out"></i>Log out
+              <i data-lucide="log-out"></i>
+              Log out
             </button>
           </menu>
         </footer>
       </aside>
       <div class="sidebar-inset">
         <header class="topnav">
-          <span
-            style="font-size: 0.875rem; font-weight: 500; margin-left: 0.5rem"
-            >Persistent Sidebar Layout</span
-          >
+          <span style="font-size: 0.875rem; font-weight: 500; margin-left: 0.5rem">Persistent Sidebar Layout</span>
         </header>
-        <main
-          style="
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-          "
-        >
-          The persistent variant (data-collapsible="none") disables the collapse
-          transition on desktop viewports.
+        <main style="padding: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground)">
+          The persistent variant (data-collapsible="none") disables the collapse transition on desktop viewports.
         </main>
       </div>
     </div>

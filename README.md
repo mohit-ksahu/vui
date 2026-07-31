@@ -45,7 +45,7 @@ Copy the `components/` folder into your project and include the files in your HT
 <script type="module" src="path/to/components/index.js"></script>
 ```
 
-For production, bundle and minify with [esbuild](https://esbuild.github.io/):
+For production, bundle and minify with **esbuild**:
 
 ```bash
 npx esbuild components/index.js --bundle --minify --format=esm --outfile=index.min.js

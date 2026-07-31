@@ -45,8 +45,6 @@ Copy the `components/` folder into your project and include the files in your HT
 <script type="module" src="path/to/components/index.js"></script>
 ```
 
-> ES modules require a local server — not `file://` directly. `npx serve .` works.
-
 For production, bundle and minify with [esbuild](https://esbuild.github.io/):
 
 ```bash

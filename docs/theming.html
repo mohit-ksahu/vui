@@ -1,0 +1,126 @@
+<section id="theming" class="section">
+  <h2>Theming</h2>
+  <p class="section-meta">Customize the look and feel using design tokens and theme helpers.</p>
+
+  <h3>Prevent FOUC (Flash of Unstyled Content)</h3>
+  <p>
+    To prevent a flash of unstyled content on page load, add this inline script to the
+    <code>&lt;head&gt;</code>
+    of your HTML file. It must run before the page renders:
+  </p>
+  <pre data-label="HTML"><code class="language-html">&lt;script&gt;
+  {
+    const theme = localStorage.getItem('theme') || 'system';
+    const isDark = theme === 'system' ? matchMedia('(prefers-color-scheme: dark)').matches : theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark && theme !== 'system');
+  }
+&lt;/script&gt;</code></pre>
+
+  <h3>CSS Variables</h3>
+  <p>
+    Configure custom variables in your stylesheet. Add the
+    <code>.dark</code>
+    class to the
+    <code>&lt;html&gt;</code>
+    element for dark mode.
+  </p>
+  <pre data-label="CSS"><code class="language-css">  :root {
+    color-scheme: light;
+
+    --background: oklch(0.985 0.002 286.350);
+    --foreground: oklch(0.200 0.004 286.099);
+    --card: oklch(1.000 0.000 0.000);
+    --card-foreground: oklch(0.200 0.004 286.099);
+    --popover: oklch(1.000 0.000 0.000);
+    --popover-foreground: oklch(0.200 0.004 286.099);
+    --primary: oklch(0.200 0.004 286.099);
+    --primary-foreground: oklch(0.985 0.002 286.350);
+    --secondary: oklch(0.940 0.003 286.350);
+    --secondary-foreground: oklch(0.200 0.004 286.099);
+    --muted: oklch(0.940 0.003 286.350);
+    --muted-foreground: oklch(0.550 0.004 286.099);
+    --accent: oklch(0.522 0.177 255.830);
+    --accent-foreground: oklch(1.000 0.000 0.000);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.910 0.003 286.350);
+    --input: oklch(0.910 0.003 286.350);
+    --ring: oklch(0.522 0.177 255.830);
+
+    --sidebar: oklch(0.971 0.003 286.350);
+    --sidebar-foreground: oklch(0.200 0.004 286.099);
+    --sidebar-primary: oklch(0.200 0.004 286.099);
+    --sidebar-primary-foreground: oklch(0.971 0.003 286.350);
+    --sidebar-accent: oklch(0.940 0.003 286.350);
+    --sidebar-accent-foreground: oklch(0.200 0.004 286.099);
+    --sidebar-border: oklch(0.910 0.003 286.350);
+    --sidebar-ring: oklch(0.522 0.177 255.830);
+
+    --radius-xs: calc(var(--radius) * 0.4);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius: 0.25rem;
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-10xl: calc(var(--radius) * 10);
+
+    --spacing: 0.25rem;
+    --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --background: oklch(0.165 0.004 286.099);
+    --foreground: oklch(0.971 0.003 286.350);
+    --card: oklch(0.198 0.004 286.099);
+    --card-foreground: oklch(0.971 0.003 286.350);
+    --popover: oklch(0.198 0.004 286.099);
+    --popover-foreground: oklch(0.971 0.003 286.350);
+    --primary: oklch(0.971 0.003 286.350);
+    --primary-foreground: oklch(0.165 0.004 286.099);
+    --secondary: oklch(0.230 0.004 286.099);
+    --secondary-foreground: oklch(0.971 0.003 286.350);
+    --muted: oklch(0.230 0.004 286.099);
+    --muted-foreground: oklch(0.680 0.004 286.099);
+    --accent: oklch(0.522 0.177 255.830);
+    --accent-foreground: oklch(1.000 0.000 0.000);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(0.298 0.004 286.099 / 0.5);
+    --input: oklch(0.298 0.004 286.099 / 0.5);
+    --ring: oklch(0.522 0.177 255.830);
+
+    --sidebar: oklch(0.175 0.004 286.099);
+    --sidebar-foreground: oklch(0.971 0.003 286.350);
+    --sidebar-primary: oklch(0.522 0.177 255.830);
+    --sidebar-primary-foreground: oklch(1.000 0.000 0.000);
+    --sidebar-accent: oklch(0.230 0.004 286.099);
+    --sidebar-accent-foreground: oklch(0.971 0.003 286.350);
+    --sidebar-border: oklch(0.298 0.004 286.099 / 0.5);
+    --sidebar-ring: oklch(0.522 0.177 255.830);
+  }</code></pre>
+
+  <h3>Theme Management & Utilities</h3>
+  <p>Toggle elements dynamically using utility classes, or control theme state programmatically.</p>
+  <pre
+    data-label="HTML"
+  ><code class="language-html">&lt;span class="dark:hidden"&gt;Visible in light mode&lt;/span&gt;
+&lt;span class="hidden dark:block"&gt;Visible in dark mode&lt;/span&gt;</code></pre>
+
+  <pre
+    data-label="JavaScript"
+  ><code class="language-javascript">import { setTheme, switchTheme } from './index.js';
+
+// Toggle or force themes
+switchTheme(); 
+setTheme('dark'); // 'light', 'dark', or 'system'
+
+// Listen for updates
+document.addEventListener('theme:change', (e) => {
+  console.log(e.detail.isDark); // true/false
+  console.log(e.detail.theme);  // 'light' | 'dark' | 'system'
+});</code></pre>
+</section>

@@ -1,8 +1,7 @@
 <h1 align="center">VUI</h1>
 
 <p align="center">
-  UI components built with plain HTML, CSS, and vanilla JavaScript.<br>
-  No build step. No dependencies.
+  UI components built with plain HTML, CSS, and vanilla JavaScript.
 </p>
 
 <p align="center">
@@ -13,18 +12,17 @@
 
 ## Why
 
-Plain HTML, CSS, and JavaScript — no build step, no framework, no dependencies. 
-
+Plain HTML, CSS, and JavaScript with no build step, no framework, and no dependencies.
 Good fit for static sites, server-rendered apps, or any project where you want polished UI without the overhead.
 
 ## Features
 
-- **Zero dependencies** — no npm, no bundler required to use it
-- **Framework-agnostic** — works with React, Vue, Svelte, or plain HTML
-- **Theming** — fully customizable via CSS variables
-- **Dark mode** — light, dark, and system preference, with View Transitions and a `setTheme` helper
-- **Keyboard accessible** — focus management and ARIA throughout
-- **Modern CSS** — built on `@layer`, `oklch`, `popover`, and CSS Anchor Positioning
+- **Zero dependencies**: No npm or bundler required to use it
+- **Framework agnostic**: Works with React, Vue, Svelte, or plain HTML
+- **Theming**: Fully customizable via CSS variables
+- **Dark mode**: Light, dark, and system preference, with View Transitions and a `setTheme` helper
+- **Keyboard accessible**: Focus management and ARIA throughout
+- **Modern CSS**: Built on `@layer`, `oklch`, `popover`, and CSS Anchor Positioning
 
 ## Components (35)
 

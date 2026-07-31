@@ -145,7 +145,7 @@
 
     @media (min-width: 769px) {
       &[data-variant="inset"] {
-        padding: calc(var(--spacing) * 2);
+        padding: 0;
         background-color: transparent;
         border: none;
       }

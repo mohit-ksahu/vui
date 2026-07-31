@@ -47,19 +47,19 @@
   <p class="section-meta">Toggle icons can dynamically change on active states using native CSS overriding.</p>
   <preview>
     <style>
-      .toggle-icon-swap i.lucide-play {
+      .toggle-icon-swap .icon-off {
+        display: none;
+      }
+
+      .toggle-icon-swap .icon-on {
         display: inline-flex;
       }
 
-      .toggle-icon-swap i.lucide-square {
+      .toggle-input:checked + .toggle-icon-swap .icon-on {
         display: none;
       }
 
-      .toggle-input:checked + .toggle-icon-swap i.lucide-play {
-        display: none;
-      }
-
-      .toggle-input:checked + .toggle-icon-swap i.lucide-square {
+      .toggle-input:checked + .toggle-icon-swap .icon-off {
         display: inline-flex;
       }
 
@@ -71,8 +71,8 @@
     </style>
     <input type="checkbox" id="t-icon-change" class="toggle-input" />
     <label class="toggle toggle-outline toggle-icon-swap" for="t-icon-change">
-      <i data-lucide="bell"></i>
-      <i data-lucide="bell-off"></i>
+      <i data-lucide="bell" class="icon-on"></i>
+      <i data-lucide="bell-off" class="icon-off"></i>
       <span class="state-text">Notifications</span>
     </label>
   </preview>

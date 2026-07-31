@@ -65,7 +65,8 @@ if (typeof document !== 'undefined') {
     if (!item) return;
     
     const targetId = item.getAttribute('popovertarget');
-    if (targetId) document.getElementById(targetId)?.showPopover();
+    const subMenu = targetId ? document.getElementById(targetId) : null;
+    if (subMenu && !subMenu.matches(':popover-open')) subMenu.showPopover();
     
     const menu = item.closest('[popover]');
     if (menu) {

@@ -40,7 +40,11 @@ if (typeof document !== 'undefined') {
   window.addEventListener('resize', refreshAllIndicators);
   if (typeof ResizeObserver !== 'undefined') new ResizeObserver(refreshAllIndicators).observe(document.body);
   if (typeof MutationObserver !== 'undefined') {
-    new MutationObserver(refreshAllIndicators).observe(document.body, { childList: true, subtree: true });
+    new MutationObserver(m => {
+      if (m.some(r => [...r.addedNodes].some(n => n.querySelector?.('[role="tablist"]') || n.matches?.('[role="tablist"]')))) {
+        refreshAllIndicators();
+      }
+    }).observe(document.body, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') {

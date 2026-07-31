@@ -39,7 +39,7 @@ const showToast = (element, { placement = 'top-right', duration = 4000 } = {}) =
 export const toast = (content, options = {}) => {
   const element = document.createElement('output');
   if (typeof content === 'string') {
-    element.innerHTML = content;
+    element.textContent = content;
   } else if (content instanceof Node) {
     element.appendChild(content);
   }

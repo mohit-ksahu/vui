@@ -70,9 +70,12 @@ const handleKeydown = e => {
   if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
     const nextIndex = keyNav(e, currentIndex, items.length, { prevKey: 'ArrowUp', nextKey: 'ArrowDown', homeEnd: true });
     if (nextIndex >= 0) items[nextIndex].focus();
-  } else if (e.key === 'Enter' && currentIndex >= 0) {
-    e.preventDefault();
-    handleItemClick(document.activeElement);
+  } else if (e.key === 'Enter') {
+    const active = currentIndex >= 0 ? document.activeElement : popover.querySelector('.combobox-item[data-selected]:not(.hidden)') || items[0];
+    if (active) {
+      e.preventDefault();
+      handleItemClick(active);
+    }
   }
 };
 

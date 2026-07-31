@@ -1,10 +1,7 @@
 const mobileQuery = typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)') : null;
 const initialized = new WeakSet();
-let providers = null;
-let resizeTimer = null;
 
-const getProviders = () => providers ||= Array.from(document.querySelectorAll('.sidebar-provider'));
-const clearCache = () => providers = null;
+const getProviders = () => Array.from(document.querySelectorAll('.sidebar-provider'));
 
 const syncAria = (p) => {
   const open = p.dataset.state === 'open';
@@ -14,7 +11,6 @@ const syncAria = (p) => {
 const init = (p) => {
   if (initialized.has(p)) return;
   initialized.add(p);
-  clearCache();
   const mobile = mobileQuery?.matches;
   p.dataset.desktopState ||= mobile ? 'open' : (p.dataset.state || 'open');
   if (mobile) p.dataset.state = 'closed';
@@ -33,14 +29,12 @@ if (typeof document !== 'undefined') {
 
   if (typeof MutationObserver !== 'undefined') {
     new MutationObserver(m => {
-      let hit = false;
       m.forEach(r => r.addedNodes.forEach(n => {
         if (n.nodeType === 1) {
-          if (n.classList?.contains('sidebar-provider')) { init(n); hit = true; }
-          n.querySelectorAll?.('.sidebar-provider')?.forEach(p => { init(p); hit = true; });
+          if (n.classList?.contains('sidebar-provider')) init(n);
+          n.querySelectorAll?.('.sidebar-provider')?.forEach(init);
         }
       }));
-      if (hit) clearCache();
     }).observe(document.body, { childList: true, subtree: true });
   }
 

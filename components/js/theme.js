@@ -33,5 +33,5 @@ document.addEventListener('click', (event) => {
   const button = event.target.closest('.theme-toggle');
   if (!button) return;
   const update = () => button.value ? setTheme(button.value) : switchTheme();
-  document.startViewTransition(update);
+  document.startViewTransition ? document.startViewTransition(update) : update();
 });

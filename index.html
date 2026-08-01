@@ -413,7 +413,6 @@
         display: none;
       }
 
-      /* Theme Icon Visibility */
       .theme-show-dark {
         display: none;
       }
@@ -935,9 +934,15 @@
 
       const setActive = (id) => {
         const link = linkMap.get(id);
-        if (link && link !== activeLink) {
-          activeLink?.classList.remove("active");
-          (activeLink = link).classList.add("active");
+        if (link) {
+          if (activeLink && activeLink !== link) {
+            activeLink.classList.remove("active");
+            activeLink.removeAttribute("aria-current");
+          }
+          activeLink = link;
+          link.classList.add("active");
+          link.setAttribute("aria-current", "page");
+          link.scrollIntoView({ block: "nearest" });
         }
       };
 

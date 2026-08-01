@@ -16,17 +16,26 @@
     font-size: 0.875rem;
     font-weight: 500;
     white-space: nowrap;
-    cursor: default;
+    user-select: none;
+    touch-action: manipulation;
     outline: none;
-    &:is(:hover, :active, [aria-pressed="true"]) {
+    cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--muted);
+        color: var(--foreground);
+      }
+    }
+
+    &:active,
+    &[aria-pressed="true"] {
       background-color: var(--muted);
       color: var(--foreground);
     }
 
     &:focus-visible {
       border-color: var(--ring);
-      outline: none;
-      transition: none;
     }
 
     &:disabled {
@@ -36,12 +45,6 @@
 
     &.toggle-outline {
       border-color: var(--border);
-      background-color: transparent;
-
-      &:is(:hover, :active, [aria-pressed="true"]) {
-        background-color: var(--muted);
-        color: var(--foreground);
-      }
     }
 
     &.toggle-sm {
@@ -82,6 +85,10 @@
     &:checked + .toggle {
       background-color: var(--muted);
       color: var(--foreground);
+    }
+
+    &:focus-visible + .toggle {
+      border-color: var(--ring);
     }
 
     &:disabled + .toggle {

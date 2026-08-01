@@ -18,6 +18,7 @@
     border: 1px solid var(--input);
     border-radius: var(--radius-lg);
     background: color-mix(in oklch, var(--foreground) 1%, transparent);
+    box-shadow: var(--shadow-sm);
     --select-icon: none;
     color: var(--foreground);
     cursor: default;

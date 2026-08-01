@@ -71,12 +71,12 @@
 
     &.btn-outline {
       border: 1px solid var(--border);
-      background-color: color-mix(in oklch, var(--foreground) 2%, var(--background));
+      background-color: color-mix(in oklch, var(--foreground) 1%, var(--background));
       color: var(--foreground);
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--foreground) 6%, var(--background));
+          background-color: color-mix(in oklch, var(--foreground) 4%, var(--background));
           color: var(--foreground);
         }
       }

@@ -6,3 +6,5 @@ export * from './js/theme.js';
 export * from './js/toggle.js';
 export * from './js/toast.js';
 export * from './js/combobox.js';
+export * from './js/menubar.js';
+export * from './js/navigation-menu.js';

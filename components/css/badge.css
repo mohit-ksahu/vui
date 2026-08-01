@@ -42,7 +42,7 @@
       color: var(--primary-foreground);
 
       &:is(a):hover {
-        background-color: color-mix(in oklch, var(--primary) 80%, transparent);
+        background-color: color-mix(in oklch, var(--primary) 80%, var(--background));
       }
     }
 
@@ -51,16 +51,16 @@
       color: var(--secondary-foreground);
 
       &:is(a):hover {
-        background-color: color-mix(in oklch, var(--foreground) 8%, transparent);
+        background-color: color-mix(in oklch, var(--secondary) 90%, var(--foreground));
       }
     }
 
     &.badge-destructive {
-      background-color: oklch(from var(--destructive) l c h / 0.15);
+      background-color: color-mix(in oklch, var(--destructive) 10%, var(--background));
       color: var(--destructive);
 
       &:is(a):hover {
-        background-color: oklch(from var(--destructive) l c h / 0.25);
+        background-color: color-mix(in oklch, var(--destructive) 15%, var(--background));
       }
 
       &:focus-visible {
@@ -69,10 +69,9 @@
     }
 
     &.badge-outline {
-      background-color: transparent;
+      background-color: var(--background);
       color: var(--foreground);
       border-color: var(--border);
     }
-
   }
 }

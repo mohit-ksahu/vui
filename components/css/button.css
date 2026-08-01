@@ -24,20 +24,15 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: oklch(from var(--foreground) l c h / 0.9);
+        background-color: color-mix(in oklch, var(--foreground) 90%, var(--background));
       }
-    }
-
-    &:active {
-      background-color: oklch(from var(--foreground) l c h / 0.9);
-      transition: none;
     }
 
     &:not(.btn-icon):not(.btn-icon-sm):not(.btn-icon-lg):not(.btn-icon-xs):not(.btn-icon-xl):empty {
       display: none;
     }
 
-    &:focus-visible:not(:active) {
+    &:focus-visible {
       border-color: var(--ring);
       outline: none;
       transition: none;
@@ -49,22 +44,17 @@
     }
 
     &.btn-destructive {
-      background-color: color-mix(in oklch, var(--destructive) 10%, transparent);
+      background-color: color-mix(in oklch, var(--destructive) 10%, var(--background));
       color: var(--destructive);
-      border-color: transparent;
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--destructive) 15%, transparent);
+          background-color: color-mix(in oklch, var(--destructive) 15%, var(--background));
         }
       }
 
-      &:active {
-        background-color: color-mix(in oklch, var(--destructive) 15%, transparent);
-      }
-
       &:focus-visible {
-        border-color: color-mix(in oklch, var(--destructive) 40%, transparent);
+        border-color: color-mix(in oklch, var(--destructive) 40%, var(--background));
       }
     }
 
@@ -74,30 +64,21 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--foreground) 6%, transparent);
+          background-color: color-mix(in oklch, var(--secondary) 97%, var(--foreground));
         }
-      }
-
-      &:active {
-        background-color: color-mix(in oklch, var(--foreground) 6%, transparent);
       }
     }
 
     &.btn-outline {
       border: 1px solid var(--border);
-      background-color: color-mix(in oklch, var(--foreground) 1%, transparent);
+      background-color: color-mix(in oklch, var(--foreground) 2%, var(--background));
       color: var(--foreground);
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
+          background-color: color-mix(in oklch, var(--foreground) 6%, var(--background));
           color: var(--foreground);
         }
-      }
-
-      &:active {
-        background-color: color-mix(in oklch, var(--foreground) 2%, transparent);
-        color: var(--foreground);
       }
     }
 
@@ -110,11 +91,6 @@
           background-color: var(--muted);
           color: var(--foreground);
         }
-      }
-
-      &:active {
-        background-color: var(--muted);
-        color: var(--foreground);
       }
     }
 
@@ -133,28 +109,17 @@
           background-color: transparent;
         }
       }
-
-      &:active {
-        text-decoration: underline;
-        background-color: transparent;
-      }
     }
 
     &.btn-plain {
       background-color: transparent;
-      color: color-mix(in oklch, var(--foreground) 85%, transparent);
-      border-color: transparent;
+      color: var(--muted-foreground);
 
       @media (hover: hover) {
         &:hover {
           background-color: transparent;
           color: var(--foreground);
         }
-      }
-
-      &:active {
-        background-color: transparent;
-        color: var(--foreground);
       }
     }
 

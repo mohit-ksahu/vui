@@ -15,10 +15,13 @@
 @import './css/input-group.css';
 @import './css/kbd.css';
 @import './css/label.css';
+@import './css/menubar.css';
+@import './css/navigation-menu.css';
 @import './css/pagination.css';
 @import './css/popover.css';
 @import './css/progress.css';
 @import './css/radio-group.css';
+@import './css/scroll-area.css';
 @import './css/select.css';
 @import './css/separator.css';
 @import './css/sheet.css';

@@ -1,5 +1,5 @@
 const mobileQuery = typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)') : null;
-const initialized = new WeakSet();
+const bound = new WeakSet();
 
 const getProviders = () => Array.from(document.querySelectorAll('.sidebar-provider'));
 
@@ -8,9 +8,9 @@ const syncAria = (p) => {
   p.querySelectorAll('.sidebar-trigger').forEach(t => t.setAttribute('aria-expanded', open ? 'true' : 'false'));
 };
 
-const init = (p) => {
-  if (initialized.has(p)) return;
-  initialized.add(p);
+const setup = (p) => {
+  if (bound.has(p)) return;
+  bound.add(p);
   const mobile = mobileQuery?.matches;
   p.dataset.desktopState ||= mobile ? 'open' : (p.dataset.state || 'open');
   if (mobile) p.dataset.state = 'closed';
@@ -24,15 +24,15 @@ const animate = (s) => {
 };
 
 if (typeof document !== 'undefined') {
-  const runInit = () => getProviders().forEach(init);
-  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', runInit) : runInit();
+  const runSetup = () => getProviders().forEach(setup);
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', runSetup) : runSetup();
 
   if (typeof MutationObserver !== 'undefined') {
     new MutationObserver(m => {
       m.forEach(r => r.addedNodes.forEach(n => {
         if (n.nodeType === 1) {
-          if (n.classList?.contains('sidebar-provider')) init(n);
-          n.querySelectorAll?.('.sidebar-provider')?.forEach(init);
+          if (n.classList?.contains('sidebar-provider')) setup(n);
+          n.querySelectorAll?.('.sidebar-provider')?.forEach(setup);
         }
       }));
     }).observe(document.body, { childList: true, subtree: true });

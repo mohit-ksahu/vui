@@ -3,25 +3,31 @@
     position: relative;
     width: 100%;
     overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
   }
 
   .table {
     width: 100%;
     caption-side: bottom;
-    border-collapse: collapse;
     font-size: 0.875rem;
+    border-collapse: collapse;
   }
 
-  .table-thead tr {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .table-tbody tr {
-    border-bottom: 1px solid var(--border);
-
-    &:last-child {
-      border-bottom: 0;
+  .table-header {
+    & .table-tr {
+      border-bottom: 1px solid var(--border);
     }
+  }
+
+  .table-body {
+    & .table-tr:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  .table-tr {
+    transition: background-color var(--duration-fast) var(--ease-default);
 
     &[aria-selected="true"] {
       background-color: var(--muted);

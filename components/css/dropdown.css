@@ -112,13 +112,13 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
+          background-color: color-mix(in oklch, var(--destructive) 10%, var(--background));
           color: var(--destructive);
         }
       }
       &:active,
       &:focus-visible {
-        background-color: color-mix(in oklch, var(--destructive) 20%, transparent);
+        background-color: color-mix(in oklch, var(--destructive) 10%, var(--background));
         color: var(--destructive);
         transition: none;
       }

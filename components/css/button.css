@@ -64,7 +64,7 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: color-mix(in oklch, var(--secondary) 97%, var(--foreground));
+          background-color: color-mix(in oklch, var(--secondary) 98.5%, var(--foreground));
         }
       }
     }
